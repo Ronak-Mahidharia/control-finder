@@ -19,6 +19,7 @@ from controlfinder.bm25 import BM25
 from controlfinder.catalog import active_controls
 from controlfinder.embeddings import QUERY, committed_controls, embed
 from controlfinder.fusion import rrf
+from controlfinder.vector import search as nearest_in_memory
 
 DEPTH = 100  # each list's length before fusion, as in steps 3 and 4
 RRF_K = 60
@@ -141,3 +142,17 @@ class Searcher:
         results = [{"rank": i + 1, "id": cid, "keyword_rank": ranks.get("keyword", {}).get(cid),
                     "vector_rank": ranks.get("vector", {}).get(cid)} for i, cid in enumerate(order[:k])]
         return results, timings
+
+
+class InMemorySearcher(Searcher):
+    """The same search, with the vectors searched in memory from the committed embeddings instead of in the
+    database. Step 5 showed both give the same top 10 for every question, and memory is faster at this size,
+    so the MCP server needs no database. (The API uses the database.)"""
+
+    def __init__(self, embed=embed_question):
+        super().__init__(pool=None, embed=embed)
+        self.vectors = committed_controls(self.controls)
+
+    def vector(self, vector):
+        row = nearest_in_memory(np.asarray(vector, dtype=np.float32)[None, :], self.vectors, DEPTH)[0]
+        return [self.controls[i].id for i in row]

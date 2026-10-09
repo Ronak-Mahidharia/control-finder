@@ -28,7 +28,9 @@ Control Finder answers security questions from NIST SP 800-53 with cited control
    - Test: NIST citation F1 0.482 (citing the search's top result: 0.420); "not covered" for 95.0% of out-of-scope questions and for none of the covered ones; an anchor cited for 78.9% of plain-English questions (`docs/results-answers.md`).
    - Found: when it says "not covered", its own text answered the question anyway in 9 of 19 test answers, so the API always shows a fixed sentence for those.
    - Not done yet: judging whether each answer's sentences are true to the cited controls (only the citations are checked), and anchors that count an anchor's enhancements (all 4 plain-English misses cited one).
-7. **An MCP server, a website, and a write-up.**
+7. **An MCP server, a website, and a write-up.** The MCP server is done (`docs/mcp.md`): three read-only tools (`search_controls`, `get_control`, and `answer_question`) for Claude Desktop, Claude Code, and other MCP clients.
+   - It searches in memory (step 5: the database's rankings), so it needs Ollama but no database. Run over stdio with the model embedding each question live, it gave the published top 20 for 203 of 203 questions (`docs/results-mcp.md`).
+   - Next: the website, then the write-up.
 
 ## Rules
 - NIST's data only: public domain in the US and CC0 worldwide. Nothing from any employer, and nothing about contracts.

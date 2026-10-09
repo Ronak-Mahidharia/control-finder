@@ -125,3 +125,8 @@ def refusal_text(text):
 def shown_to_people(covered, text):
     """The answer text people see: the model's own words only when it found the question covered."""
     return text if covered else NOT_COVERED
+
+
+def ask_chosen(question, shown):
+    """ask(), with the model and prompt chosen in step 6."""
+    return ask(question, shown, CHOSEN["model"], CHOSEN["version"])

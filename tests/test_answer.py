@@ -111,3 +111,10 @@ def test_the_api_uses_the_setup_chosen_on_dev():
 
     chosen = json.loads((Path(__file__).resolve().parent.parent / "results" / "answers.json").read_text())["chosen"]
     assert chosen == f"{answer.CHOSEN['model']}, prompt {answer.CHOSEN['version']}, top {answer.CHOSEN['shown']}"
+
+
+def test_ask_chosen_uses_the_chosen_model_and_prompt(monkeypatch):
+    seen = []
+    monkeypatch.setattr(answer, "ask", lambda question, shown, model, version: seen.append((question, model, version)) or {"raw": "{}"})
+    answer.ask_chosen("How should passwords be stored?", SHOWN)
+    assert seen == [("How should passwords be stored?", answer.CHOSEN["model"], answer.CHOSEN["version"])]
