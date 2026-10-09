@@ -1,0 +1,4 @@
+# Exact versions used for the published results. The keyword search and metrics use only
+# Python's standard library; vector search uses numpy. Install everything with:
+#   pip install -r requirements-dev.txt
+numpy==2.5.3

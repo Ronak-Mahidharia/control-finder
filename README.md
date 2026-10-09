@@ -2,19 +2,24 @@
 
 Ask a security question in plain English and get the NIST SP 800-53 controls that answer it, each one cited and linked. When the catalog doesn't cover a question, it says so. Its accuracy is measured against an answer key built from NIST's own data, and every result is published.
 
-**Status:** in progress. Steps 1 and 2 of 7 are done: two answer keys from NIST's own data, and a keyword-search baseline on both. The steps are in [docs/plan.md](docs/plan.md).
+**Status:** in progress. Steps 1 to 3 of 7 are done: two answer keys from NIST's own data, and keyword, vector, and hybrid search measured on both. The steps are in [docs/plan.md](docs/plan.md).
 
 ## Results so far
-Keyword search (BM25) over the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data ([docs/results.md](docs/results.md)):
+Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md).
 
-| Answer key | Test questions | MRR | First result right | A right control in the top 10 |
-|---|---|---|---|---|
-| SP 800-171 Rev 3 requirements → their source controls | 45 | 0.983 | 97.8% | 100% |
-| CSF 2.0 outcomes → their mapped controls | 46 | 0.257 | 17.4% | 47.8% |
+| Answer key | Method | Test questions | MRR | First result right | A right control in the top 10 |
+|---|---|---|---|---|---|
+| CSF 2.0 | Keyword (BM25) | 46 | 0.257 | 17.4% | 47.8% |
+| CSF 2.0 | Vector (nomic-embed-text) | 46 | 0.453 | 28.3% | 78.3% |
+| CSF 2.0 | Hybrid (RRF) | 46 | 0.411 | 26.1% | 78.3% |
+| SP 800-171 | Keyword (BM25) | 45 | 0.983 | 97.8% | 100.0% |
+| SP 800-171 | Vector (nomic-embed-text) | 45 | 0.902 | 84.4% | 97.8% |
+| SP 800-171 | Hybrid (RRF) | 45 | 0.967 | 95.6% | 97.8% |
 
-- **SP 800-171 is easy for keywords:** NIST adapted each requirement's wording from its source controls, so question and answer share many words.
-- **CSF 2.0 is the real test:** its outcomes are worded unlike the controls ("Vulnerabilities in assets are identified, validated, and recorded"). The next steps (vector search, hybrid search, reranking) are measured on it.
-- **Settings are chosen on dev questions only.** One exception, stated openly: a first exploratory run also printed CSF's test numbers. Nothing was tuned on them, and the rule that picks the search text (best dev MRR) was already fixed in code.
+- **CSF 2.0 is the real test.** Its outcomes are worded unlike the controls ("Vulnerabilities in assets are identified, validated, and recorded"). Searching by meaning nearly doubles keyword search's MRR there.
+- **Hybrid search isn't automatically better.** On CSF 2.0 it found the most right controls (recall@10 0.334, against 0.303 for vectors alone) but put a right one first less often. Across both keys it's the most balanced: on SP 800-171, which keyword search nearly aces because NIST adapted each requirement's wording from its source controls, it keeps most of keyword search's lead.
+- **Everything runs locally and free:** the embedding model is nomic-embed-text through Ollama. Every question's top 100 vector results are committed, so CI checks these numbers without the model.
+- **Stated openly:** a first exploratory run in step 2 also printed CSF's keyword test numbers. Nothing was tuned on them.
 
 ## Run it
 ```bash
@@ -22,7 +27,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 .venv/bin/python scripts/download_data.py        # NIST's files, pinned and hash-checked
 .venv/bin/python scripts/run_keyword_baseline.py # writes docs/results.md and both results files
 .venv/bin/python scripts/build_csf_answer_key.py # optional: rebuilds answer_keys/csf2_sp800_53.json from NIST
-.venv/bin/python -m pytest -q                    # 19 tests, including that the published numbers reproduce
+.venv/bin/python scripts/run_vector_and_hybrid.py # needs Ollama: ollama pull nomic-embed-text (about 30 s)
+.venv/bin/python -m pytest -q                    # 26 tests, including that the published numbers reproduce
 ```
 
 ## The data
