@@ -1,0 +1,97 @@
+{
+ "base": "http://127.0.0.1:8000/",
+ "passed": 21,
+ "total": 21,
+ "checks": [
+  {
+   "name": "the page loads, titled Control Finder",
+   "passed": true
+  },
+  {
+   "name": "the status line says everything is running",
+   "passed": true
+  },
+  {
+   "name": "there's a skip link to the question",
+   "passed": true
+  },
+  {
+   "name": "an example fills in the question",
+   "passed": true
+  },
+  {
+   "name": "Find controls shows the 10 closest controls",
+   "passed": true
+  },
+  {
+   "name": "focus moves to the results",
+   "passed": true
+  },
+  {
+   "name": "IA-5(1) Password-based Authentication is among them",
+   "passed": true
+  },
+  {
+   "name": "opening a control shows NIST's text, fetched from the API",
+   "passed": true
+  },
+  {
+   "name": "and what an assessor checks",
+   "passed": true
+  },
+  {
+   "name": "Answer with citations gives an answer",
+   "passed": true
+  },
+  {
+   "name": "the password question is covered and cites IA-5(1)",
+   "passed": true
+  },
+  {
+   "name": "it says what the model saw",
+   "passed": true
+  },
+  {
+   "name": "the controls it saw are listed by their NIST labels",
+   "passed": true
+  },
+  {
+   "name": "a question the catalog doesn't cover gets Not covered",
+   "passed": true
+  },
+  {
+   "name": "with the fixed sentence, not the model's own words",
+   "passed": true
+  },
+  {
+   "name": "and no citations",
+   "passed": true
+  },
+  {
+   "name": "keyword search works too",
+   "passed": true
+  },
+  {
+   "name": "every button and toggle is at least 44 px tall",
+   "passed": true
+  },
+  {
+   "name": "dark mode follows the device",
+   "passed": true
+  },
+  {
+   "name": "on a phone, nothing is wider than the screen",
+   "passed": true
+  },
+  {
+   "name": "no console errors or security-policy violations",
+   "passed": true
+  }
+ ],
+ "screenshots": [
+  "search-desktop-light",
+  "answer-desktop-light",
+  "answer-desktop-dark",
+  "search-phone-light"
+ ]
+}

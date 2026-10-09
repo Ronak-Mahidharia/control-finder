@@ -1,0 +1,281 @@
+/* Colors: every text and background pair meets WCAG AA (4.5:1), and field borders 3:1, in both themes.
+   lib/contrast.test.ts reads these two blocks and checks every pair. */
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --text: #1a1f26;
+  --muted: #4b5563;
+  --accent: #1f5fbf;
+  --on-accent: #ffffff;
+  --border: #7b8494;
+  --covered-bg: #e3edfb;
+  --covered-text: #14407f;
+  --not-covered-bg: #fdf0dc;
+  --not-covered-text: #7a4100;
+  --error-bg: #fdecec;
+  --error-text: #9b1c1c;
+  --warn-bg: #fdf0dc;
+  --warn-text: #7a4100;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1217;
+    --surface: #161b22;
+    --text: #e6e9ee;
+    --muted: #a6afbc;
+    --accent: #7cb0ff;
+    --on-accent: #0b1a33;
+    --border: #6b7585;
+    --covered-bg: #13284a;
+    --covered-text: #bcd5ff;
+    --not-covered-bg: #3a2a10;
+    --not-covered-text: #f6d08a;
+    --error-bg: #3b1515;
+    --error-text: #ffb4b4;
+    --warn-bg: #3a2a10;
+    --warn-text: #f6d08a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#root {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--surface);
+  padding: 0.5rem 0.75rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.tagline {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.status {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.status.warn {
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 0 0 1rem;
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.7rem;
+  resize: vertical;
+}
+
+fieldset {
+  border: 0;
+  margin: 0.75rem 0;
+  padding: 0;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+.choice input {
+  flex: none; /* a long label that wraps mustn't shrink the radio button */
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1rem;
+}
+
+button {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  cursor: pointer;
+}
+
+button.secondary,
+button.example {
+  background: var(--surface);
+  color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.examples ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button.example {
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.busy {
+  min-height: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border-color: var(--error-text);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+.results {
+  padding-left: 1.5rem;
+}
+
+.results li {
+  margin: 0 0 0.9rem;
+}
+
+.result-head {
+  margin: 0;
+}
+
+.result-head .label {
+  font-weight: 700;
+}
+
+.results p {
+  margin: 0.1rem 0;
+}
+
+.control-text summary,
+.detail details summary {
+  cursor: pointer;
+  color: var(--accent);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.detail h4 {
+  margin: 0.6rem 0 0.25rem;
+}
+
+.detail ul {
+  padding-left: 1.25rem;
+}
+
+.badge {
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.badge.covered {
+  background: var(--covered-bg);
+  color: var(--covered-text);
+}
+
+.badge.not-covered {
+  background: var(--not-covered-bg);
+  color: var(--not-covered-text);
+}
+
+.answer-text {
+  font-size: 1.05rem;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@media (max-width: 30rem) {
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .actions button {
+    flex: 1 1 100%;
+  }
+}

@@ -156,3 +156,16 @@ def test_the_pool_replaces_a_connection_that_failed(monkeypatch):
     with pool.connection() as fresh:
         pass
     assert first is reused is failed and failed.closed and fresh is not failed and len(made) == 2
+
+
+def test_the_built_website_is_served_after_the_api(tmp_path):
+    (tmp_path / "index.html").write_text("<!doctype html><title>Control Finder</title>", encoding="utf-8")
+    searcher = Searcher(NoDatabase(), embed=no_model)
+    with TestClient(create_app(searcher, embedding_model_check=lambda: False, site=tmp_path)) as c:
+        page = c.get("/")
+        assert page.status_code == 200 and "<title>Control Finder</title>" in page.text
+        assert c.get("/health").json()["controls"] == 1014  # the API's routes still come first
+        assert c.get("/search", params={"q": "store passwords", "method": "keyword"}).status_code == 200
+        assert c.get("/nothing-here").status_code == 404
+    with TestClient(create_app(Searcher(NoDatabase(), embed=no_model), embedding_model_check=lambda: False, site=None)) as c:
+        assert c.get("/").status_code == 404  # no website unless it has been built

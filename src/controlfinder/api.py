@@ -8,17 +8,20 @@
 # Then:  http://127.0.0.1:8000/docs for every endpoint, or for example
 #        curl "http://127.0.0.1:8000/search?q=How+should+we+store+passwords%3F&k=5"
 #        curl "http://127.0.0.1:8000/answer?q=How+should+we+store+passwords%3F"  (needs qwen3:8b too)
-# At startup it loads the committed embeddings into the database if they
-# aren't there. Keyword search works even without the database or Ollama;
+# It also serves the website (web/dist, built with: cd web && npm ci && npm run build)
+# at http://127.0.0.1:8000/. At startup it loads the committed embeddings into
+# the database if they aren't there. Keyword search works even without the database or Ollama;
 # the other methods answer 503 until both can be reached.
 # ============================================================================
 import time
 import urllib.request
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Annotated, Literal
 
 from fastapi import FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from controlfinder import answer
@@ -27,6 +30,7 @@ from controlfinder.embeddings import URL as EMBED_URL
 from controlfinder.search import DEPTH, VECTOR_WEIGHT, Pool, Searcher, Unavailable
 
 MAX_QUESTION = 2000  # characters; far below the embedding model's 2,048-token limit
+SITE = Path(__file__).resolve().parents[2] / "web" / "dist"
 MAX_K = 50
 
 
@@ -90,7 +94,7 @@ def _ollama_reachable():
         return False
 
 
-def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=answer.ask_chosen):
+def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=answer.ask_chosen, site=SITE):
     @asynccontextmanager
     async def lifespan(app):
         app.state.searcher = searcher or Searcher(Pool())
@@ -165,6 +169,9 @@ def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=
         return {"id": c.id, "label": c.label, "title": c.title, "family": c.family, "parent": c.parent,
                 "statement": c.statement, "guidance": c.guidance, "assessment_objectives": list(c.objectives)}
 
+    # The website, when it's been built. Mounted last, so the API's routes above always come first.
+    if site is not None and (Path(site) / "index.html").exists():
+        app.mount("/", StaticFiles(directory=site, html=True), name="site")
     return app
 
 
