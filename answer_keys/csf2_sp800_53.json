@@ -1,0 +1,1377 @@
+{
+ "source": {
+  "url": "https://csrc.nist.gov/extensions/nudp/services/json/csf/download?olirids=all",
+  "data_sha256": "5c34a08c7a8dbd40ae6f594581d63769fde2fbf3e941f353716b89e047234c59",
+  "downloaded": "2026-10-08",
+  "note": "NIST CSF 2.0 Reference Tool export; only its SP 800-53 Rev 5.1.1 references are kept"
+ },
+ "questions": [
+  {
+   "id": "GV.OC-01",
+   "text": "The organizational mission is understood and informs cybersecurity risk management",
+   "expected": [
+    "pm-11"
+   ]
+  },
+  {
+   "id": "GV.OC-02",
+   "text": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered",
+   "expected": [
+    "pm-18",
+    "pm-30",
+    "pm-9",
+    "sr-3",
+    "sr-5",
+    "sr-6",
+    "sr-8"
+   ]
+  },
+  {
+   "id": "GV.OC-03",
+   "text": "Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "cm-1",
+    "cp-1",
+    "ia-1",
+    "ir-1",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pm-1",
+    "pm-28",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "sa-1",
+    "sc-1",
+    "si-1",
+    "sr-1"
+   ]
+  },
+  {
+   "id": "GV.OC-04",
+   "text": "Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated",
+   "expected": [
+    "cp-2.8",
+    "pm-11",
+    "pm-30.1",
+    "pm-8",
+    "ra-9"
+   ]
+  },
+  {
+   "id": "GV.OC-05",
+   "text": "Outcomes, capabilities, and services that the organization depends on are understood and communicated",
+   "expected": [
+    "pm-11",
+    "pm-30",
+    "ra-7",
+    "sa-9",
+    "sr-5"
+   ]
+  },
+  {
+   "id": "GV.RM-01",
+   "text": "Risk management objectives are established and agreed to by organizational stakeholders",
+   "expected": [
+    "pm-9",
+    "ra-7",
+    "sr-2"
+   ]
+  },
+  {
+   "id": "GV.RM-02",
+   "text": "Risk appetite and risk tolerance statements are established, communicated, and maintained",
+   "expected": [
+    "pm-9"
+   ]
+  },
+  {
+   "id": "GV.RM-03",
+   "text": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes",
+   "expected": [
+    "pm-3",
+    "pm-30",
+    "pm-9",
+    "ra-7",
+    "sr-2"
+   ]
+  },
+  {
+   "id": "GV.RM-04",
+   "text": "Strategic direction that describes appropriate risk response options is established and communicated",
+   "expected": [
+    "pm-28",
+    "pm-30",
+    "pm-9",
+    "sr-2"
+   ]
+  },
+  {
+   "id": "GV.RM-05",
+   "text": "Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties",
+   "expected": [
+    "pm-30",
+    "pm-9"
+   ]
+  },
+  {
+   "id": "GV.RM-06",
+   "text": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated",
+   "expected": [
+    "pm-18",
+    "pm-28",
+    "pm-30",
+    "pm-9",
+    "ra-3"
+   ]
+  },
+  {
+   "id": "GV.RM-07",
+   "text": "Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions",
+   "expected": [
+    "pm-18",
+    "pm-28",
+    "pm-30",
+    "pm-9",
+    "ra-3"
+   ]
+  },
+  {
+   "id": "GV.RR-01",
+   "text": "Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving",
+   "expected": [
+    "pm-19",
+    "pm-2",
+    "pm-23",
+    "pm-24",
+    "pm-29"
+   ]
+  },
+  {
+   "id": "GV.RR-02",
+   "text": "Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced",
+   "expected": [
+    "pm-13",
+    "pm-19",
+    "pm-2",
+    "pm-23",
+    "pm-24",
+    "pm-29"
+   ]
+  },
+  {
+   "id": "GV.RR-03",
+   "text": "Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies",
+   "expected": [
+    "pm-3"
+   ]
+  },
+  {
+   "id": "GV.RR-04",
+   "text": "Cybersecurity is included in human resources practices",
+   "expected": [
+    "pm-13",
+    "ps-1",
+    "ps-7",
+    "ps-9"
+   ]
+  },
+  {
+   "id": "GV.PO-01",
+   "text": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "cm-1",
+    "cp-1",
+    "ia-1",
+    "ir-1",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pm-1",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "sa-1",
+    "sc-1",
+    "si-1",
+    "sr-1"
+   ]
+  },
+  {
+   "id": "GV.PO-02",
+   "text": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "cm-1",
+    "cp-1",
+    "ia-1",
+    "ir-1",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pm-1",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "sa-1",
+    "sc-1",
+    "si-1",
+    "sr-1"
+   ]
+  },
+  {
+   "id": "GV.OV-01",
+   "text": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "cm-1",
+    "cp-1",
+    "ia-1",
+    "ir-1",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pm-1",
+    "pm-18",
+    "pm-30",
+    "pm-31",
+    "pm-9",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "ra-7",
+    "sa-1",
+    "sc-1",
+    "si-1",
+    "sr-1",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.OV-02",
+   "text": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks",
+   "expected": [
+    "pm-19",
+    "pm-30",
+    "pm-31",
+    "pm-9",
+    "ra-7",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.OV-03",
+   "text": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed",
+   "expected": [
+    "pm-4",
+    "pm-6",
+    "ra-7",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.SC-01",
+   "text": "A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders",
+   "expected": [
+    "pm-30",
+    "sr-2",
+    "sr-3"
+   ]
+  },
+  {
+   "id": "GV.SC-02",
+   "text": "Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally",
+   "expected": [
+    "sr-2",
+    "sr-3",
+    "sr-5"
+   ]
+  },
+  {
+   "id": "GV.SC-03",
+   "text": "Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "cm-1",
+    "cp-1",
+    "ia-1",
+    "ir-1",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pm-1",
+    "pm-18",
+    "pm-30",
+    "pm-31",
+    "pm-9",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "ra-3",
+    "ra-7",
+    "sa-1",
+    "sc-1",
+    "si-1",
+    "sr-1",
+    "sr-2",
+    "sr-3"
+   ]
+  },
+  {
+   "id": "GV.SC-04",
+   "text": "Suppliers are known and prioritized by criticality",
+   "expected": [
+    "ra-9",
+    "sa-9",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.SC-05",
+   "text": "Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties",
+   "expected": [
+    "sa-4",
+    "sa-9",
+    "sr-10",
+    "sr-3",
+    "sr-5",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.SC-06",
+   "text": "Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships",
+   "expected": [
+    "sa-4",
+    "sa-9",
+    "sr-5",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.SC-07",
+   "text": "The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship",
+   "expected": [
+    "ra-9",
+    "sa-4",
+    "sa-9",
+    "sr-3",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.SC-08",
+   "text": "Relevant suppliers and other third parties are included in incident planning, response, and recovery activities",
+   "expected": [
+    "cp-1",
+    "ir-1",
+    "sa-4",
+    "sa-9",
+    "sr-2",
+    "sr-3",
+    "sr-8"
+   ]
+  },
+  {
+   "id": "GV.SC-09",
+   "text": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle",
+   "expected": [
+    "pm-19",
+    "pm-28",
+    "pm-30",
+    "pm-31",
+    "pm-9",
+    "ra-3",
+    "ra-7",
+    "sa-4",
+    "sa-9",
+    "sr-2",
+    "sr-3",
+    "sr-5",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "GV.SC-10",
+   "text": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement",
+   "expected": [
+    "pm-31",
+    "ra-3",
+    "ra-5",
+    "ra-7",
+    "sa-4",
+    "sa-9",
+    "sr-2",
+    "sr-3",
+    "sr-5",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "ID.AM-01",
+   "text": "Inventories of hardware managed by the organization are maintained",
+   "expected": [
+    "cm-8",
+    "pm-5"
+   ]
+  },
+  {
+   "id": "ID.AM-02",
+   "text": "Inventories of software, services, and systems managed by the organization are maintained",
+   "expected": [
+    "ac-20",
+    "cm-8",
+    "pm-5",
+    "sa-5",
+    "sa-9"
+   ]
+  },
+  {
+   "id": "ID.AM-03",
+   "text": "Representations of the organization's authorized network communication and internal and external network data flows are maintained",
+   "expected": [
+    "ac-4",
+    "ca-3",
+    "ca-9",
+    "pl-2",
+    "pl-8",
+    "pm-7"
+   ]
+  },
+  {
+   "id": "ID.AM-04",
+   "text": "Inventories of services provided by suppliers are maintained",
+   "expected": [
+    "ac-20",
+    "sa-9",
+    "sr-2"
+   ]
+  },
+  {
+   "id": "ID.AM-05",
+   "text": "Assets are prioritized based on classification, criticality, resources, and impact on the mission",
+   "expected": [
+    "ra-2",
+    "ra-3",
+    "ra-9"
+   ]
+  },
+  {
+   "id": "ID.AM-07",
+   "text": "Inventories of data and corresponding metadata for designated data types are maintained",
+   "expected": [
+    "cm-12",
+    "cm-13",
+    "si-12"
+   ]
+  },
+  {
+   "id": "ID.AM-08",
+   "text": "Systems, hardware, software, services, and data are managed throughout their life cycles",
+   "expected": [
+    "cm-13",
+    "cm-9",
+    "ma-2",
+    "ma-6",
+    "pl-2",
+    "pm-22",
+    "pm-23",
+    "sa-22",
+    "sa-3",
+    "sa-4",
+    "sa-8",
+    "si-12",
+    "si-18",
+    "sr-12",
+    "sr-5"
+   ]
+  },
+  {
+   "id": "ID.RA-01",
+   "text": "Vulnerabilities in assets are identified, validated, and recorded",
+   "expected": [
+    "ca-2",
+    "ca-7",
+    "ca-8",
+    "ra-3",
+    "ra-5",
+    "sa-11.2",
+    "sa-15.7",
+    "sa-15.8",
+    "si-4",
+    "si-5"
+   ]
+  },
+  {
+   "id": "ID.RA-02",
+   "text": "Cyber threat intelligence is received from information sharing forums and sources",
+   "expected": [
+    "pm-15",
+    "pm-16",
+    "si-5"
+   ]
+  },
+  {
+   "id": "ID.RA-03",
+   "text": "Internal and external threats to the organization are identified and recorded",
+   "expected": [
+    "pm-12",
+    "pm-16",
+    "ra-3",
+    "si-5"
+   ]
+  },
+  {
+   "id": "ID.RA-04",
+   "text": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded",
+   "expected": [
+    "pm-11",
+    "pm-9",
+    "ra-2",
+    "ra-3",
+    "ra-8",
+    "ra-9"
+   ]
+  },
+  {
+   "id": "ID.RA-05",
+   "text": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization",
+   "expected": [
+    "pm-16",
+    "ra-2",
+    "ra-3",
+    "ra-7"
+   ]
+  },
+  {
+   "id": "ID.RA-06",
+   "text": "Risk responses are chosen, prioritized, planned, tracked, and communicated",
+   "expected": [
+    "pm-18",
+    "pm-30",
+    "pm-9",
+    "ra-7"
+   ]
+  },
+  {
+   "id": "ID.RA-07",
+   "text": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked",
+   "expected": [
+    "ca-7",
+    "cm-3",
+    "cm-4"
+   ]
+  },
+  {
+   "id": "ID.RA-08",
+   "text": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established",
+   "expected": [
+    "ra-5"
+   ]
+  },
+  {
+   "id": "ID.RA-09",
+   "text": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use",
+   "expected": [
+    "sa-10",
+    "sa-11",
+    "sa-15",
+    "sa-17",
+    "sa-4",
+    "sa-5",
+    "si-7",
+    "sr-10",
+    "sr-11",
+    "sr-5",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "ID.RA-10",
+   "text": "Critical suppliers are assessed prior to acquisition",
+   "expected": [
+    "sr-6"
+   ]
+  },
+  {
+   "id": "ID.IM-01",
+   "text": "Improvements are identified from evaluations",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "ca-2",
+    "ca-5",
+    "ca-7",
+    "ca-8",
+    "cm-1",
+    "cp-1",
+    "cp-2",
+    "ia-1",
+    "ir-1",
+    "ir-4",
+    "ir-8",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pl-2",
+    "pm-1",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "ra-3",
+    "ra-5",
+    "ra-7",
+    "sa-1",
+    "sa-11",
+    "sa-17.6",
+    "sa-8",
+    "sc-1",
+    "si-1",
+    "si-2",
+    "si-4",
+    "sr-1",
+    "sr-5"
+   ]
+  },
+  {
+   "id": "ID.IM-02",
+   "text": "Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "ca-2",
+    "ca-5",
+    "ca-7",
+    "ca-8",
+    "cm-1",
+    "cp-1",
+    "cp-2",
+    "cp-4",
+    "ia-1",
+    "ir-1",
+    "ir-3",
+    "ir-4",
+    "ir-8",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pl-2",
+    "pm-1",
+    "pm-31",
+    "pm-4",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "ra-3",
+    "ra-5",
+    "ra-7",
+    "sa-1",
+    "sa-11",
+    "sa-8",
+    "sc-1",
+    "si-1",
+    "si-2",
+    "si-4",
+    "sr-1",
+    "sr-5"
+   ]
+  },
+  {
+   "id": "ID.IM-03",
+   "text": "Improvements are identified from execution of operational processes, procedures, and activities",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "ca-2",
+    "ca-5",
+    "ca-7",
+    "ca-8",
+    "cm-1",
+    "cp-1",
+    "cp-2",
+    "ia-1",
+    "ir-1",
+    "ir-4",
+    "ir-8",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "pl-2",
+    "pm-1",
+    "pm-31",
+    "pm-4",
+    "ps-1",
+    "pt-1",
+    "ra-1",
+    "ra-3",
+    "ra-5",
+    "ra-7",
+    "sa-1",
+    "sa-11",
+    "sa-4",
+    "sa-8",
+    "sc-1",
+    "si-1",
+    "si-2",
+    "si-4",
+    "sr-1",
+    "sr-5"
+   ]
+  },
+  {
+   "id": "ID.IM-04",
+   "text": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved",
+   "expected": [
+    "cp-2",
+    "ir-8",
+    "pl-2",
+    "sr-2"
+   ]
+  },
+  {
+   "id": "PR.AA-01",
+   "text": "Identities and credentials for authorized users, services, and hardware are managed by the organization",
+   "expected": [
+    "ac-1",
+    "ac-14",
+    "ac-2",
+    "ia-1",
+    "ia-10",
+    "ia-11",
+    "ia-2",
+    "ia-3",
+    "ia-4",
+    "ia-5",
+    "ia-6",
+    "ia-7",
+    "ia-8",
+    "ia-9"
+   ]
+  },
+  {
+   "id": "PR.AA-02",
+   "text": "Identities are proofed and bound to credentials based on the context of interactions",
+   "expected": [
+    "ia-12"
+   ]
+  },
+  {
+   "id": "PR.AA-03",
+   "text": "Users, services, and hardware are authenticated",
+   "expected": [
+    "ac-12",
+    "ac-7",
+    "ia-10",
+    "ia-11",
+    "ia-2",
+    "ia-3",
+    "ia-5",
+    "ia-7",
+    "ia-8",
+    "ia-9"
+   ]
+  },
+  {
+   "id": "PR.AA-04",
+   "text": "Identity assertions are protected, conveyed, and verified",
+   "expected": [
+    "ia-13"
+   ]
+  },
+  {
+   "id": "PR.AA-05",
+   "text": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties",
+   "expected": [
+    "ac-1",
+    "ac-10",
+    "ac-16",
+    "ac-17",
+    "ac-18",
+    "ac-19",
+    "ac-2",
+    "ac-24",
+    "ac-3",
+    "ac-5",
+    "ac-6",
+    "ia-13"
+   ]
+  },
+  {
+   "id": "PR.AA-06",
+   "text": "Physical access to assets is managed, monitored, and enforced commensurate with risk",
+   "expected": [
+    "pe-18",
+    "pe-19",
+    "pe-2",
+    "pe-20",
+    "pe-3",
+    "pe-4",
+    "pe-5",
+    "pe-6",
+    "pe-8"
+   ]
+  },
+  {
+   "id": "PR.AT-01",
+   "text": "Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind",
+   "expected": [
+    "at-2",
+    "at-3"
+   ]
+  },
+  {
+   "id": "PR.AT-02",
+   "text": "Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind",
+   "expected": [
+    "at-3"
+   ]
+  },
+  {
+   "id": "PR.DS-01",
+   "text": "The confidentiality, integrity, and availability of data-at-rest are protected",
+   "expected": [
+    "ca-3",
+    "cp-9",
+    "mp-8",
+    "sc-12",
+    "sc-13",
+    "sc-28",
+    "sc-32",
+    "sc-39",
+    "sc-4",
+    "sc-43",
+    "sc-7",
+    "si-3",
+    "si-4",
+    "si-7"
+   ]
+  },
+  {
+   "id": "PR.DS-02",
+   "text": "The confidentiality, integrity, and availability of data-in-transit are protected",
+   "expected": [
+    "au-16",
+    "ca-3",
+    "sc-11",
+    "sc-12",
+    "sc-13",
+    "sc-16",
+    "sc-4",
+    "sc-40",
+    "sc-43",
+    "sc-7",
+    "sc-8",
+    "si-3",
+    "si-4",
+    "si-7"
+   ]
+  },
+  {
+   "id": "PR.DS-10",
+   "text": "The confidentiality, integrity, and availability of data-in-use are protected",
+   "expected": [
+    "ac-2",
+    "ac-3",
+    "ac-4",
+    "au-13",
+    "au-9",
+    "ca-3",
+    "cp-9",
+    "sa-8",
+    "sc-11",
+    "sc-13",
+    "sc-24",
+    "sc-32",
+    "sc-39",
+    "sc-4",
+    "sc-40",
+    "sc-43",
+    "sc-7",
+    "si-10",
+    "si-16",
+    "si-3",
+    "si-4",
+    "si-7"
+   ]
+  },
+  {
+   "id": "PR.DS-11",
+   "text": "Backups of data are created, protected, maintained, and tested",
+   "expected": [
+    "cp-6",
+    "cp-9"
+   ]
+  },
+  {
+   "id": "PR.PS-01",
+   "text": "Configuration management practices are established and applied",
+   "expected": [
+    "cm-1",
+    "cm-10",
+    "cm-11",
+    "cm-2",
+    "cm-3",
+    "cm-4",
+    "cm-5",
+    "cm-6",
+    "cm-7",
+    "cm-8",
+    "cm-9"
+   ]
+  },
+  {
+   "id": "PR.PS-02",
+   "text": "Software is maintained, replaced, and removed commensurate with risk",
+   "expected": [
+    "cm-11",
+    "ma-3.6",
+    "sa-10.1",
+    "si-2",
+    "si-7"
+   ]
+  },
+  {
+   "id": "PR.PS-03",
+   "text": "Hardware is maintained, replaced, and removed commensurate with risk",
+   "expected": [
+    "cm-7.9",
+    "sa-10.3",
+    "sc-3.1",
+    "sc-39.1",
+    "sc-49",
+    "sc-51"
+   ]
+  },
+  {
+   "id": "PR.PS-04",
+   "text": "Log records are generated and made available for continuous monitoring",
+   "expected": [
+    "au-11",
+    "au-12",
+    "au-2",
+    "au-3",
+    "au-6",
+    "au-7"
+   ]
+  },
+  {
+   "id": "PR.PS-05",
+   "text": "Installation and execution of unauthorized software are prevented",
+   "expected": [
+    "cm-7.2",
+    "cm-7.4",
+    "cm-7.5",
+    "sc-34"
+   ]
+  },
+  {
+   "id": "PR.PS-06",
+   "text": "Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle",
+   "expected": [
+    "sa-10",
+    "sa-11",
+    "sa-15",
+    "sa-17",
+    "sa-3",
+    "sa-8"
+   ]
+  },
+  {
+   "id": "PR.IR-01",
+   "text": "Networks and environments are protected from unauthorized logical access and usage",
+   "expected": [
+    "ac-3",
+    "ac-4",
+    "sc-4",
+    "sc-5",
+    "sc-7"
+   ]
+  },
+  {
+   "id": "PR.IR-02",
+   "text": "The organization's technology assets are protected from environmental threats",
+   "expected": [
+    "cp-2",
+    "pe-10",
+    "pe-11",
+    "pe-12",
+    "pe-13",
+    "pe-14",
+    "pe-15",
+    "pe-18",
+    "pe-23",
+    "pe-9"
+   ]
+  },
+  {
+   "id": "PR.IR-03",
+   "text": "Mechanisms are implemented to achieve resilience requirements in normal and adverse situations",
+   "expected": [
+    "sa-8",
+    "sc-24",
+    "sc-36",
+    "sc-39",
+    "sc-6",
+    "si-13"
+   ]
+  },
+  {
+   "id": "PR.IR-04",
+   "text": "Adequate resource capacity to ensure availability is maintained",
+   "expected": [
+    "cp-6",
+    "cp-7",
+    "cp-8",
+    "pm-3",
+    "pm-9"
+   ]
+  },
+  {
+   "id": "DE.CM-01",
+   "text": "Networks and network services are monitored to find potentially adverse events",
+   "expected": [
+    "ac-2",
+    "au-12",
+    "ca-7",
+    "cm-3",
+    "sc-5",
+    "sc-7",
+    "si-4"
+   ]
+  },
+  {
+   "id": "DE.CM-02",
+   "text": "The physical environment is monitored to find potentially adverse events",
+   "expected": [
+    "ca-7",
+    "pe-20",
+    "pe-3",
+    "pe-6"
+   ]
+  },
+  {
+   "id": "DE.CM-03",
+   "text": "Personnel activity and technology usage are monitored to find potentially adverse events",
+   "expected": [
+    "ac-2",
+    "au-12",
+    "au-13",
+    "ca-7",
+    "cm-10",
+    "cm-11"
+   ]
+  },
+  {
+   "id": "DE.CM-06",
+   "text": "External service provider activities and services are monitored to find potentially adverse events",
+   "expected": [
+    "ca-7",
+    "ps-7",
+    "sa-4",
+    "sa-9",
+    "si-4"
+   ]
+  },
+  {
+   "id": "DE.CM-09",
+   "text": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events",
+   "expected": [
+    "ac-4",
+    "ac-9",
+    "au-12",
+    "ca-7",
+    "cm-10",
+    "cm-11",
+    "cm-3",
+    "cm-6",
+    "sc-34",
+    "sc-35",
+    "si-4",
+    "si-7"
+   ]
+  },
+  {
+   "id": "DE.AE-02",
+   "text": "Potentially adverse events are analyzed to better understand associated activities",
+   "expected": [
+    "au-6",
+    "ca-7",
+    "ir-4",
+    "si-4"
+   ]
+  },
+  {
+   "id": "DE.AE-03",
+   "text": "Information is correlated from multiple sources",
+   "expected": [
+    "au-6",
+    "ca-7",
+    "ir-4",
+    "ir-5",
+    "ir-8",
+    "pm-16",
+    "si-4"
+   ]
+  },
+  {
+   "id": "DE.AE-04",
+   "text": "The estimated impact and scope of adverse events are understood",
+   "expected": [
+    "pm-11",
+    "pm-18",
+    "pm-28",
+    "pm-30",
+    "pm-9"
+   ]
+  },
+  {
+   "id": "DE.AE-06",
+   "text": "Information on adverse events is provided to authorized staff and tools",
+   "expected": [
+    "ir-4",
+    "pm-15",
+    "pm-16",
+    "ra-10",
+    "ra-3"
+   ]
+  },
+  {
+   "id": "DE.AE-07",
+   "text": "Cyber threat intelligence and other contextual information are integrated into the analysis",
+   "expected": [
+    "pm-16",
+    "ra-10",
+    "ra-3"
+   ]
+  },
+  {
+   "id": "DE.AE-08",
+   "text": "Incidents are declared when adverse events meet the defined incident criteria",
+   "expected": [
+    "ir-4",
+    "ir-8"
+   ]
+  },
+  {
+   "id": "RS.MA-01",
+   "text": "The incident response plan is executed in coordination with relevant third parties once an incident is declared",
+   "expected": [
+    "ir-6",
+    "ir-7",
+    "ir-8",
+    "sr-3",
+    "sr-8"
+   ]
+  },
+  {
+   "id": "RS.MA-02",
+   "text": "Incident reports are triaged and validated",
+   "expected": [
+    "ir-4",
+    "ir-5",
+    "ir-6"
+   ]
+  },
+  {
+   "id": "RS.MA-03",
+   "text": "Incidents are categorized and prioritized",
+   "expected": [
+    "ir-4",
+    "ir-5",
+    "ir-6"
+   ]
+  },
+  {
+   "id": "RS.MA-04",
+   "text": "Incidents are escalated or elevated as needed",
+   "expected": [
+    "ir-4",
+    "ir-5",
+    "ir-6",
+    "ir-7"
+   ]
+  },
+  {
+   "id": "RS.MA-05",
+   "text": "The criteria for initiating incident recovery are applied",
+   "expected": [
+    "ir-4",
+    "ir-8"
+   ]
+  },
+  {
+   "id": "RS.AN-03",
+   "text": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident",
+   "expected": [
+    "au-7",
+    "ir-4"
+   ]
+  },
+  {
+   "id": "RS.AN-06",
+   "text": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved",
+   "expected": [
+    "au-7",
+    "ir-4",
+    "ir-6"
+   ]
+  },
+  {
+   "id": "RS.AN-07",
+   "text": "Incident data and metadata are collected, and their integrity and provenance are preserved",
+   "expected": [
+    "au-7",
+    "ir-4",
+    "ir-6"
+   ]
+  },
+  {
+   "id": "RS.AN-08",
+   "text": "An incident's magnitude is estimated and validated",
+   "expected": [
+    "ir-4",
+    "ir-8",
+    "ra-3",
+    "ra-7"
+   ]
+  },
+  {
+   "id": "RS.CO-02",
+   "text": "Internal and external stakeholders are notified of incidents",
+   "expected": [
+    "ir-4",
+    "ir-6",
+    "ir-7",
+    "sr-3",
+    "sr-8"
+   ]
+  },
+  {
+   "id": "RS.CO-03",
+   "text": "Information is shared with designated internal and external stakeholders",
+   "expected": [
+    "ir-4",
+    "ir-6",
+    "ir-7",
+    "sr-3",
+    "sr-8"
+   ]
+  },
+  {
+   "id": "RS.MI-01",
+   "text": "Incidents are contained",
+   "expected": [
+    "ir-4"
+   ]
+  },
+  {
+   "id": "RS.MI-02",
+   "text": "Incidents are eradicated",
+   "expected": [
+    "ir-4"
+   ]
+  },
+  {
+   "id": "RC.RP-01",
+   "text": "The recovery portion of the incident response plan is executed once initiated from the incident response process",
+   "expected": [
+    "cp-10",
+    "ir-4",
+    "ir-8"
+   ]
+  },
+  {
+   "id": "RC.RP-02",
+   "text": "Recovery actions are selected, scoped, prioritized, and performed",
+   "expected": [
+    "cp-10",
+    "ir-4",
+    "ir-8"
+   ]
+  },
+  {
+   "id": "RC.RP-03",
+   "text": "The integrity of backups and other restoration assets is verified before using them for restoration",
+   "expected": [
+    "cp-2",
+    "cp-4",
+    "cp-9"
+   ]
+  },
+  {
+   "id": "RC.RP-04",
+   "text": "Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms",
+   "expected": [
+    "ir-1",
+    "ir-8",
+    "pm-11",
+    "pm-8",
+    "pm-9"
+   ]
+  },
+  {
+   "id": "RC.RP-05",
+   "text": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed",
+   "expected": [
+    "cp-10"
+   ]
+  },
+  {
+   "id": "RC.RP-06",
+   "text": "The end of incident recovery is declared based on criteria, and incident-related documentation is completed",
+   "expected": [
+    "ir-4",
+    "ir-8"
+   ]
+  },
+  {
+   "id": "RC.CO-03",
+   "text": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders",
+   "expected": [
+    "ir-4",
+    "ir-6",
+    "sr-8"
+   ]
+  },
+  {
+   "id": "RC.CO-04",
+   "text": "Public updates on incident recovery are shared using approved methods and messaging",
+   "expected": [
+    "cp-2",
+    "ir-4"
+   ]
+  }
+ ]
+}
