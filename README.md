@@ -2,7 +2,7 @@
 
 Ask a security question in plain English and get the NIST SP 800-53 controls that answer it, each one cited and linked. When the catalog doesn't cover a question, it says so. Its accuracy is measured against an answer key built from NIST's own data, and every result is published.
 
-**Status:** in progress. Steps 1 to 6 of 7 are done, and the first part of step 7: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; cited answers from a local model that says when a question isn't covered; and an MCP server for AI assistants. The steps are in [docs/plan.md](docs/plan.md).
+**Status:** in progress. Steps 1 to 6 of 7 are done, and the first part of step 7: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; cited answers from a local model that says when a question isn't covered; and an MCP server for AI assistants. The steps are in [docs/plan.md](docs/plan.md), and the story, with the numbers behind each decision, is in [the write-up](docs/write-up.md).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
@@ -69,7 +69,7 @@ docker compose up -d --wait                       # step 5's database: PostgreSQ
 .venv/bin/python scripts/run_answer_eval.py       # step 6: needs qwen3:8b and granite4:3b in Ollama (about 55 min; answers are cached)
 .venv/bin/pip install -e . --no-deps              # lets an AI assistant start the MCP server from any folder (docs/mcp.md)
 .venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
-.venv/bin/python -m pytest -q                    # 101 tests, including that the published numbers reproduce
+.venv/bin/python -m pytest -q                    # 105 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
   .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 11 tests that need that database
 ```
