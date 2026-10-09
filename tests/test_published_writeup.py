@@ -89,5 +89,5 @@ def test_the_answer_and_mcp_numbers():
 
 def test_the_test_counts_are_current():
     count = sum(len(re.findall(r"^def test_", p.read_text(encoding="utf-8"), re.M)) for p in (ROOT / "tests").glob("test_*.py"))
-    assert f"{count} tests run on every change" in TEXT
+    assert f"{count} Python tests run on every change" in TEXT
     assert f"# {count} tests, including" in (ROOT / "README.md").read_text(encoding="utf-8")

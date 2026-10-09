@@ -2,7 +2,20 @@
 
 Ask a security question in plain English and get the NIST SP 800-53 controls that answer it, each one cited and linked. When the catalog doesn't cover a question, it says so. Its accuracy is measured against an answer key built from NIST's own data, and every result is published.
 
-**Status:** in progress. Steps 1 to 6 of 7 are done, and the first part of step 7: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; cited answers from a local model that says when a question isn't covered; and an MCP server for AI assistants. The steps are in [docs/plan.md](docs/plan.md), and the story, with the numbers behind each decision, is in [the write-up](docs/write-up.md).
+**Status:** steps 1 to 7 of 7 are done: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; cited answers from a local model that says when a question isn't covered; an MCP server for AI assistants; and a website that runs on your computer. The steps are in [docs/plan.md](docs/plan.md), and the story, with the numbers behind each decision, is in [the write-up](docs/write-up.md).
+
+## Try it on your computer
+```bash
+scripts/start_local.sh   # starts the database, checks Ollama, builds the website once, and opens http://127.0.0.1:8000/
+scripts/stop_local.sh    # stops it again
+```
+The first time, you'll need the Python setup in [Run it](#run-it), Docker Desktop, Node 24, and Ollama with `ollama pull nomic-embed-text` and `ollama pull qwen3:8b`. Everything listens on 127.0.0.1 only, so nothing outside your computer can reach it.
+
+![The answer to "We store customer passwords. How should they be protected?": covered, citing IA-5(1) and IA-5(18), with the 10 controls the model was shown](docs/screenshots/answer-desktop-light.png)
+
+- Type a question or pick an example. **Find controls** lists the 10 closest controls, each with NIST's text and what an assessor checks. **Answer with citations** gives the local model's answer, citing only controls it was shown.
+- A question the catalog doesn't cover, such as the HTTPS port, gets "Not covered" and a fixed sentence.
+- A browser check (`node scripts/check_website.mjs`) clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode: 21 of 21 checks pass. More pictures: [search on a desktop](docs/screenshots/search-desktop-light.png), [an answer in dark mode](docs/screenshots/answer-desktop-dark.png), [search on a phone](docs/screenshots/search-phone-light.png).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
@@ -69,7 +82,9 @@ docker compose up -d --wait                       # step 5's database: PostgreSQ
 .venv/bin/python scripts/run_answer_eval.py       # step 6: needs qwen3:8b and granite4:3b in Ollama (about 55 min; answers are cached)
 .venv/bin/pip install -e . --no-deps              # lets an AI assistant start the MCP server from any folder (docs/mcp.md)
 .venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
-.venv/bin/python -m pytest -q                    # 105 tests, including that the published numbers reproduce
+(cd web && npm ci && npm test && npm run build)   # the website: its tests, then the build the API serves
+node scripts/check_website.mjs                    # with scripts/start_local.sh running: the browser check, and the screenshots
+.venv/bin/python -m pytest -q                    # 110 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
   .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 11 tests that need that database
 ```

@@ -1,6 +1,6 @@
 # Building Control Finder: what I measured, and what I learned
 
-Control Finder takes a security question in plain English, such as "We store customer passwords. How should they be protected?", and answers with the NIST SP 800-53 controls that apply, each one cited. When the catalog doesn't cover a question, it says so. It has five parts: two answer keys built from NIST's own data, a search that combines keywords and meaning, a vector database and an API, cited answers from a local model, and a server that lets AI assistants use it.
+Control Finder takes a security question in plain English, such as "We store customer passwords. How should they be protected?", and answers with the NIST SP 800-53 controls that apply, each one cited. When the catalog doesn't cover a question, it says so. It has six parts: two answer keys built from NIST's own data, a search that combines keywords and meaning, a vector database and an API, cited answers from a local model, a server that lets AI assistants use it, and a website that runs on your computer.
 
 I set myself one rule: no claim without a number behind it. This write-up follows the project in order, with the numbers that shaped each decision. The details are in the [README](../README.md) and the documents it links.
 
@@ -54,6 +54,11 @@ The main weakness is citing too much: 4.15 controls per answer on NIST's test qu
 ## Letting AI assistants use it
 An MCP server gives Claude Desktop, Claude Code, and other MCP clients three read-only tools: `search_controls`, `get_control`, and `answer_question`. It searches in memory, which the database step showed gives the same rankings, so it needs only Ollama. Over stdio, with the model embedding each question live, it gave the published top 20 for all 203 questions, connected in 336 ms, and answered later searches in 12.7 ms. Its instructions ask the assistant to cite controls by label, describe only what a control's text says, and pass on "not covered" instead of answering from general knowledge.
 
+## Seeing it work: a local website
+A small React and TypeScript website, served by the API at http://127.0.0.1:8000/, puts it all on one page. You type a question, see the closest controls, open any control's text and what an assessor checks, or ask for a cited answer. One script starts everything. A browser check clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode, and all 21 of its checks pass. Every color pair meets WCAG AA contrast in both themes, and the page may only talk to its own API.
+
+Looking at the screenshots caught a bug the tests had missed: the line listing the controls the model saw showed ids like "ia-5.1" instead of NIST's labels like "IA-5(1)". The API sends ids there, but my test data had used labels. The test data now matches the API, and the browser check looks for the labels.
+
 ## What I'd do next
 - **Cite less.** Ask for the single best control first, or rerank before answering, and measure whether precision rises without losing recall.
 - **Check the sentences, not just the citations.** Here, faithful means every citation was shown to the model. It doesn't yet check that each sentence is supported by the cited text.
@@ -61,7 +66,7 @@ An MCP server gives Claude Desktop, Claude Code, and other MCP clients three rea
 - **Search a control's numbered parts** instead of the whole control, so a long control's main point doesn't get diluted.
 
 ## How it's checked
-- 105 tests run on every change, in GitHub Actions pinned to exact commits, with read-only permissions. The 11 database tests run against a pgvector container pinned by digest.
+- 110 Python tests run on every change, with the website's own tests, in GitHub Actions pinned to exact commits, with read-only permissions. The 11 database tests run against a pgvector container pinned by digest.
 - The embeddings, the vector lists, every reranker score, and every model answer are committed, so CI recomputes every published number without running a model.
-- Each step planted bugs on purpose to test the tests, 64 in all, and every one was caught; one was caught only after a test was added for it.
+- Each step planted bugs on purpose to test the tests, 74 in all, and every one was caught; one was caught only after a test was added for it.
 - All models run locally through Ollama, so the project costs $0 to run, and it uses only NIST's public-domain data.

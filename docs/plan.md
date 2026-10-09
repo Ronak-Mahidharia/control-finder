@@ -31,7 +31,7 @@ Control Finder answers security questions from NIST SP 800-53 with cited control
 7. **An MCP server, a website, and a write-up.** The MCP server is done (`docs/mcp.md`): three read-only tools (`search_controls`, `get_control`, and `answer_question`) for Claude Desktop, Claude Code, and other MCP clients.
    - It searches in memory (step 5: the database's rankings), so it needs Ollama but no database. Run over stdio with the model embedding each question live, it gave the published top 20 for 203 of 203 questions (`docs/results-mcp.md`).
    - The write-up is done (`docs/write-up.md`): the project in order, with the numbers behind each decision, all checked by a test against the results files.
-   - Next: the website, which waits for the decision to make the repository public (GitHub Pages serves only public repositories on the free plan).
+   - The website is done, and it runs on this computer: the API serves it at http://127.0.0.1:8000/, and `scripts/start_local.sh` starts everything. A browser check passes all its checks on a desktop and a phone (`results/website.json`). Putting it online waits for the decision to make the repository public (GitHub Pages serves only public repositories on the free plan).
 
 ## Rules
 - NIST's data only: public domain in the US and CC0 worldwide. Nothing from any employer, and nothing about contracts.

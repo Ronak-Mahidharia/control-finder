@@ -54,3 +54,28 @@ jobs:
         run: |
           python scripts/run_keyword_baseline.py > /dev/null
           git diff --exit-code results docs/results.md
+
+  # The website (web/): type checks, its tests, and a build, from the exact versions in package-lock.json.
+  web:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Type-check
+        run: npm run typecheck
+      - name: Run tests (the API client, every page state, and color contrast)
+        run: npm test
+      - name: Build the site
+        run: npm run build
