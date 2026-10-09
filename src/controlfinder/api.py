@@ -90,11 +90,7 @@ def _ollama_reachable():
         return False
 
 
-def _ask_chosen_model(question, shown):
-    return answer.ask(question, shown, answer.CHOSEN["model"], answer.CHOSEN["version"])
-
-
-def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=_ask_chosen_model):
+def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=answer.ask_chosen):
     @asynccontextmanager
     async def lifespan(app):
         app.state.searcher = searcher or Searcher(Pool())

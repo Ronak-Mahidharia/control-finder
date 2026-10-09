@@ -2,7 +2,7 @@
 
 Ask a security question in plain English and get the NIST SP 800-53 controls that answer it, each one cited and linked. When the catalog doesn't cover a question, it says so. Its accuracy is measured against an answer key built from NIST's own data, and every result is published.
 
-**Status:** in progress. Steps 1 to 6 of 7 are done: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; and cited answers from a local model that says when a question isn't covered. The steps are in [docs/plan.md](docs/plan.md).
+**Status:** in progress. Steps 1 to 6 of 7 are done, and the first part of step 7: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; cited answers from a local model that says when a question isn't covered; and an MCP server for AI assistants. The steps are in [docs/plan.md](docs/plan.md).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
@@ -47,6 +47,12 @@ The controls are also loaded into PostgreSQL with pgvector, from the committed e
 - **Plain-English questions** (hand-made, 19 on test): it cited an anchor control for 78.9%. All 4 misses cited an enhancement of an anchor instead.
 - **Two models compared on dev:** granite4:3b answered about twice as fast but said "not covered" to only 45% to 60% of the out-of-scope questions, against 100% for qwen3:8b. With qwen3:8b, an answer took 4.33 s (median, test) on one Apple-silicon Mac.
 
+## The MCP server (step 7)
+AI assistants such as Claude Desktop and Claude Code can use Control Finder as three read-only tools: `search_controls`, `get_control`, and `answer_question`. Setup: [docs/mcp.md](docs/mcp.md). Results: [the MCP server](docs/results-mcp.md).
+- **The published rankings, with no database.** It searches in memory, which step 5 showed gives the database's rankings. Run over stdio, with the model embedding each question live, it gave the published top 20 for 203 of 203 questions.
+- **Speed:** it connected in 336 ms, and searches after the first took 12.7 ms (median), on one Apple-silicon Mac.
+- **Its instructions** ask the assistant to cite controls by label, describe only what a control's text says, and pass on "not covered" instead of answering from general knowledge.
+
 ## Run it
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
@@ -61,7 +67,9 @@ docker compose up -d --wait                       # step 5's database: PostgreSQ
 .venv/bin/python -m uvicorn controlfinder.api:app --app-dir src --host 127.0.0.1 --port 8000  # the API (needs Ollama); docs at /docs
 .venv/bin/python scripts/run_api_check.py         # runs the API and checks it against the published rankings (about 15 s)
 .venv/bin/python scripts/run_answer_eval.py       # step 6: needs qwen3:8b and granite4:3b in Ollama (about 55 min; answers are cached)
-.venv/bin/python -m pytest -q                    # 87 tests, including that the published numbers reproduce
+.venv/bin/pip install -e . --no-deps              # lets an AI assistant start the MCP server from any folder (docs/mcp.md)
+.venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
+.venv/bin/python -m pytest -q                    # 101 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
   .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 11 tests that need that database
 ```
