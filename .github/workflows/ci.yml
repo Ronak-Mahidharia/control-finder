@@ -14,6 +14,22 @@ jobs:
   test:
     runs-on: ubuntu-26.04
     timeout-minutes: 10
+    # Step 5's database, for tests/test_database.py: the image in docker-compose.yml, pinned by digest.
+    # It exists only for this job and holds only NIST's public data; its password protects nothing else.
+    services:
+      db:
+        image: pgvector/pgvector:0.8.7-pg18@sha256:2358fcba361ed2233a5ed81b5fe4ca779ccb304120ce531a3bf51c0ed7e2bc11
+        env:
+          POSTGRES_USER: controlfinder
+          POSTGRES_PASSWORD: controlfinder-local
+          POSTGRES_DB: controlfinder
+        ports:
+          - 127.0.0.1:5432:5432
+        options: >-
+          --health-cmd "pg_isready -U controlfinder -d controlfinder"
+          --health-interval 2s
+          --health-timeout 3s
+          --health-retries 30
     steps:
       # Actions are pinned to exact commits, so a hijacked tag can't change what runs here.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -29,7 +45,9 @@ jobs:
       - name: Download NIST's files (pinned commit, hashes checked)
         run: python scripts/download_data.py
       - name: Run tests
-        run: python -m pytest -q
+        env:
+          CONTROLFINDER_DB_URL: postgresql://controlfinder:controlfinder-local@127.0.0.1:5432/controlfinder
+        run: python -m pytest -q -rs
       - name: Check the published results match the code
         run: |
           python scripts/run_keyword_baseline.py > /dev/null

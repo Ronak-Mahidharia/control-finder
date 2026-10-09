@@ -1,0 +1,24 @@
+# Step 5's database: PostgreSQL 18 with the pgvector 0.8.7 extension (PostgreSQL License).
+# Start it with:  docker compose up -d      Stop it with:  docker compose down
+# It listens on 127.0.0.1:55432 only, so nothing outside this computer can reach it. The password
+# below is for this throwaway local database only; it protects nothing else.
+# The image is pinned to an exact digest (the multi-platform one, for Apple silicon and Linux).
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg18@sha256:2358fcba361ed2233a5ed81b5fe4ca779ccb304120ce531a3bf51c0ed7e2bc11
+    environment:
+      POSTGRES_USER: controlfinder
+      POSTGRES_PASSWORD: controlfinder-local
+      POSTGRES_DB: controlfinder
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - controlfinder-db:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U controlfinder -d controlfinder"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  controlfinder-db:
