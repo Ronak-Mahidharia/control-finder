@@ -1,5 +1,6 @@
-# Exact versions for the tests. The search code itself uses only Python's standard library so far.
+# Exact versions for the tests, plus everything in requirements.txt.
 # Install with: pip install -r requirements-dev.txt
+-r requirements.txt
 iniconfig==2.3.0
 packaging==26.3
 pluggy==1.6.0

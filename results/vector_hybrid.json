@@ -1,0 +1,154 @@
+{
+ "model": {
+  "name": "nomic-embed-text",
+  "parameters": "137M",
+  "license": "Apache-2.0",
+  "dimensions": 768,
+  "max_tokens": 2048,
+  "controls_at_token_limit": {
+   "title + statement": 0,
+   "title + statement + guidance": 0
+  },
+  "controls": 1014
+ },
+ "settings": {
+  "bm25_text": "title + statement + guidance",
+  "rrf_k": 60,
+  "fusion_depth": 100,
+  "scored_on": "top 10",
+  "chosen_on": "CSF 2.0 dev questions, by MRR"
+ },
+ "dev_csf2": {
+  "keyword (BM25)": {
+   "questions": 60,
+   "mrr": 0.314,
+   "recall@1": 0.048,
+   "hit@1": 0.217,
+   "recall@5": 0.145,
+   "hit@5": 0.45,
+   "recall@10": 0.28,
+   "hit@10": 0.583,
+   "precision@5": 0.12
+  },
+  "vector: title + statement": {
+   "questions": 60,
+   "mrr": 0.434,
+   "recall@1": 0.052,
+   "hit@1": 0.283,
+   "recall@5": 0.238,
+   "hit@5": 0.667,
+   "recall@10": 0.329,
+   "hit@10": 0.7,
+   "precision@5": 0.207
+  },
+  "vector: title + statement + guidance": {
+   "questions": 60,
+   "mrr": 0.467,
+   "recall@1": 0.076,
+   "hit@1": 0.317,
+   "recall@5": 0.273,
+   "hit@5": 0.65,
+   "recall@10": 0.343,
+   "hit@10": 0.767,
+   "precision@5": 0.233
+  },
+  "hybrid: title + statement": {
+   "questions": 60,
+   "mrr": 0.409,
+   "recall@1": 0.048,
+   "hit@1": 0.233,
+   "recall@5": 0.292,
+   "hit@5": 0.717,
+   "recall@10": 0.4,
+   "hit@10": 0.783,
+   "precision@5": 0.237
+  },
+  "hybrid: title + statement + guidance": {
+   "questions": 60,
+   "mrr": 0.422,
+   "recall@1": 0.048,
+   "hit@1": 0.233,
+   "recall@5": 0.302,
+   "hit@5": 0.717,
+   "recall@10": 0.419,
+   "hit@10": 0.817,
+   "precision@5": 0.233
+  }
+ },
+ "chosen": {
+  "vector": "title + statement + guidance",
+  "hybrid": "title + statement + guidance"
+ },
+ "test": {
+  "csf2": {
+   "keyword (BM25)": {
+    "questions": 46,
+    "mrr": 0.257,
+    "recall@1": 0.028,
+    "hit@1": 0.174,
+    "recall@5": 0.092,
+    "hit@5": 0.348,
+    "recall@10": 0.175,
+    "hit@10": 0.478,
+    "precision@5": 0.1
+   },
+   "vector": {
+    "questions": 46,
+    "mrr": 0.453,
+    "recall@1": 0.073,
+    "hit@1": 0.283,
+    "recall@5": 0.235,
+    "hit@5": 0.63,
+    "recall@10": 0.303,
+    "hit@10": 0.783,
+    "precision@5": 0.187
+   },
+   "hybrid": {
+    "questions": 46,
+    "mrr": 0.411,
+    "recall@1": 0.039,
+    "hit@1": 0.261,
+    "recall@5": 0.216,
+    "hit@5": 0.63,
+    "recall@10": 0.334,
+    "hit@10": 0.783,
+    "precision@5": 0.165
+   }
+  },
+  "sp800_171": {
+   "keyword (BM25)": {
+    "questions": 45,
+    "mrr": 0.983,
+    "recall@1": 0.844,
+    "hit@1": 0.978,
+    "recall@5": 0.974,
+    "hit@5": 1.0,
+    "recall@10": 1.0,
+    "hit@10": 1.0,
+    "precision@5": 0.249
+   },
+   "vector": {
+    "questions": 45,
+    "mrr": 0.902,
+    "recall@1": 0.722,
+    "hit@1": 0.844,
+    "recall@5": 0.933,
+    "hit@5": 0.956,
+    "recall@10": 0.963,
+    "hit@10": 0.978,
+    "precision@5": 0.24
+   },
+   "hybrid": {
+    "questions": 45,
+    "mrr": 0.967,
+    "recall@1": 0.822,
+    "hit@1": 0.956,
+    "recall@5": 0.963,
+    "hit@5": 0.978,
+    "recall@10": 0.978,
+    "hit@10": 0.978,
+    "precision@5": 0.249
+   }
+  }
+ }
+}
