@@ -192,6 +192,14 @@ button.example {
   color: var(--muted);
 }
 
+.notice {
+  display: inline-block;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+}
+
 .error {
   background: var(--error-bg);
   color: var(--error-text);

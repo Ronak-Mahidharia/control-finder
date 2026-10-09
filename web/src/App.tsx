@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnswerCard } from "./components/AnswerCard";
-import { Results } from "./components/Results";
+import { METHOD_NAMES, Results } from "./components/Results";
 import { answer, browserFetch, health, MAX_QUESTION, search, statusLine, type Fetch } from "./lib/api";
 import type { AnswerResponse, Health, Method, SearchResponse } from "./lib/types";
 
@@ -12,7 +12,7 @@ export const EXAMPLES = [
   "What port number does HTTPS use by default?",
 ];
 
-const METHODS: { value: Method; label: string }[] = [
+export const METHODS: { value: Method; label: string }[] = [
   { value: "hybrid", label: "Hybrid (keywords and meaning, the best measured)" },
   { value: "vector", label: "Meaning only" },
   { value: "keyword", label: "Keywords only (works without the database and Ollama)" },
@@ -40,6 +40,8 @@ interface PageProps {
 export function Page({ question, method, view, status, fetchFn, onQuestion, onMethod, onRun }: PageProps) {
   const s = statusLine(status);
   const busy = view.kind === "busy";
+  // The list on the page came from another choice than the one now picked.
+  const changedTo = view.kind === "results" && view.data.method !== method ? method : null;
   return (
     <>
       <a className="skip" href="#question">
@@ -74,7 +76,7 @@ export function Page({ question, method, view, status, fetchFn, onQuestion, onMe
           <p className="muted small">
             {question.length.toLocaleString("en-US")} of {MAX_QUESTION.toLocaleString("en-US")} characters
           </p>
-          <fieldset>
+          <fieldset aria-describedby="method-note">
             <legend className="field-label">Search by</legend>
             {METHODS.map((m) => (
               <label key={m.value} className="choice">
@@ -82,6 +84,9 @@ export function Page({ question, method, view, status, fetchFn, onQuestion, onMe
                 {m.label}
               </label>
             ))}
+            <p id="method-note" className="muted small">
+              This choice applies to Find controls. Answer with citations always uses Hybrid, the setup its answers were tested with.
+            </p>
           </fieldset>
           <div className="actions">
             <button type="submit" disabled={busy}>
@@ -107,6 +112,11 @@ export function Page({ question, method, view, status, fetchFn, onQuestion, onMe
         <div aria-live="polite" className="busy">
           {view.kind === "busy" &&
             (view.what === "search" ? "Searching…" : "Asking the local model. An answer takes a few seconds, longer the first time.")}
+          {changedTo && (
+            <span className="notice">
+              You changed "Search by" to "{METHOD_NAMES[changedTo]}". Click Find controls to search again.
+            </span>
+          )}
         </div>
         {view.kind === "error" && (
           <p role="alert" className="card error">

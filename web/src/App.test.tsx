@@ -2,17 +2,18 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { CONTENT_SECURITY_POLICY } from "../vite.config";
-import { EXAMPLES, Page, type View } from "./App";
+import { EXAMPLES, METHODS, Page, type View } from "./App";
 import { Detail } from "./components/ControlText";
+import { METHOD_NAMES } from "./components/Results";
 import type { Fetch } from "./lib/api";
-import type { AnswerResponse, SearchResponse } from "./lib/types";
+import type { AnswerResponse, Method, SearchResponse } from "./lib/types";
 
 const noFetch: Fetch = async () => {
   throw new Error("no network in these tests");
 };
-const render = (view: View, question = "We store customer passwords. How should they be protected?") =>
+const render = (view: View, question = "We store customer passwords. How should they be protected?", method: Method = "hybrid") =>
   renderToStaticMarkup(
-    <Page question={question} method="hybrid" view={view} status={null} fetchFn={noFetch} onQuestion={() => {}} onMethod={() => {}} onRun={() => {}} />,
+    <Page question={question} method={method} view={view} status={null} fetchFn={noFetch} onQuestion={() => {}} onMethod={() => {}} onRun={() => {}} />,
   );
 
 const results: SearchResponse = {
@@ -65,7 +66,29 @@ describe("the page", () => {
     expect(html).toContain('<span class="badge covered">Covered</span>');
     expect(html).toContain("in 4.3 s");
     expect(html).toContain("Cited controls");
-    expect(html).toContain("From a local model (qwen3:8b) that saw only the search&#x27;s top 2 controls: IA-5(18), IA-5(1)."); // as NIST prints them
+    expect(html).toContain("From a local model (qwen3:8b) that saw only the Hybrid search&#x27;s top 2 controls: IA-5(18), IA-5(1)."); // as NIST prints them
+  });
+
+  it("says the search choice applies to Find controls, and that answers always use Hybrid", () => {
+    const html = render({ kind: "idle" }, "");
+    expect(html).toContain('<fieldset aria-describedby="method-note">');
+    expect(html).toContain("This choice applies to Find controls. Answer with citations always uses Hybrid");
+    for (const m of METHODS) expect(m.label.startsWith(METHOD_NAMES[m.value]), m.value).toBe(true); // the same names everywhere
+  });
+
+  it("names the choice that found each list", () => {
+    for (const method of ["hybrid", "vector", "keyword"] as const) {
+      const html = render({ kind: "results", data: { ...results, method } }, undefined, method);
+      expect(html).toContain(`<strong>Searched by: ${METHOD_NAMES[method]}.</strong>`);
+      expect(html).not.toContain("You changed");
+    }
+  });
+
+  it("asks for a new search when the choice changes after one", () => {
+    const html = render({ kind: "results", data: results }, undefined, "vector");
+    expect(html).toContain("<strong>Searched by: Hybrid.</strong>"); // the list on the page is still hybrid's
+    expect(html).toContain("You changed &quot;Search by&quot; to &quot;Meaning only&quot;. Click Find controls to search again.");
+    expect(render({ kind: "answer", data: covered, seconds: 4.33 }, undefined, "keyword")).not.toContain("You changed"); // answers don't depend on it
   });
 
   it("shows a not-covered answer without citations", () => {

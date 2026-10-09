@@ -1,7 +1,7 @@
 {
  "base": "http://127.0.0.1:8000/",
- "passed": 21,
- "total": 21,
+ "passed": 25,
+ "total": 25,
  "checks": [
   {
    "name": "the page loads, titled Control Finder",
@@ -13,6 +13,10 @@
   },
   {
    "name": "there's a skip link to the question",
+   "passed": true
+  },
+  {
+   "name": "the form says the search choice is for Find controls, and answers always use Hybrid",
    "passed": true
   },
   {
@@ -29,6 +33,10 @@
   },
   {
    "name": "IA-5(1) Password-based Authentication is among them",
+   "passed": true
+  },
+  {
+   "name": "the list says which choice found it",
    "passed": true
   },
   {
@@ -69,6 +77,14 @@
   },
   {
    "name": "keyword search works too",
+   "passed": true
+  },
+  {
+   "name": "changing the choice after a search asks for a new one",
+   "passed": true
+  },
+  {
+   "name": "and searching again gives that choice's own list",
    "passed": true
   },
   {

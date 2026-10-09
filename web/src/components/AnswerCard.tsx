@@ -29,7 +29,7 @@ export function AnswerCard({ data, seconds, fetchFn }: { data: AnswerResponse; s
         </>
       )}
       <p className="muted small">
-        From a local model ({data.model}) that saw only the search's top {data.shown.length} controls: {data.shown.map(labelOf).join(", ")}. Its
+        From a local model ({data.model}) that saw only the Hybrid search's top {data.shown.length} controls: {data.shown.map(labelOf).join(", ")}. Its
         citations can only name those. Check a cited control's text before relying on it.
       </p>
     </section>
