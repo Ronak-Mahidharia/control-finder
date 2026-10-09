@@ -2,7 +2,7 @@
 
 Ask a security question in plain English and get the NIST SP 800-53 controls that answer it, each one cited and linked. When the catalog doesn't cover a question, it says so. Its accuracy is measured against an answer key built from NIST's own data, and every result is published.
 
-**Status:** in progress. Steps 1 to 5 of 7 are done: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; and a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings. The steps are in [docs/plan.md](docs/plan.md).
+**Status:** in progress. Steps 1 to 6 of 7 are done: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings; and cited answers from a local model that says when a question isn't covered. The steps are in [docs/plan.md](docs/plan.md).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
@@ -39,6 +39,14 @@ The controls are also loaded into PostgreSQL with pgvector, from the committed e
 - **When something is down:** keyword search still works without the database or the model, and the other methods answer 503 with the reason. Questions are capped at 2,000 characters and results at 50.
 - **Not served yet:** the reranker from step 4, which would add PyTorch to the service. The API serves the weighted hybrid search.
 
+## Cited answers (step 6)
+`GET /answer` has a local model (qwen3:8b, chosen on dev) read the hybrid search's top 10 controls and answer from them only. Its citations can only name controls it was shown. Details: [cited answers](docs/results-answers.md).
+- **On NIST's answer keys** (91 test questions), its citations scored F1 0.482 (precision 0.474, recall 0.586), against 0.420 for citing the search's top result with no model. The top 10 held 62.9% of NIST's links, a ceiling for recall. It did far better on SP 800-171 (F1 0.770) than on CSF 2.0 (0.201), whose outcomes each map to many controls.
+- **It says when the catalog doesn't cover a question:** 95.0% of the hand-made out-of-scope test questions (100.0% of the unrelated ones and 88.9% of the security-adjacent ones), and it said so to 0 of 110 covered ones. The one it got wrong: asked whether California allows recording a call without telling the other person, it answered from memory and cited two controls that don't apply.
+- **Its own "not covered" text can't be trusted.** In 9 of its 19 "not covered" answers on test, the model's text still answered the question from what it already knew (for example, the HTTPS port). So the API shows a fixed sentence instead.
+- **Plain-English questions** (hand-made, 19 on test): it cited an anchor control for 78.9%. All 4 misses cited an enhancement of an anchor instead.
+- **Two models compared on dev:** granite4:3b answered about twice as fast but said "not covered" to only 45% to 60% of the out-of-scope questions, against 100% for qwen3:8b. With qwen3:8b, an answer took 4.33 s (median, test) on one Apple-silicon Mac.
+
 ## Run it
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
@@ -52,15 +60,17 @@ docker compose up -d --wait                       # step 5's database: PostgreSQ
 .venv/bin/python scripts/run_database_check.py    # loads the controls and compares the searches (about 1 min)
 .venv/bin/python -m uvicorn controlfinder.api:app --app-dir src --host 127.0.0.1 --port 8000  # the API (needs Ollama); docs at /docs
 .venv/bin/python scripts/run_api_check.py         # runs the API and checks it against the published rankings (about 15 s)
-.venv/bin/python -m pytest -q                    # 61 tests, including that the published numbers reproduce
+.venv/bin/python scripts/run_answer_eval.py       # step 6: needs qwen3:8b and granite4:3b in Ollama (about 55 min; answers are cached)
+.venv/bin/python -m pytest -q                    # 87 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
-  .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 8 tests that need that database
+  .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 11 tests that need that database
 ```
 
 ## The data
 - **The catalog:** NIST SP 800-53 Rev 5.2.0, with the SP 800-53A Rev 5.2.0 assessment procedures, from NIST's machine-readable OSCAL files ([usnistgov/oscal-content](https://github.com/usnistgov/oscal-content)). It has 20 families, 300 active controls, 714 active enhancements, and 3,715 assessment objectives.
 - **Answer key 1:** NIST SP 800-171 Rev 3, from the same repository. Each of its 97 active requirements links to the SP 800-53 controls it was derived from (157 links in all), so a search that returns those controls is right by NIST's own record.
 - **Answer key 2:** NIST's Cybersecurity Framework (CSF) 2.0 Reference Tool. Each of its 106 outcomes lists the SP 800-53 controls NIST maps it to (731 in all). Only NIST's outcome text and the SP 800-53 IDs are kept, in `answer_keys/csf2_sp800_53.json`. NIST builds the spreadsheet fresh on each download, so its data parts, not the whole file, are checked against a SHA-256 hash.
+- **Hand-made sets (step 6):** 32 plain-English questions, each with anchor controls that plainly address it, and 40 questions SP 800-53 doesn't answer, in `answer_keys/`. Each file says it's hand-made and how it was made.
 - **Embeddings:** `embeddings/` holds the 768 numbers nomic-embed-text gave each control and question (3.8 MB, with SHA-256 hashes in its manifest), so the database step and CI don't need the model.
 - **License:** NIST's files are in the public domain in the United States, and NIST waives copyright worldwide under CC0 1.0. They're downloaded at a pinned commit and checked against SHA-256 hashes, never committed here.
 

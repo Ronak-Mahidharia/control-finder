@@ -1,0 +1,672 @@
+{
+ "models": {
+  "granite4:3b": {
+   "digest": "89962fcc75239ac434cdebceb6b7e0669397f92eaef9c487774b718bc36a3e5f",
+   "parameters": "3.4B",
+   "quantization": "Q4_K_M",
+   "license": "Apache-2.0"
+  },
+  "qwen3:8b": {
+   "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+   "parameters": "8.2B",
+   "quantization": "Q4_K_M",
+   "license": "Apache-2.0"
+  }
+ },
+ "settings": {
+  "prompts": {
+   "v1": "Which of these controls address the question? Cite only controls from the list. If none of them address it, set covered to false and leave citations empty.",
+   "v2": "Cite only the controls whose text directly answers the question, most relevant first, and leave out controls that are only on a related subject. If none of them answer it, set covered to false and leave citations empty."
+  },
+  "system": "You answer security questions using only the NIST SP 800-53 Rev 5.2.0 controls you are given.",
+  "options": {
+   "temperature": 0,
+   "seed": 42,
+   "num_ctx": 8192
+  },
+  "statement_chars": 700,
+  "search": {
+   "depth": 100,
+   "rrf_k": 60,
+   "vector_weight": 3.0
+  },
+  "chosen_on": "dev: the mean of NIST citation F1, plain-English anchor cited, and out-of-scope answered not covered"
+ },
+ "questions": {
+  "dev": {
+   "csf2": 60,
+   "sp800_171": 52,
+   "plain_english": 13,
+   "out_of_scope": 20
+  },
+  "test": {
+   "csf2": 46,
+   "sp800_171": 45,
+   "plain_english": 19,
+   "out_of_scope": 20
+  }
+ },
+ "dev": {
+  "granite4:3b, prompt v1, top 10": {
+   "nist": {
+    "questions": 112,
+    "precision": 0.445,
+    "recall": 0.541,
+    "f1": 0.442,
+    "said_not_covered": 0,
+    "citations_per_answer": 3.46,
+    "by_key": {
+     "csf2": {
+      "questions": 60,
+      "precision": 0.257,
+      "recall": 0.254,
+      "f1": 0.226,
+      "said_not_covered": 0,
+      "citations_per_answer": 4
+     },
+     "sp800_171": {
+      "questions": 52,
+      "precision": 0.662,
+      "recall": 0.872,
+      "f1": 0.691,
+      "said_not_covered": 0,
+      "citations_per_answer": 2.83
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 13,
+    "anchor_cited": 0.692,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 0.45,
+    "by_kind": {
+     "security-adjacent": 0.273,
+     "unrelated": 0.667
+    }
+   },
+   "answers": {
+    "count": 145,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 1,
+    "not_covered_text": {
+     "explains": 2,
+     "empty": 3,
+     "answers anyway": 4
+    },
+    "median_seconds": 2.03,
+    "p95_seconds": 5.59
+   },
+   "score": 0.528
+  },
+  "granite4:3b, prompt v2, top 10": {
+   "nist": {
+    "questions": 112,
+    "precision": 0.447,
+    "recall": 0.463,
+    "f1": 0.413,
+    "said_not_covered": 0,
+    "citations_per_answer": 2.75,
+    "by_key": {
+     "csf2": {
+      "questions": 60,
+      "precision": 0.213,
+      "recall": 0.141,
+      "f1": 0.151,
+      "said_not_covered": 0,
+      "citations_per_answer": 3.25
+     },
+     "sp800_171": {
+      "questions": 52,
+      "precision": 0.717,
+      "recall": 0.835,
+      "f1": 0.716,
+      "said_not_covered": 0,
+      "citations_per_answer": 2.17
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 13,
+    "anchor_cited": 0.692,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 0.6,
+    "by_kind": {
+     "security-adjacent": 0.455,
+     "unrelated": 0.778
+    }
+   },
+   "answers": {
+    "count": 145,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 1,
+    "not_covered_text": {
+     "explains": 2,
+     "empty": 9,
+     "answers anyway": 1
+    },
+    "median_seconds": 1.86,
+    "p95_seconds": 5.83
+   },
+   "score": 0.5683
+  },
+  "qwen3:8b, prompt v1, top 10": {
+   "nist": {
+    "questions": 112,
+    "precision": 0.481,
+    "recall": 0.589,
+    "f1": 0.472,
+    "said_not_covered": 0,
+    "citations_per_answer": 4.6,
+    "by_key": {
+     "csf2": {
+      "questions": 60,
+      "precision": 0.269,
+      "recall": 0.281,
+      "f1": 0.222,
+      "said_not_covered": 0,
+      "citations_per_answer": 5.65
+     },
+     "sp800_171": {
+      "questions": 52,
+      "precision": 0.724,
+      "recall": 0.944,
+      "f1": 0.761,
+      "said_not_covered": 0,
+      "citations_per_answer": 3.38
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 13,
+    "anchor_cited": 0.769,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 1,
+    "by_kind": {
+     "security-adjacent": 1,
+     "unrelated": 1
+    }
+   },
+   "answers": {
+    "count": 145,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 0,
+    "not_covered_text": {
+     "explains": 3,
+     "empty": 8,
+     "answers anyway": 9
+    },
+    "median_seconds": 4.45,
+    "p95_seconds": 8.17
+   },
+   "score": 0.747
+  },
+  "qwen3:8b, prompt v2, top 10": {
+   "nist": {
+    "questions": 112,
+    "precision": 0.561,
+    "recall": 0.509,
+    "f1": 0.474,
+    "said_not_covered": 2,
+    "citations_per_answer": 2.44,
+    "by_key": {
+     "csf2": {
+      "questions": 60,
+      "precision": 0.323,
+      "recall": 0.148,
+      "f1": 0.165,
+      "said_not_covered": 2,
+      "citations_per_answer": 2.47
+     },
+     "sp800_171": {
+      "questions": 52,
+      "precision": 0.835,
+      "recall": 0.925,
+      "f1": 0.829,
+      "said_not_covered": 0,
+      "citations_per_answer": 2.4
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 13,
+    "anchor_cited": 0.692,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 1,
+    "by_kind": {
+     "security-adjacent": 1,
+     "unrelated": 1
+    }
+   },
+   "answers": {
+    "count": 145,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 0,
+    "not_covered_text": {
+     "explains": 1,
+     "empty": 17,
+     "answers anyway": 4
+    },
+    "median_seconds": 5.08,
+    "p95_seconds": 8.82
+   },
+   "score": 0.722
+  },
+  "qwen3:8b, prompt v1, top 5": {
+   "nist": {
+    "questions": 112,
+    "precision": 0.514,
+    "recall": 0.548,
+    "f1": 0.482,
+    "said_not_covered": 0,
+    "citations_per_answer": 2.8,
+    "by_key": {
+     "csf2": {
+      "questions": 60,
+      "precision": 0.314,
+      "recall": 0.232,
+      "f1": 0.232,
+      "said_not_covered": 0,
+      "citations_per_answer": 3.1
+     },
+     "sp800_171": {
+      "questions": 52,
+      "precision": 0.745,
+      "recall": 0.913,
+      "f1": 0.771,
+      "said_not_covered": 0,
+      "citations_per_answer": 2.46
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 13,
+    "anchor_cited": 0.692,
+    "said_not_covered": 1
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 1,
+    "by_kind": {
+     "security-adjacent": 1,
+     "unrelated": 1
+    }
+   },
+   "answers": {
+    "count": 145,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 1,
+    "not_covered_text": {
+     "explains": 5,
+     "empty": 7,
+     "answers anyway": 9
+    },
+    "median_seconds": 3.05,
+    "p95_seconds": 5.16
+   },
+   "score": 0.7247
+  }
+ },
+ "first_round_best": "qwen3:8b, prompt v1, top 10",
+ "chosen": "qwen3:8b, prompt v1, top 10",
+ "test": {
+  "nist": {
+   "questions": 91,
+   "precision": 0.474,
+   "recall": 0.586,
+   "f1": 0.482,
+   "said_not_covered": 0,
+   "citations_per_answer": 4.15,
+   "by_key": {
+    "csf2": {
+     "questions": 46,
+     "precision": 0.233,
+     "recall": 0.242,
+     "f1": 0.201,
+     "said_not_covered": 0,
+     "citations_per_answer": 5.59
+    },
+    "sp800_171": {
+     "questions": 45,
+     "precision": 0.721,
+     "recall": 0.937,
+     "f1": 0.77,
+     "said_not_covered": 0,
+     "citations_per_answer": 2.69
+    }
+   }
+  },
+  "plain_english": {
+   "questions": 19,
+   "anchor_cited": 0.789,
+   "said_not_covered": 0
+  },
+  "out_of_scope": {
+   "questions": 20,
+   "said_not_covered": 0.95,
+   "by_kind": {
+    "security-adjacent": 0.889,
+    "unrelated": 1
+   }
+  },
+  "answers": {
+   "count": 130,
+   "invalid_json": 0,
+   "mention_an_unshown_control": 0,
+   "not_covered_text": {
+    "explains": 7,
+    "empty": 3,
+    "answers anyway": 9
+   },
+   "median_seconds": 4.33,
+   "p95_seconds": 8.8
+  },
+  "score": 0.7403
+ },
+ "test_details": {
+  "plain_english_misses": [
+   {
+    "id": "plain-08",
+    "question": "What should happen to a person's accounts when they leave the company?",
+    "anchors": [
+     "AC-2",
+     "PS-4"
+    ],
+    "an_anchor_was_shown": true,
+    "cited": [
+     "AC-2(3)",
+     "PS-5"
+    ],
+    "cites_an_anchors_enhancement": true
+   },
+   {
+    "id": "plain-19",
+    "question": "How should we dispose of old hard drives?",
+    "anchors": [
+     "MP-6"
+    ],
+    "an_anchor_was_shown": false,
+    "cited": [
+     "SR-12",
+     "SI-12(3)",
+     "MP-4",
+     "MP-6(3)"
+    ],
+    "cites_an_anchors_enhancement": true
+   },
+   {
+    "id": "plain-23",
+    "question": "Should we regularly review who has accounts on our systems?",
+    "anchors": [
+     "AC-2"
+    ],
+    "an_anchor_was_shown": true,
+    "cited": [
+     "IA-5(8)",
+     "AC-2(12)",
+     "AU-6"
+    ],
+    "cites_an_anchors_enhancement": true
+   },
+   {
+    "id": "plain-25",
+    "question": "Do we need a firewall between our network and the internet?",
+    "anchors": [
+     "SC-7"
+    ],
+    "an_anchor_was_shown": false,
+    "cited": [
+     "SC-7(27)",
+     "SC-7(25)",
+     "SC-7(26)",
+     "SC-7(28)"
+    ],
+    "cites_an_anchors_enhancement": true
+   }
+  ],
+  "out_of_scope_answered_covered": [
+   {
+    "id": "oos-14",
+    "question": "Is it legal in California to record a phone call without telling the other person?",
+    "kind": "security-adjacent",
+    "cited": [
+     "AU-10",
+     "AC-4(15)"
+    ]
+   }
+  ]
+ },
+ "test_baselines": {
+  "cite the top 1": {
+   "nist": {
+    "questions": 91,
+    "precision": 0.582,
+    "recall": 0.384,
+    "f1": 0.42,
+    "said_not_covered": 0,
+    "citations_per_answer": 1,
+    "by_key": {
+     "csf2": {
+      "questions": 46,
+      "precision": 0.326,
+      "recall": 0.054,
+      "f1": 0.088,
+      "said_not_covered": 0,
+      "citations_per_answer": 1
+     },
+     "sp800_171": {
+      "questions": 45,
+      "precision": 0.844,
+      "recall": 0.722,
+      "f1": 0.759,
+      "said_not_covered": 0,
+      "citations_per_answer": 1
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 19,
+    "anchor_cited": 0.474,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 0,
+    "by_kind": {
+     "security-adjacent": 0,
+     "unrelated": 0
+    }
+   },
+   "answers": {
+    "count": 130,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 0,
+    "not_covered_text": {
+     "explains": 0,
+     "empty": 0,
+     "answers anyway": 0
+    },
+    "median_seconds": 0.0,
+    "p95_seconds": 0.0
+   },
+   "score": 0.298
+  },
+  "cite the top 3": {
+   "nist": {
+    "questions": 91,
+    "precision": 0.311,
+    "recall": 0.546,
+    "f1": 0.351,
+    "said_not_covered": 0,
+    "citations_per_answer": 3,
+    "by_key": {
+     "csf2": {
+      "questions": 46,
+      "precision": 0.225,
+      "recall": 0.166,
+      "f1": 0.163,
+      "said_not_covered": 0,
+      "citations_per_answer": 3
+     },
+     "sp800_171": {
+      "questions": 45,
+      "precision": 0.4,
+      "recall": 0.933,
+      "f1": 0.542,
+      "said_not_covered": 0,
+      "citations_per_answer": 3
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 19,
+    "anchor_cited": 0.579,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 0,
+    "by_kind": {
+     "security-adjacent": 0,
+     "unrelated": 0
+    }
+   },
+   "answers": {
+    "count": 130,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 0,
+    "not_covered_text": {
+     "explains": 0,
+     "empty": 0,
+     "answers anyway": 0
+    },
+    "median_seconds": 0.0,
+    "p95_seconds": 0.0
+   },
+   "score": 0.31
+  },
+  "cite the top 5": {
+   "nist": {
+    "questions": 91,
+    "precision": 0.222,
+    "recall": 0.604,
+    "f1": 0.285,
+    "said_not_covered": 0,
+    "citations_per_answer": 5,
+    "by_key": {
+     "csf2": {
+      "questions": 46,
+      "precision": 0.196,
+      "recall": 0.253,
+      "f1": 0.187,
+      "said_not_covered": 0,
+      "citations_per_answer": 5
+     },
+     "sp800_171": {
+      "questions": 45,
+      "precision": 0.249,
+      "recall": 0.963,
+      "f1": 0.385,
+      "said_not_covered": 0,
+      "citations_per_answer": 5
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 19,
+    "anchor_cited": 0.632,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 0,
+    "by_kind": {
+     "security-adjacent": 0,
+     "unrelated": 0
+    }
+   },
+   "answers": {
+    "count": 130,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 0,
+    "not_covered_text": {
+     "explains": 0,
+     "empty": 0,
+     "answers anyway": 0
+    },
+    "median_seconds": 0.0,
+    "p95_seconds": 0.0
+   },
+   "score": 0.3057
+  },
+  "cite the top 10": {
+   "nist": {
+    "questions": 91,
+    "precision": 0.126,
+    "recall": 0.629,
+    "f1": 0.186,
+    "said_not_covered": 0,
+    "citations_per_answer": 10,
+    "by_key": {
+     "csf2": {
+      "questions": 46,
+      "precision": 0.126,
+      "recall": 0.295,
+      "f1": 0.153,
+      "said_not_covered": 0,
+      "citations_per_answer": 10
+     },
+     "sp800_171": {
+      "questions": 45,
+      "precision": 0.127,
+      "recall": 0.97,
+      "f1": 0.22,
+      "said_not_covered": 0,
+      "citations_per_answer": 10
+     }
+    }
+   },
+   "plain_english": {
+    "questions": 19,
+    "anchor_cited": 0.895,
+    "said_not_covered": 0
+   },
+   "out_of_scope": {
+    "questions": 20,
+    "said_not_covered": 0,
+    "by_kind": {
+     "security-adjacent": 0,
+     "unrelated": 0
+    }
+   },
+   "answers": {
+    "count": 130,
+    "invalid_json": 0,
+    "mention_an_unshown_control": 0,
+    "not_covered_text": {
+     "explains": 0,
+     "empty": 0,
+     "answers anyway": 0
+    },
+    "median_seconds": 0.0,
+    "p95_seconds": 0.0
+   },
+   "score": 0.3603
+  }
+ },
+ "test_recall_ceiling_nist": {
+  "top 5": 0.604,
+  "top 10": 0.629
+ }
+}
