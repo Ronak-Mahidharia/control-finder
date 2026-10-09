@@ -9,15 +9,22 @@
 #
 # Questions are split into "dev" and "test" by a hash of the requirement
 # number, so the split never changes. Settings are chosen on dev only.
+#
+# The second, harder key (load_csf_questions) comes from NIST's CSF 2.0: each of
+# its 106 outcomes cites the SP 800-53 controls NIST maps it to. It's read from
+# answer_keys/csf2_sp800_53.json, which scripts/build_csf_answer_key.py writes.
 # ============================================================================
 import hashlib
+import json
 import re
 from dataclasses import dataclass
 from functools import lru_cache
+from pathlib import Path
 
 from controlfinder.catalog import RAW, collect_params, flatten, prop, read_json, walk_controls
 
 SP_800_171 = RAW / "NIST_SP800-171_rev3_catalog.json"
+CSF_KEY = Path(__file__).resolve().parents[2] / "answer_keys" / "csf2_sp800_53.json"
 SOURCE = re.compile(r"^([A-Z]{2})-(\d{2})(?:\((\d{2})\))?$")  # NIST's zero-padded labels, e.g. "AC-02(03)"
 
 
@@ -69,3 +76,10 @@ def load_questions():
             number = prop(requirement, "sort-id") or requirement["id"]
             questions.append(Question(number, requirement["title"], text, frozenset(expected), split_of(number)))
     return tuple(questions)
+
+
+@lru_cache(maxsize=1)
+def load_csf_questions():
+    """CSF 2.0 outcomes as questions; their mapped SP 800-53 controls are the right answers."""
+    data = json.loads(CSF_KEY.read_text(encoding="utf-8"))
+    return tuple(Question(q["id"], "", q["text"], frozenset(q["expected"]), split_of(q["id"])) for q in data["questions"])

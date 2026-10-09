@@ -3,12 +3,12 @@
 Control Finder answers security questions from NIST SP 800-53 with cited controls, says "not covered" when nothing fits, and measures all of it. The concept it teaches is retrieval done right: keyword and vector search, combining them, reranking, a vector database, and an API, each step measured against an answer key.
 
 ## Steps
-1. **The answer key and a keyword baseline** (this step).
+1. **The answer key and a keyword baseline** (done).
    - The answer key comes from NIST's own data: SP 800-171 Rev 3's 97 requirements and the 157 SP 800-53 controls they were derived from.
    - BM25 keyword search nearly aces it: MRR 1.000 on dev and 0.983 on test (`docs/results.md`). NIST adapted each requirement's wording from its source controls, so this key is easy for keyword search and can't separate better methods.
-2. **A harder question set in plain English.** The next step, because step 1 showed the need.
-   - First choice: NIST's official mapping from the Cybersecurity Framework (CSF) 2.0 to SP 800-53, if its download works. CSF outcomes are worded differently from controls, for example "Identities and credentials for authorized users, services, and hardware are managed by the organization".
-   - Also: a small set of plain-English questions, each answer checked against the control text and labeled as hand-made, plus questions the catalog doesn't cover, to measure "not covered".
+2. **A harder question set** (done). NIST's CSF 2.0 Reference Tool maps each of its 106 outcomes to SP 800-53 controls (731 in all). The outcomes are worded unlike controls, and keyword search drops to MRR 0.257 on test (from 0.983 on SP 800-171), so this key can tell methods apart.
+   - Later, with step 6: a small set of plain-English questions, each answer checked against the control text and labeled as hand-made, plus questions the catalog doesn't cover, to measure "not covered".
+   - Known limit: CI checks the committed CSF key, not NIST's spreadsheet itself (that check runs locally when the spreadsheet is downloaded).
 3. **Vector search and hybrid search.** Local embeddings (nomic-embed-text through Ollama, free), then keywords and vectors combined with reciprocal rank fusion. Also compared: searching whole controls against searching their numbered parts.
 4. **Reranking.** A cross-encoder reorders the top results; measured with and without.
 5. **A vector database and an API.** PostgreSQL with pgvector, and a FastAPI service.
