@@ -13,6 +13,11 @@
 # The second, harder key (load_csf_questions) comes from NIST's CSF 2.0: each of
 # its 106 outcomes cites the SP 800-53 controls NIST maps it to. It's read from
 # answer_keys/csf2_sp800_53.json, which scripts/build_csf_answer_key.py writes.
+#
+# Two hand-made sets (step 6) test answers rather than rankings:
+# plain-English questions, each with anchor controls that plainly address it,
+# and questions SP 800-53 doesn't answer, where the right answer is "not
+# covered". They're labeled as hand-made in their files.
 # ============================================================================
 import hashlib
 import json
@@ -24,7 +29,10 @@ from pathlib import Path
 from controlfinder.catalog import RAW, collect_params, flatten, prop, read_json, walk_controls
 
 SP_800_171 = RAW / "NIST_SP800-171_rev3_catalog.json"
-CSF_KEY = Path(__file__).resolve().parents[2] / "answer_keys" / "csf2_sp800_53.json"
+KEYS_DIR = Path(__file__).resolve().parents[2] / "answer_keys"
+CSF_KEY = KEYS_DIR / "csf2_sp800_53.json"
+PLAIN_KEY = KEYS_DIR / "plain_english.json"
+OUT_OF_SCOPE_KEY = KEYS_DIR / "out_of_scope.json"
 SOURCE = re.compile(r"^([A-Z]{2})-(\d{2})(?:\((\d{2})\))?$")  # NIST's zero-padded labels, e.g. "AC-02(03)"
 
 
@@ -35,6 +43,14 @@ class Question:
     text: str  # the requirement's statement, with blanks written out
     expected: frozenset[str]  # OSCAL ids of its SP 800-53 source controls, for example {"ac-2", "ac-2.3"}
     split: str  # "dev" or "test"
+
+
+@dataclass(frozen=True)
+class OutOfScope:
+    id: str  # for example "oos-01"
+    text: str
+    kind: str  # "security-adjacent" or "unrelated"
+    split: str
 
 
 def to_control_id(label):
@@ -83,3 +99,17 @@ def load_csf_questions():
     """CSF 2.0 outcomes as questions; their mapped SP 800-53 controls are the right answers."""
     data = json.loads(CSF_KEY.read_text(encoding="utf-8"))
     return tuple(Question(q["id"], "", q["text"], frozenset(q["expected"]), split_of(q["id"])) for q in data["questions"])
+
+
+@lru_cache(maxsize=1)
+def load_plain_questions():
+    """Hand-made plain-English questions; expected holds their anchors, controls that plainly address them."""
+    data = json.loads(PLAIN_KEY.read_text(encoding="utf-8"))
+    return tuple(Question(q["id"], "", q["text"], frozenset(q["anchors"]), split_of(q["id"])) for q in data["questions"])
+
+
+@lru_cache(maxsize=1)
+def load_out_of_scope():
+    """Hand-made questions SP 800-53 doesn't answer."""
+    data = json.loads(OUT_OF_SCOPE_KEY.read_text(encoding="utf-8"))
+    return tuple(OutOfScope(q["id"], q["text"], q["kind"], split_of(q["id"])) for q in data["questions"])

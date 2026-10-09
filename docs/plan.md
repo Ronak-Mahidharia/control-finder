@@ -7,7 +7,7 @@ Control Finder answers security questions from NIST SP 800-53 with cited control
    - The answer key comes from NIST's own data: SP 800-171 Rev 3's 97 requirements and the 157 SP 800-53 controls they were derived from.
    - BM25 keyword search nearly aces it: MRR 1.000 on dev and 0.983 on test (`docs/results.md`). NIST adapted each requirement's wording from its source controls, so this key is easy for keyword search and can't separate better methods.
 2. **A harder question set** (done). NIST's CSF 2.0 Reference Tool maps each of its 106 outcomes to SP 800-53 controls (731 in all). The outcomes are worded unlike controls, and keyword search drops to MRR 0.257 on test (from 0.983 on SP 800-171), so this key can tell methods apart.
-   - Later, with step 6: a small set of plain-English questions, each answer checked against the control text and labeled as hand-made, plus questions the catalog doesn't cover, to measure "not covered".
+   - Done in step 6: 32 plain-English questions, each with anchor controls checked against the control text, and 40 questions the catalog doesn't cover. Both sets are labeled as hand-made.
    - Known limit: CI checks the committed CSF key, not NIST's spreadsheet itself (that check runs locally when the spreadsheet is downloaded).
 3. **Vector search and hybrid search** (done). Local embeddings (nomic-embed-text through Ollama, free), and keywords plus vectors combined with reciprocal rank fusion (k = 60, not tuned).
    - On CSF 2.0 test: vector MRR 0.453 against keyword 0.257; a right control in the top 10 for 78.3% against 47.8%.
@@ -23,7 +23,11 @@ Control Finder answers security questions from NIST SP 800-53 with cited control
    - At 1,014 controls, the index saves under a millisecond per question, and the in-memory search is faster than any database query.
    - The API (`src/controlfinder/api.py`): `/search`, `/controls/{id}`, and `/health`. Run for real, with the model embedding each question, it returned the published top 10 for all 203 questions with every method (`docs/results-api.md`). It uses exact search, so ef_search can't cut its lists short.
    - Not served yet: the reranker, which would add PyTorch to the service.
-6. **Cited answers.** A local model writes the answer from the retrieved controls only, cites their IDs, and says "not covered" when nothing fits. Measured: citation precision, recall, and F1; faithfulness (every cited ID was retrieved); refusal accuracy; latency.
+6. **Cited answers** (done). A local model writes the answer from the retrieved controls only, cites their IDs, and says "not covered" when nothing fits (`GET /answer`).
+   - Chosen on dev from two models, two prompt wordings, and 5 or 10 shown controls: qwen3:8b, prompt v1, top 10. A JSON schema keeps its citations to the controls it was shown.
+   - Test: NIST citation F1 0.482 (citing the search's top result: 0.420); "not covered" for 95.0% of out-of-scope questions and for none of the covered ones; an anchor cited for 78.9% of plain-English questions (`docs/results-answers.md`).
+   - Found: when it says "not covered", its own text answered the question anyway in 9 of 19 test answers, so the API always shows a fixed sentence for those.
+   - Not done yet: judging whether each answer's sentences are true to the cited controls (only the citations are checked), and anchors that count an anchor's enhancements (all 4 plain-English misses cited one).
 7. **An MCP server, a website, and a write-up.**
 
 ## Rules

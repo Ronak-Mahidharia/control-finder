@@ -7,10 +7,12 @@
 #        uvicorn controlfinder.api:app --app-dir src --host 127.0.0.1 --port 8000
 # Then:  http://127.0.0.1:8000/docs for every endpoint, or for example
 #        curl "http://127.0.0.1:8000/search?q=How+should+we+store+passwords%3F&k=5"
+#        curl "http://127.0.0.1:8000/answer?q=How+should+we+store+passwords%3F"  (needs qwen3:8b too)
 # At startup it loads the committed embeddings into the database if they
 # aren't there. Keyword search works even without the database or Ollama;
 # the other methods answer 503 until both can be reached.
 # ============================================================================
+import time
 import urllib.request
 from contextlib import asynccontextmanager
 from typing import Annotated, Literal
@@ -19,6 +21,7 @@ from fastapi import FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
+from controlfinder import answer
 from controlfinder.catalog import load_catalog
 from controlfinder.embeddings import URL as EMBED_URL
 from controlfinder.search import DEPTH, VECTOR_WEIGHT, Pool, Searcher, Unavailable
@@ -55,6 +58,21 @@ class ControlDetail(BaseModel):
     assessment_objectives: list[str] = Field(description="what an assessor checks (SP 800-53A Rev 5.2.0)")
 
 
+class Citation(BaseModel):
+    id: str
+    label: str
+    title: str
+
+
+class AnswerResponse(BaseModel):
+    query: str
+    covered: bool
+    answer: str = Field(description='the model\'s answer, or a fixed sentence when none of the controls answer the question')
+    citations: list[Citation] = Field(description="the controls the answer relies on; only ever ones it was shown")
+    shown: list[str] = Field(description="ids of the controls the model was shown, the hybrid search's top results")
+    model: str
+
+
 class Health(BaseModel):
     status: Literal["ok", "degraded"] = Field(description="degraded: only keyword search works right now")
     controls: int
@@ -72,7 +90,11 @@ def _ollama_reachable():
         return False
 
 
-def create_app(searcher=None, embedding_model_check=_ollama_reachable):
+def _ask_chosen_model(question, shown):
+    return answer.ask(question, shown, answer.CHOSEN["model"], answer.CHOSEN["version"])
+
+
+def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=_ask_chosen_model):
     @asynccontextmanager
     async def lifespan(app):
         app.state.searcher = searcher or Searcher(Pool())
@@ -112,6 +134,30 @@ def create_app(searcher=None, embedding_model_check=_ollama_reachable):
             c = s.by_id[r["id"]]
             r.update(label=c.label, title=c.title, family=c.family)
         return {"query": q, "method": method, "vector_weight": VECTOR_WEIGHT if method == "hybrid" else None, "results": results}
+
+    @app.get("/answer", response_model=AnswerResponse)
+    def answer_question(request: Request, response: Response,
+                        q: Annotated[str, Query(min_length=1, max_length=MAX_QUESTION, description="the question, in plain English")]):
+        q = q.strip()
+        if not q:
+            raise HTTPException(status_code=422, detail="q is only spaces")
+        s = request.app.state.searcher
+        results, timings = s.search(q, "hybrid", answer.CHOSEN["shown"])
+        shown = [s.by_id[r["id"]] for r in results]
+        start = time.perf_counter()
+        try:
+            reply = answerer(q, shown)
+        except OSError as exc:
+            raise Unavailable(f"the answer model isn't reachable (Ollama with {answer.CHOSEN['model']})") from exc
+        timings["answer"] = (time.perf_counter() - start) * 1000
+        parsed = answer.parse(reply["raw"], shown)
+        if parsed is None:
+            raise HTTPException(status_code=502, detail="the model's answer wasn't valid JSON")
+        covered, text, cited = parsed
+        response.headers["Server-Timing"] = ", ".join(f"{name};dur={ms:.2f}" for name, ms in timings.items())
+        return {"query": q, "covered": covered, "answer": answer.shown_to_people(covered, text),
+                "citations": [{"id": c, "label": s.by_id[c].label, "title": s.by_id[c].title} for c in cited],
+                "shown": [c.id for c in shown], "model": answer.CHOSEN["model"]}
 
     @app.get("/controls/{control_id}", response_model=ControlDetail)
     def control(request: Request, control_id: str):

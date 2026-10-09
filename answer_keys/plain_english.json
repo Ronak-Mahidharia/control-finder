@@ -1,0 +1,239 @@
+{
+ "source": "Hand-made for Control Finder on Oct 9, 2026; not from NIST. Each question is in plain English, and its anchors are SP 800-53 Rev 5.2.0 controls whose title and statement plainly address it (checked against the control text). An answer is right when it cites at least one anchor and doesn't say the question isn't covered.",
+ "questions": [
+  {
+   "id": "plain-01",
+   "text": "We store customer passwords. How should they be protected?",
+   "anchors": [
+    "ia-5.1"
+   ]
+  },
+  {
+   "id": "plain-02",
+   "text": "How often should we back up our systems' data?",
+   "anchors": [
+    "cp-9"
+   ]
+  },
+  {
+   "id": "plain-03",
+   "text": "What should we do when a security incident happens?",
+   "anchors": [
+    "ir-4"
+   ]
+  },
+  {
+   "id": "plain-04",
+   "text": "Who should be allowed into our server room?",
+   "anchors": [
+    "pe-2",
+    "pe-3"
+   ]
+  },
+  {
+   "id": "plain-05",
+   "text": "Should our employees get security awareness training?",
+   "anchors": [
+    "at-2"
+   ]
+  },
+  {
+   "id": "plain-06",
+   "text": "How do we make sure software patches get installed?",
+   "anchors": [
+    "si-2"
+   ]
+  },
+  {
+   "id": "plain-07",
+   "text": "Do we need to encrypt data sent over the network?",
+   "anchors": [
+    "sc-8",
+    "sc-8.1"
+   ]
+  },
+  {
+   "id": "plain-08",
+   "text": "What should happen to a person's accounts when they leave the company?",
+   "anchors": [
+    "ac-2",
+    "ps-4"
+   ]
+  },
+  {
+   "id": "plain-09",
+   "text": "Should administrators have to use multi-factor authentication?",
+   "anchors": [
+    "ia-2.1"
+   ]
+  },
+  {
+   "id": "plain-10",
+   "text": "How should we protect our computers against malware?",
+   "anchors": [
+    "si-3"
+   ]
+  },
+  {
+   "id": "plain-11",
+   "text": "What events should our systems log?",
+   "anchors": [
+    "au-2",
+    "au-3"
+   ]
+  },
+  {
+   "id": "plain-12",
+   "text": "How do we limit what each user is allowed to do?",
+   "anchors": [
+    "ac-3",
+    "ac-6"
+   ]
+  },
+  {
+   "id": "plain-13",
+   "text": "Should we scan our systems for vulnerabilities?",
+   "anchors": [
+    "ra-5"
+   ]
+  },
+  {
+   "id": "plain-14",
+   "text": "How do we protect data stored on laptops?",
+   "anchors": [
+    "sc-28"
+   ]
+  },
+  {
+   "id": "plain-15",
+   "text": "Do we need a plan for keeping operations running after a disaster?",
+   "anchors": [
+    "cp-2"
+   ]
+  },
+  {
+   "id": "plain-16",
+   "text": "How should we handle visitors to our office?",
+   "anchors": [
+    "pe-3",
+    "pe-8"
+   ]
+  },
+  {
+   "id": "plain-17",
+   "text": "Should we screen new employees before they start?",
+   "anchors": [
+    "ps-3"
+   ]
+  },
+  {
+   "id": "plain-18",
+   "text": "How do we control changes to our systems' settings?",
+   "anchors": [
+    "cm-3",
+    "cm-6"
+   ]
+  },
+  {
+   "id": "plain-19",
+   "text": "How should we dispose of old hard drives?",
+   "anchors": [
+    "mp-6"
+   ]
+  },
+  {
+   "id": "plain-20",
+   "text": "Do we need to keep an inventory of our hardware and software?",
+   "anchors": [
+    "cm-8"
+   ]
+  },
+  {
+   "id": "plain-21",
+   "text": "Should a computer lock its screen after a few minutes without use?",
+   "anchors": [
+    "ac-11"
+   ]
+  },
+  {
+   "id": "plain-22",
+   "text": "How many failed sign-in attempts should we allow before locking an account?",
+   "anchors": [
+    "ac-7"
+   ]
+  },
+  {
+   "id": "plain-23",
+   "text": "Should we regularly review who has accounts on our systems?",
+   "anchors": [
+    "ac-2"
+   ]
+  },
+  {
+   "id": "plain-24",
+   "text": "How do we keep our systems' clocks in sync so log times are right?",
+   "anchors": [
+    "au-8",
+    "sc-45"
+   ]
+  },
+  {
+   "id": "plain-25",
+   "text": "Do we need a firewall between our network and the internet?",
+   "anchors": [
+    "sc-7"
+   ]
+  },
+  {
+   "id": "plain-26",
+   "text": "Should we test our incident response plan?",
+   "anchors": [
+    "ir-3"
+   ]
+  },
+  {
+   "id": "plain-27",
+   "text": "How do we make sure our suppliers don't put our systems at risk?",
+   "anchors": [
+    "sr-3",
+    "sr-6"
+   ]
+  },
+  {
+   "id": "plain-28",
+   "text": "Should we limit the use of USB drives?",
+   "anchors": [
+    "mp-7"
+   ]
+  },
+  {
+   "id": "plain-29",
+   "text": "Should we show a warning message before people sign in?",
+   "anchors": [
+    "ac-8"
+   ]
+  },
+  {
+   "id": "plain-30",
+   "text": "Should we limit how many people have administrator rights?",
+   "anchors": [
+    "ac-6",
+    "ac-6.5"
+   ]
+  },
+  {
+   "id": "plain-31",
+   "text": "How do we notice someone attacking our network?",
+   "anchors": [
+    "si-4"
+   ]
+  },
+  {
+   "id": "plain-32",
+   "text": "Should we hire someone to test our defenses by trying to break in?",
+   "anchors": [
+    "ca-8"
+   ]
+  }
+ ]
+}

@@ -6,8 +6,9 @@ from pathlib import Path
 
 import numpy as np
 
-from controlfinder.answer_key import load_csf_questions, load_questions
+from controlfinder.answer_key import load_csf_questions, load_out_of_scope, load_plain_questions, load_questions
 from controlfinder.catalog import active_controls
+from controlfinder.embeddings import QUERY
 from controlfinder.vector import rank_gap, search
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,3 +58,10 @@ def test_rank_gap_measures_swaps_only():
     assert rank_gap(["a", "b", "c"], ["a", "b", "c"], similarity) == 0.0
     assert rank_gap(["a", "c", "b"], ["a", "b", "c"], similarity) < 1e-6  # a near-tie swapped
     assert rank_gap(["b", "a", "c"], ["a", "b", "c"], similarity) > 0.09  # a real difference
+
+
+def test_the_hand_made_questions_are_embedded_in_order():
+    for key, load in (("plain_english", load_plain_questions), ("out_of_scope", load_out_of_scope)):
+        entry = MANIFEST["questions"][key]
+        assert entry["ids"] == [q.id for q in load()] and entry["prefix"] == QUERY, key
+        vectors(entry)  # the right shape and type, and unit length

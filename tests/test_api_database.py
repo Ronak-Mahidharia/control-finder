@@ -10,6 +10,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from controlfinder.answer_key import load_csf_questions, load_questions
+from controlfinder import answer
 from controlfinder.api import create_app
 from controlfinder.metrics import summarize
 from controlfinder.search import Pool, Searcher
@@ -22,6 +23,16 @@ VECTOR = json.loads((ROOT / "results" / "vector_top100.json").read_text())[MANIF
 KEYS = {"csf2": load_csf_questions, "sp800_171": load_questions}
 
 
+REPLIES = []  # what the stand-in answer model says next
+
+
+def stand_in_model(question, shown):
+    reply = REPLIES.pop(0)
+    if isinstance(reply, Exception):
+        raise reply
+    return {"raw": reply(shown) if callable(reply) else reply}
+
+
 @pytest.fixture(scope="module")
 def client():
     embedded = {}
@@ -29,7 +40,7 @@ def client():
         texts = {q.id: q.text for q in load()}
         entry = MANIFEST["questions"][key]
         embedded.update(zip((texts[i] for i in entry["ids"]), np.load(ROOT / "embeddings" / entry["file"])))
-    app = create_app(Searcher(Pool(), embed=embedded.__getitem__), embedding_model_check=lambda: True)
+    app = create_app(Searcher(Pool(), embed=embedded.__getitem__), embedding_model_check=lambda: True, answerer=stand_in_model)
     with TestClient(app) as c:
         yield c
 
@@ -66,3 +77,31 @@ def test_the_timing_header_names_each_part(client):
     q = load_csf_questions()[0].text
     timing = client.get("/search", params={"q": q}).headers["server-timing"]
     assert [part.split(";")[0] for part in timing.split(", ")] == ["keyword", "embed", "vector", "fuse"]
+
+
+def test_an_answer_cites_only_what_the_model_was_shown(client):
+    q = load_csf_questions()[0]
+    REPLIES.append(lambda shown: json.dumps({"covered": True, "answer": "From the controls.", "citations": [shown[1].label, shown[0].label]}))
+    body = client.get("/answer", params={"q": q.text}).json()
+    candidates = json.loads((ROOT / "results" / "rerank_scores.json").read_text())["candidates"]["csf2"][q.id]
+    assert body["shown"] == candidates[:answer.CHOSEN["shown"]] and body["model"] == answer.CHOSEN["model"]
+    assert body["covered"] is True and body["answer"] == "From the controls."
+    assert [c["id"] for c in body["citations"]] == [body["shown"][1], body["shown"][0]]
+
+
+def test_not_covered_always_gets_the_fixed_sentence(client):
+    REPLIES.append(json.dumps({"covered": False, "answer": "443", "citations": []}))
+    body = client.get("/answer", params={"q": load_csf_questions()[1].text}).json()
+    assert body["covered"] is False and body["answer"] == answer.NOT_COVERED and body["citations"] == []
+
+
+def test_answer_model_problems_are_named(client):
+    q = load_csf_questions()[2].text
+    REPLIES.append(ConnectionRefusedError("Ollama isn't running"))
+    down = client.get("/answer", params={"q": q})
+    assert down.status_code == 503 and answer.CHOSEN["model"] in down.json()["detail"]
+    REPLIES.append("not json")
+    assert client.get("/answer", params={"q": q}).status_code == 502
+    REPLIES.append(json.dumps({"covered": True, "answer": "", "citations": []}))
+    assert [p.split(";")[0] for p in client.get("/answer", params={"q": q}).headers["server-timing"].split(", ")] == \
+        ["keyword", "embed", "vector", "fuse", "answer"]

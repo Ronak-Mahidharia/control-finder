@@ -1,0 +1,205 @@
+{
+ "source": "Hand-made for Control Finder on Oct 9, 2026; not from NIST. SP 800-53 doesn't answer these questions: the facts they ask for (fines, prices, products, vulnerability scores, history, code, or everyday topics) aren't in the catalog, even where a control is on a related subject. The right answer is that the question isn't covered. Half are security-adjacent, the hard half; half are unrelated.",
+ "questions": [
+  {
+   "id": "oos-01",
+   "text": "What is the maximum fine under the GDPR for a serious data protection violation?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-02",
+   "text": "Which endpoint protection product scored best in independent tests this year?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-03",
+   "text": "What CVSS base score was assigned to CVE-2021-44228, the Log4Shell vulnerability?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-04",
+   "text": "How much does a SOC 2 Type II audit usually cost a startup?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-05",
+   "text": "Should I take the OSCP or the CEH certification to start a career in penetration testing?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-06",
+   "text": "What port number does HTTPS use by default?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-07",
+   "text": "Which programming language is the most secure one to learn first?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-08",
+   "text": "How do I write a Python function that reverses a string?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-09",
+   "text": "Who founded the company that sold the first commercial antivirus software?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-10",
+   "text": "How many people work at NIST?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-11",
+   "text": "In what year was the first version of NIST SP 800-53 published?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-12",
+   "text": "What is the average salary of a security analyst in the United States?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-13",
+   "text": "Which cloud provider offers the cheapest storage for backups?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-14",
+   "text": "Is it legal in California to record a phone call without telling the other person?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-15",
+   "text": "What is the difference between TCP and UDP?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-16",
+   "text": "Which country is the source of the most cyberattacks each year?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-17",
+   "text": "How much ransom do ransomware gangs usually demand?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-18",
+   "text": "Which VPN app is the fastest?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-19",
+   "text": "What is the market share of the most popular password managers?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-20",
+   "text": "How many bitcoins were stolen in the largest cryptocurrency exchange hack?",
+   "kind": "security-adjacent"
+  },
+  {
+   "id": "oos-21",
+   "text": "How long should I boil an egg for a soft yolk?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-22",
+   "text": "What is the capital of Australia?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-23",
+   "text": "How many players does a soccer team have on the field?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-24",
+   "text": "What is a good recipe for vegetable soup?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-25",
+   "text": "When did the Western Roman Empire fall?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-26",
+   "text": "How can I improve my 5K running time?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-27",
+   "text": "What is 15 percent of 240?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-28",
+   "text": "Which planet is closest to the sun?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-29",
+   "text": "How do I care for a succulent plant?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-30",
+   "text": "What is the best way to learn to play the guitar?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-31",
+   "text": "How do you say 'good morning' in Spanish?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-32",
+   "text": "How many hours of sleep do adults need?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-33",
+   "text": "What is the tallest mountain in Africa?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-34",
+   "text": "How do I remove a red wine stain from a carpet?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-35",
+   "text": "Which film won the Academy Award for Best Picture for 1997?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-36",
+   "text": "How do I fix a flat bicycle tire?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-37",
+   "text": "What are the rules for castling in chess?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-38",
+   "text": "What is the boiling point of water at sea level in Fahrenheit?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-39",
+   "text": "How do I make cold brew coffee?",
+   "kind": "unrelated"
+  },
+  {
+   "id": "oos-40",
+   "text": "What is the population of Canada?",
+   "kind": "unrelated"
+  }
+ ]
+}

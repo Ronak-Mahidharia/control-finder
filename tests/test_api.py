@@ -72,6 +72,13 @@ def test_vector_and_hybrid_answer_503_and_point_to_keyword_search(client):
         assert response.status_code == 503 and "method=keyword" in response.json()["detail"], method
 
 
+def test_answers_need_the_search_and_say_so(client):
+    response = client.get("/answer", params={"q": "store passwords"})
+    assert response.status_code == 503 and "method=keyword" in response.json()["detail"]
+    for bad in ({}, {"q": "  "}, {"q": "a" * (MAX_QUESTION + 1)}):
+        assert client.get("/answer", params=bad).status_code == 422, bad
+
+
 def test_bad_input_is_refused(client):
     ok = {"q": "store passwords", "method": "keyword"}
     assert client.get("/search", params=ok).status_code == 200
