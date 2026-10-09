@@ -14,8 +14,9 @@ The first time, you'll need the Python setup in [Run it](#run-it), Docker Deskto
 ![The answer to "We store customer passwords. How should they be protected?": covered, citing IA-5(1) and IA-5(18), with the 10 controls the model was shown](docs/screenshots/answer-desktop-light.png)
 
 - Type a question or pick an example. **Find controls** lists the 10 closest controls, each with NIST's text and what an assessor checks. **Answer with citations** gives the local model's answer, citing only controls it was shown.
+- **Search by** picks hybrid, meaning-only, or keyword search for Find controls, and every list says which one found it. Answers always use hybrid search, the setup they were measured with, and the page says so.
 - A question the catalog doesn't cover, such as the HTTPS port, gets "Not covered" and a fixed sentence.
-- A browser check (`node scripts/check_website.mjs`) clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode: 21 of 21 checks pass. More pictures: [search on a desktop](docs/screenshots/search-desktop-light.png), [an answer in dark mode](docs/screenshots/answer-desktop-dark.png), [search on a phone](docs/screenshots/search-phone-light.png).
+- A browser check (`node scripts/check_website.mjs`) clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode: 25 of 25 checks pass. More pictures: [search on a desktop](docs/screenshots/search-desktop-light.png), [an answer in dark mode](docs/screenshots/answer-desktop-dark.png), [search on a phone](docs/screenshots/search-phone-light.png).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).

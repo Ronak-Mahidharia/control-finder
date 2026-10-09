@@ -86,6 +86,8 @@ check("the page loads, titled Control Finder", (await js("document.title")) === 
 check("the status line says everything is running", (await js("document.querySelector('.status').textContent")).startsWith("Ready: 1,014 controls"),
   await js("document.querySelector('.status').textContent"));
 check("there's a skip link to the question", (await js("document.querySelector('a.skip')?.getAttribute('href')")) === "#question");
+check("the form says the search choice is for Find controls, and answers always use Hybrid",
+  (await text()).includes("This choice applies to Find controls. Answer with citations always uses Hybrid"));
 await clickText("button.example", PASSWORDS);
 check("an example fills in the question", (await js("document.querySelector('#question').value")) === PASSWORDS);
 await click("form button[type=submit]");
@@ -93,6 +95,7 @@ const found = await until("!!document.querySelector('#results-heading')");
 check("Find controls shows the 10 closest controls", found && (await js("document.querySelector('#results-heading').textContent")) === "The 10 closest controls");
 check("focus moves to the results", (await js("document.activeElement?.id")) === "results-heading");
 check("IA-5(1) Password-based Authentication is among them", (await text()).includes("IA-5(1) Password-based Authentication"));
+check("the list says which choice found it", (await text()).includes("Searched by: Hybrid."));
 await clickText("summary", "Read IA-5(1)");
 const opened = await until("[...document.querySelectorAll('details.control-text')].some((d) => d.open && d.querySelector('.detail'))");
 check("opening a control shows NIST's text, fetched from the API", opened && (await text()).includes("salted key derivation function"));
@@ -105,7 +108,7 @@ const answered = await until("!!document.querySelector('#answer-heading')", 400)
 check("Answer with citations gives an answer", answered);
 check("the password question is covered and cites IA-5(1)", (await js("document.querySelector('.badge')?.textContent")) === "Covered"
   && (await text()).includes("Cited controls") && (await js("[...document.querySelectorAll('.result-head .label')].some((e) => e.textContent === 'IA-5(1)')")));
-check("it says what the model saw", (await text()).includes("From a local model (qwen3:8b) that saw only the search's top 10 controls"));
+check("it says what the model saw", (await text()).includes("From a local model (qwen3:8b) that saw only the Hybrid search's top 10 controls"));
 check("the controls it saw are listed by their NIST labels", /top 10 controls: IA-5\(1\)/.test(await text()) && !/ia-5\.1/.test(await text()));
 await shot("answer-desktop-light");
 
@@ -119,8 +122,18 @@ check("and no citations", !(await text()).includes("Cited controls"));
 await clickText("button.example", PASSWORDS);
 await js("[...document.querySelectorAll('input[name=method]')].find((i) => i.value === 'keyword').click()");
 await click("form button[type=submit]");
-await until("document.querySelector('#results-heading') && document.body.innerText.includes('Keyword search (BM25)')");
-check("keyword search works too", (await text()).includes("Keyword search (BM25)") && (await js("document.querySelectorAll('ol.results > li').length")) === 10);
+await until("document.querySelector('#results-heading') && document.body.innerText.includes('Searched by: Keywords only.')");
+check("keyword search works too", (await text()).includes("Searched by: Keywords only.") && (await js("document.querySelectorAll('ol.results > li').length")) === 10);
+const listed = () => js("[...document.querySelectorAll('ol.results > li .label')].map((e) => e.textContent).join(', ')");
+const keywordList = await listed();
+await js("[...document.querySelectorAll('input[name=method]')].find((i) => i.value === 'vector').click()");
+await until("document.body.innerText.includes('You changed')", 20);
+check("changing the choice after a search asks for a new one",
+  (await text()).includes('You changed "Search by" to "Meaning only". Click Find controls to search again.'));
+await click("form button[type=submit]");
+await until("document.body.innerText.includes('Searched by: Meaning only.')");
+check("and searching again gives that choice's own list", (await text()).includes("Searched by: Meaning only.") && (await listed()) !== keywordList
+  && !(await text()).includes("You changed"), `keywords: ${keywordList} | meaning: ${await listed()}`);
 const small = await js("[...document.querySelectorAll('button, summary, .choice')].filter((e) => e.offsetParent && e.getBoundingClientRect().height < 44).map((e) => e.textContent.trim().slice(0, 30))");
 check("every button and toggle is at least 44 px tall", small.length === 0, small.join("; "));
 
