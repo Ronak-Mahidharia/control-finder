@@ -53,7 +53,7 @@ def test_every_vector_list_is_complete_and_valid():
 def test_readme_numbers_match_the_results():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     for key, label in (("csf2", "CSF 2.0"), ("sp800_171", "SP 800-171")):
-        for method, name in (("keyword (BM25)", "Keyword"), ("vector", "Vector"), ("hybrid", "Hybrid")):
+        for method, name in (("keyword (BM25)", "Keyword"), ("vector", "Vector"), ("hybrid", "Hybrid (RRF)")):
             m = RESULTS["test"][key][method]
             row = next(line for line in readme.splitlines() if line.startswith(f"| {label} |") and f"| {name}" in line)
             assert f"| {m['mrr']:.3f} |" in row and f"| {m['hit@1'] * 100:.1f}% |" in row and f"| {m['hit@10'] * 100:.1f}% |" in row, row

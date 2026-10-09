@@ -13,7 +13,10 @@ Control Finder answers security questions from NIST SP 800-53 with cited control
    - On CSF 2.0 test: vector MRR 0.453 against keyword 0.257; a right control in the top 10 for 78.3% against 47.8%.
    - Hybrid found the most right controls on CSF 2.0 (recall@10 0.334) but put a right one first less often than vectors alone (MRR 0.411), and it kept most of keyword search's lead on SP 800-171 (0.967). Next: weighting the two lists, and reranking (step 4).
    - Not done yet: searching a control's numbered parts instead of the whole control.
-4. **Reranking.** A cross-encoder reorders the top results; measured with and without.
+4. **Weighting and reranking** (done). The vector list's weight in the fusion (chosen on dev from 1, 1.5, 2, 3: 3) and three cross-encoder rerankers on the top 30 (chosen on dev: mixedbread-ai/mxbai-rerank-xsmall-v1).
+   - CSF 2.0 test MRR: hybrid 0.411 (step 3), weighted 0.463, reranked 0.491, the best so far. The largest reranker (bge-reranker-base) did worse on dev than no reranking.
+   - Trade-off: on SP 800-171 the weighted search drops to 0.906 (from 0.967), and reranking brings it to 0.924.
+   - Limit: the top 30 candidates hold 53.2% of CSF 2.0's right controls, so a better first search would raise the ceiling.
 5. **A vector database and an API.** PostgreSQL with pgvector, and a FastAPI service.
 6. **Cited answers.** A local model writes the answer from the retrieved controls only, cites their IDs, and says "not covered" when nothing fits. Measured: citation precision, recall, and F1; faithfulness (every cited ID was retrieved); refusal accuracy; latency.
 7. **An MCP server, a website, and a write-up.**

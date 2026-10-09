@@ -24,3 +24,11 @@ def test_vector_search_orders_by_cosine():
     assert search(query, docs, k=3) == [[2, 0, 1]]
     tied = np.array([[1.0, 0.0], [1.0, 0.0]], dtype=np.float32)
     assert search(np.array([[1.0, 0.0]], dtype=np.float32), tied, k=2) == [[0, 1]]  # ties keep catalog order
+
+
+def test_weighted_rrf_scales_each_list():
+    keyword = ["ac-2", "ia-5"]
+    vector = ["ia-5", "ac-2"]
+    assert rrf([keyword, vector]) == ["ac-2", "ia-5"]  # equal scores: the tie goes to ac-2, ranked first in a list, then by id
+    # With the vector list weighted 3 times: ia-5 = 1/62 + 3/61, ac-2 = 1/61 + 3/62, so ia-5 wins.
+    assert rrf([keyword, vector], weights=[1.0, 3.0]) == ["ia-5", "ac-2"]
