@@ -1,0 +1,1965 @@
+{
+ "data": {
+  "oscal_commit": "78650f02ad9321bb7b817846f8fbd4f2bcd620de",
+  "documents": 1014,
+  "questions": 97,
+  "dev": 52,
+  "test": 45
+ },
+ "settings": {
+  "k1": 1.5,
+  "b": 0.75
+ },
+ "dev": {
+  "title + statement": {
+   "questions": 52,
+   "mrr": 1.0,
+   "recall@1": 0.77,
+   "hit@1": 1.0,
+   "recall@5": 0.938,
+   "hit@5": 1.0,
+   "recall@10": 0.956,
+   "hit@10": 1.0,
+   "precision@5": 0.3
+  },
+  "title + statement + guidance": {
+   "questions": 52,
+   "mrr": 1.0,
+   "recall@1": 0.77,
+   "hit@1": 1.0,
+   "recall@5": 0.943,
+   "hit@5": 1.0,
+   "recall@10": 0.957,
+   "hit@10": 1.0,
+   "precision@5": 0.304
+  },
+  "title + statement + guidance + objectives": {
+   "questions": 52,
+   "mrr": 1.0,
+   "recall@1": 0.77,
+   "hit@1": 1.0,
+   "recall@5": 0.948,
+   "hit@5": 1.0,
+   "recall@10": 0.957,
+   "hit@10": 1.0,
+   "precision@5": 0.308
+  }
+ },
+ "chosen": "title + statement + guidance",
+ "test": {
+  "questions": 45,
+  "mrr": 0.983,
+  "recall@1": 0.844,
+  "hit@1": 0.978,
+  "recall@5": 0.974,
+  "hit@5": 1.0,
+  "recall@10": 1.0,
+  "hit@10": 1.0,
+  "precision@5": 0.249
+ },
+ "rankings": {
+  "03.01.01": {
+   "split": "dev",
+   "title": "Account Management",
+   "expected": [
+    "ac-2",
+    "ac-2.13",
+    "ac-2.3",
+    "ac-2.5"
+   ],
+   "top10": [
+    "ac-2",
+    "ac-2.3",
+    "ac-2.1",
+    "ps-5",
+    "ac-2.13",
+    "ac-2.2",
+    "ac-2.7",
+    "ia-4",
+    "ac-2.11",
+    "ac-2.5"
+   ]
+  },
+  "03.01.02": {
+   "split": "test",
+   "title": "Access Enforcement",
+   "expected": [
+    "ac-3"
+   ],
+   "top10": [
+    "ac-3",
+    "pe-3.1",
+    "pe-3",
+    "ac-3.13",
+    "pe-2",
+    "ia-5.15",
+    "ac-3.7",
+    "ac-21.1",
+    "ac-3.3",
+    "ac-4"
+   ]
+  },
+  "03.01.03": {
+   "split": "test",
+   "title": "Information Flow Enforcement",
+   "expected": [
+    "ac-4"
+   ],
+   "top10": [
+    "ac-4",
+    "ac-16.7",
+    "ac-3",
+    "ac-4.22",
+    "sc-7.26",
+    "cm-7.9",
+    "ac-4.2",
+    "pe-3",
+    "ac-4.7",
+    "sc-7.5"
+   ]
+  },
+  "03.01.04": {
+   "split": "dev",
+   "title": "Separation of Duties",
+   "expected": [
+    "ac-5"
+   ],
+   "top10": [
+    "ac-5",
+    "ps-3.3",
+    "ps-6.2",
+    "ca-6.1",
+    "cm-9.1",
+    "sc-3.1",
+    "ma-5",
+    "sc-39.1",
+    "sc-32",
+    "ps-2"
+   ]
+  },
+  "03.01.05": {
+   "split": "dev",
+   "title": "Least Privilege",
+   "expected": [
+    "ac-6",
+    "ac-6.1",
+    "ac-6.7",
+    "au-9.4"
+   ],
+   "top10": [
+    "ac-6.7",
+    "ac-6",
+    "ac-3.7",
+    "ac-6.8",
+    "au-9.4",
+    "ac-6.1",
+    "ac-2.7",
+    "ac-2",
+    "ac-6.2",
+    "ac-3.13"
+   ]
+  },
+  "03.01.06": {
+   "split": "test",
+   "title": "Least Privilege \u2013 Privileged Accounts",
+   "expected": [
+    "ac-6.2",
+    "ac-6.5"
+   ],
+   "top10": [
+    "ac-6.2",
+    "ac-6.5",
+    "ac-6.10",
+    "ac-2.7",
+    "ia-2.2",
+    "ia-2.8",
+    "ia-2.6",
+    "ac-6.9",
+    "ac-6.1",
+    "sc-2.1"
+   ]
+  },
+  "03.01.07": {
+   "split": "dev",
+   "title": "Least Privilege \u2013 Privileged Functions",
+   "expected": [
+    "ac-6.10",
+    "ac-6.9"
+   ],
+   "top10": [
+    "ac-6.10",
+    "ac-6.9",
+    "ac-6.2",
+    "sc-2.1",
+    "si-4.20",
+    "ac-6.5",
+    "sc-32.1",
+    "sc-7.15",
+    "ac-2.7",
+    "ac-6.6"
+   ]
+  },
+  "03.01.08": {
+   "split": "dev",
+   "title": "Unsuccessful Logon Attempts",
+   "expected": [
+    "ac-7"
+   ],
+   "top10": [
+    "ac-7",
+    "ac-9.2",
+    "ac-7.4",
+    "ac-9.1",
+    "ac-7.2",
+    "ac-9.3",
+    "ac-11",
+    "ac-2.2",
+    "ac-7.3",
+    "ac-10"
+   ]
+  },
+  "03.01.09": {
+   "split": "dev",
+   "title": "System Use Notification",
+   "expected": [
+    "ac-8"
+   ],
+   "top10": [
+    "ac-8",
+    "ac-9",
+    "ac-12.2",
+    "pl-4",
+    "pm-20",
+    "ac-12.3",
+    "ia-13.2",
+    "ia-2.5",
+    "ac-16.7",
+    "ps-6.3"
+   ]
+  },
+  "03.01.10": {
+   "split": "dev",
+   "title": "Device Lock",
+   "expected": [
+    "ac-11",
+    "ac-11.1"
+   ],
+   "top10": [
+    "ac-11",
+    "ac-11.1",
+    "ac-7",
+    "ia-2.6",
+    "ia-3",
+    "ia-3.4",
+    "ia-3.1",
+    "ia-4",
+    "sc-7.7",
+    "ia-13"
+   ]
+  },
+  "03.01.11": {
+   "split": "dev",
+   "title": "Session Termination",
+   "expected": [
+    "ac-12"
+   ],
+   "top10": [
+    "ac-12",
+    "sc-10",
+    "sc-15.1",
+    "ma-4.7",
+    "sc-23.1",
+    "au-14.1",
+    "au-14",
+    "sc-23.3",
+    "ac-12.3",
+    "sc-23"
+   ]
+  },
+  "03.01.12": {
+   "split": "dev",
+   "title": "Remote Access",
+   "expected": [
+    "ac-17",
+    "ac-17.3",
+    "ac-17.4"
+   ],
+   "top10": [
+    "ac-17",
+    "ac-17.4",
+    "ac-17.3",
+    "ac-18",
+    "sc-7.15",
+    "sc-7.7",
+    "ac-17.1",
+    "ac-17.6",
+    "ac-19",
+    "ac-17.10"
+   ]
+  },
+  "03.01.16": {
+   "split": "dev",
+   "title": "Wireless Access",
+   "expected": [
+    "ac-18",
+    "ac-18.1",
+    "ac-18.3"
+   ],
+   "top10": [
+    "ac-18",
+    "ac-18.3",
+    "ac-17",
+    "ac-18.1",
+    "sc-43",
+    "ac-18.4",
+    "si-4.15",
+    "si-4.14",
+    "ac-18.5",
+    "sc-40"
+   ]
+  },
+  "03.01.18": {
+   "split": "test",
+   "title": "Access Control for Mobile Devices",
+   "expected": [
+    "ac-19",
+    "ac-19.5"
+   ],
+   "top10": [
+    "ac-19",
+    "ac-19.5",
+    "ac-7.2",
+    "sc-43",
+    "ac-19.4",
+    "sc-18",
+    "ca-9",
+    "ia-3.1",
+    "sc-42",
+    "sc-7.7"
+   ]
+  },
+  "03.01.20": {
+   "split": "test",
+   "title": "Use of External Systems",
+   "expected": [
+    "ac-20",
+    "ac-20.1",
+    "ac-20.2"
+   ],
+   "top10": [
+    "ac-20.1",
+    "ac-20",
+    "ac-20.5",
+    "ac-20.2",
+    "ac-19.4",
+    "mp-7",
+    "ac-3.9",
+    "ps-6",
+    "sc-7.26",
+    "ac-20.3"
+   ]
+  },
+  "03.01.22": {
+   "split": "test",
+   "title": "Publicly Accessible Content",
+   "expected": [
+    "ac-22"
+   ],
+   "top10": [
+    "ac-22",
+    "pe-2",
+    "ac-8",
+    "pe-3",
+    "pe-8",
+    "ac-14",
+    "pe-6",
+    "pe-8.1",
+    "ac-20.4",
+    "si-15"
+   ]
+  },
+  "03.02.01": {
+   "split": "dev",
+   "title": "Literacy Training and Awareness",
+   "expected": [
+    "at-2",
+    "at-2.2",
+    "at-2.3"
+   ],
+   "top10": [
+    "at-2",
+    "at-2.3",
+    "ir-2",
+    "at-2.2",
+    "at-2.5",
+    "cp-3",
+    "at-3",
+    "at-2.1",
+    "at-2.6",
+    "at-1"
+   ]
+  },
+  "03.02.02": {
+   "split": "test",
+   "title": "Role-Based Training",
+   "expected": [
+    "at-3"
+   ],
+   "top10": [
+    "at-3",
+    "ir-2",
+    "cp-3",
+    "at-2",
+    "at-6",
+    "at-1",
+    "pl-4",
+    "ac-1",
+    "ps-1",
+    "sa-16"
+   ]
+  },
+  "03.03.01": {
+   "split": "test",
+   "title": "Event Logging",
+   "expected": [
+    "au-2"
+   ],
+   "top10": [
+    "au-2",
+    "sa-15.13",
+    "au-12.3",
+    "au-12",
+    "au-5.4",
+    "au-7.1",
+    "au-5.5",
+    "au-5.2",
+    "au-5",
+    "si-7.8"
+   ]
+  },
+  "03.03.02": {
+   "split": "dev",
+   "title": "Audit Record Content",
+   "expected": [
+    "au-3",
+    "au-3.1"
+   ],
+   "top10": [
+    "au-3",
+    "au-7.1",
+    "au-12",
+    "au-2",
+    "au-6.4",
+    "au-12.2",
+    "au-5",
+    "au-6.6",
+    "si-4.13",
+    "sa-15.13"
+   ]
+  },
+  "03.03.03": {
+   "split": "dev",
+   "title": "Audit Record Generation",
+   "expected": [
+    "au-11",
+    "au-12"
+   ],
+   "top10": [
+    "au-11",
+    "au-12",
+    "au-7",
+    "au-3.1",
+    "au-3",
+    "au-7.1",
+    "au-6.5",
+    "au-12.1",
+    "ac-4.26",
+    "at-4"
+   ]
+  },
+  "03.03.04": {
+   "split": "test",
+   "title": "Response to Audit Logging Process Failures",
+   "expected": [
+    "au-5"
+   ],
+   "top10": [
+    "au-5",
+    "au-5.2",
+    "si-7.8",
+    "au-13",
+    "au-12.3",
+    "au-5.5",
+    "si-4.20",
+    "ps-5",
+    "au-2",
+    "au-9"
+   ]
+  },
+  "03.03.05": {
+   "split": "test",
+   "title": "Audit Record Review, Analysis, and Reporting",
+   "expected": [
+    "au-6",
+    "au-6.3"
+   ],
+   "top10": [
+    "au-6.3",
+    "au-6",
+    "au-6.9",
+    "au-6.6",
+    "si-4.12",
+    "au-9.2",
+    "si-4.17",
+    "au-6.4",
+    "au-5.1",
+    "au-12.1"
+   ]
+  },
+  "03.03.06": {
+   "split": "test",
+   "title": "Audit Record Reduction and Report Generation",
+   "expected": [
+    "au-7"
+   ],
+   "top10": [
+    "au-7",
+    "au-11",
+    "au-6",
+    "au-12",
+    "au-6.7",
+    "au-6.1",
+    "au-6.5",
+    "au-3.1",
+    "au-3",
+    "au-12.1"
+   ]
+  },
+  "03.03.07": {
+   "split": "test",
+   "title": "Time Stamps",
+   "expected": [
+    "au-8"
+   ],
+   "top10": [
+    "au-8",
+    "sc-45",
+    "au-12.1",
+    "sc-45.1",
+    "au-7",
+    "au-3",
+    "au-11",
+    "sc-45.2",
+    "au-5.2",
+    "au-12.3"
+   ]
+  },
+  "03.03.08": {
+   "split": "dev",
+   "title": "Protection of Audit Information",
+   "expected": [
+    "au-9",
+    "au-9.4"
+   ],
+   "top10": [
+    "au-9.4",
+    "au-9",
+    "au-9.6",
+    "au-5.5",
+    "au-5",
+    "au-5.4",
+    "ac-17.1",
+    "au-6",
+    "au-4",
+    "au-16"
+   ]
+  },
+  "03.04.01": {
+   "split": "test",
+   "title": "Baseline Configuration",
+   "expected": [
+    "cm-2"
+   ],
+   "top10": [
+    "cm-2",
+    "cm-2.2",
+    "cm-3.3",
+    "cm-9",
+    "cm-3",
+    "cm-2.6",
+    "cm-2.3",
+    "cm-8.2",
+    "cm-6.1",
+    "cm-6"
+   ]
+  },
+  "03.04.02": {
+   "split": "test",
+   "title": "Configuration Settings",
+   "expected": [
+    "cm-6"
+   ],
+   "top10": [
+    "cm-6",
+    "cm-8.6",
+    "cm-6.2",
+    "cm-3",
+    "cp-7.4",
+    "cm-6.1",
+    "cm-9",
+    "si-7.7",
+    "sc-7.7",
+    "sa-8.23"
+   ]
+  },
+  "03.04.03": {
+   "split": "dev",
+   "title": "Configuration Change Control",
+   "expected": [
+    "cm-3"
+   ],
+   "top10": [
+    "cm-3",
+    "sa-10.2",
+    "sa-10",
+    "cm-9",
+    "cm-3.7",
+    "cm-3.8",
+    "cm-6.2",
+    "cm-3.1",
+    "cm-5.1",
+    "sr-4"
+   ]
+  },
+  "03.04.04": {
+   "split": "dev",
+   "title": "Impact Analyses",
+   "expected": [
+    "cm-4",
+    "cm-4.2"
+   ],
+   "top10": [
+    "cm-4",
+    "cm-4.2",
+    "cm-4.1",
+    "ca-7.4",
+    "cm-3",
+    "sa-10",
+    "sa-15",
+    "cm-5.1",
+    "cm-5",
+    "cm-9"
+   ]
+  },
+  "03.04.05": {
+   "split": "test",
+   "title": "Access Restrictions for Change",
+   "expected": [
+    "cm-5"
+   ],
+   "top10": [
+    "cm-5",
+    "cm-5.1",
+    "ac-3",
+    "cm-3",
+    "ac-3.12",
+    "ac-12",
+    "pe-3.1",
+    "ac-3.13",
+    "cm-5.4",
+    "ac-21.1"
+   ]
+  },
+  "03.04.06": {
+   "split": "dev",
+   "title": "Least Functionality",
+   "expected": [
+    "cm-7",
+    "cm-7.1"
+   ],
+   "top10": [
+    "cm-7.1",
+    "cm-7",
+    "sa-9.2",
+    "sa-4.9",
+    "cm-7.3",
+    "si-4.11",
+    "sa-4.5",
+    "cm-7.4",
+    "cm-7.5",
+    "pm-7.1"
+   ]
+  },
+  "03.04.08": {
+   "split": "test",
+   "title": "Authorized Software \u2013 Allow by Exception",
+   "expected": [
+    "cm-7.5"
+   ],
+   "top10": [
+    "cm-7.5",
+    "cm-7.4",
+    "cm-7.9",
+    "si-7.12",
+    "ac-6.8",
+    "sc-7.5",
+    "cm-7.2",
+    "si-15",
+    "sa-11.8",
+    "cm-5.6"
+   ]
+  },
+  "03.04.10": {
+   "split": "test",
+   "title": "System Component Inventory",
+   "expected": [
+    "cm-8",
+    "cm-8.1"
+   ],
+   "top10": [
+    "cm-8.1",
+    "pm-5",
+    "cm-8",
+    "cm-8.2",
+    "pm-5.1",
+    "cm-7.9",
+    "cm-8.6",
+    "cm-2.2",
+    "cm-8.4",
+    "cm-8.7"
+   ]
+  },
+  "03.04.11": {
+   "split": "dev",
+   "title": "Information Location",
+   "expected": [
+    "cm-12"
+   ],
+   "top10": [
+    "cm-12",
+    "sr-4",
+    "cm-13",
+    "cm-8.8",
+    "pt-3",
+    "ps-3",
+    "pe-22",
+    "cm-12.1",
+    "pe-23",
+    "cm-8.7"
+   ]
+  },
+  "03.04.12": {
+   "split": "dev",
+   "title": "System and Component Configuration for High-Risk Areas",
+   "expected": [
+    "cm-2.7"
+   ],
+   "top10": [
+    "cm-2.7",
+    "sr-10",
+    "cm-2",
+    "sa-15",
+    "sa-8",
+    "sc-24",
+    "cm-6",
+    "sr-7",
+    "ac-2.13",
+    "cm-3.5"
+   ]
+  },
+  "03.05.01": {
+   "split": "dev",
+   "title": "User Identification and Authentication",
+   "expected": [
+    "ia-11",
+    "ia-2"
+   ],
+   "top10": [
+    "ia-2",
+    "ia-11",
+    "ia-8",
+    "ia-9",
+    "ia-3",
+    "ac-16.4",
+    "ac-6.2",
+    "ia-2.13",
+    "sc-4",
+    "ac-14"
+   ]
+  },
+  "03.05.02": {
+   "split": "test",
+   "title": "Device Identification and Authentication",
+   "expected": [
+    "ia-3"
+   ],
+   "top10": [
+    "ia-3",
+    "ia-3.1",
+    "ia-9",
+    "ac-19",
+    "sc-41",
+    "ac-19.4",
+    "ia-2.13",
+    "sc-7.26",
+    "mp-7",
+    "sc-7.25"
+   ]
+  },
+  "03.05.03": {
+   "split": "dev",
+   "title": "Multi-Factor Authentication",
+   "expected": [
+    "ia-2.1",
+    "ia-2.2"
+   ],
+   "top10": [
+    "ia-2.2",
+    "ia-2.1",
+    "ia-2.6",
+    "ia-2.8",
+    "ac-6.2",
+    "ac-6.10",
+    "ia-2.10",
+    "si-4.20",
+    "ac-6.5",
+    "ac-2.7"
+   ]
+  },
+  "03.05.04": {
+   "split": "dev",
+   "title": "Replay-Resistant Authentication",
+   "expected": [
+    "ia-2.8"
+   ],
+   "top10": [
+    "ia-2.8",
+    "ia-2.2",
+    "ac-6.2",
+    "ia-2.6",
+    "ia-2.1",
+    "ac-6.10",
+    "si-4.20",
+    "ac-6.5",
+    "ac-2.7",
+    "sc-2.1"
+   ]
+  },
+  "03.05.05": {
+   "split": "dev",
+   "title": "Identifier Management",
+   "expected": [
+    "ia-4",
+    "ia-4.4"
+   ],
+   "top10": [
+    "ia-4",
+    "ia-4.4",
+    "ia-4.8",
+    "ia-4.1",
+    "ac-2",
+    "ia-4.5",
+    "ia-4.9",
+    "ia-5",
+    "sc-23.3",
+    "si-19.4"
+   ]
+  },
+  "03.05.07": {
+   "split": "dev",
+   "title": "Password Management",
+   "expected": [
+    "ia-5.1"
+   ],
+   "top10": [
+    "ia-5.1",
+    "ia-5.18",
+    "ia-5.8",
+    "ia-5",
+    "ia-5.12",
+    "pl-4.1",
+    "sa-4.5",
+    "ra-5.2",
+    "si-11",
+    "pl-4"
+   ]
+  },
+  "03.05.11": {
+   "split": "test",
+   "title": "Authentication Feedback",
+   "expected": [
+    "ia-6"
+   ],
+   "top10": [
+    "ia-6",
+    "ac-7.4",
+    "ia-3.4",
+    "ia-2.6",
+    "sc-8.1",
+    "ia-10",
+    "ia-9",
+    "ia-2.13",
+    "ia-2.5",
+    "ia-2.2"
+   ]
+  },
+  "03.05.12": {
+   "split": "dev",
+   "title": "Authenticator Management",
+   "expected": [
+    "ia-5"
+   ],
+   "top10": [
+    "ia-5",
+    "ia-5.10",
+    "ia-5.6",
+    "ia-5.16",
+    "ia-8.2",
+    "ia-5.5",
+    "ia-13",
+    "ia-2.2",
+    "ia-2.1",
+    "ia-2.5"
+   ]
+  },
+  "03.06.01": {
+   "split": "dev",
+   "title": "Incident Handling",
+   "expected": [
+    "ir-4"
+   ],
+   "top10": [
+    "ir-4",
+    "ir-4.7",
+    "ir-4.11",
+    "ir-8",
+    "ir-4.1",
+    "ir-2",
+    "ir-7",
+    "sa-15.10",
+    "ir-4.6",
+    "cp-2"
+   ]
+  },
+  "03.06.02": {
+   "split": "test",
+   "title": "Incident Monitoring, Reporting, and Response Assistance",
+   "expected": [
+    "ir-5",
+    "ir-6",
+    "ir-7"
+   ],
+   "top10": [
+    "ir-7",
+    "ir-6",
+    "ir-6.1",
+    "ir-7.1",
+    "ir-4",
+    "ir-5",
+    "ir-2",
+    "ir-8",
+    "ir-5.1",
+    "ir-4.11"
+   ]
+  },
+  "03.06.03": {
+   "split": "dev",
+   "title": "Incident Response Testing",
+   "expected": [
+    "ir-3"
+   ],
+   "top10": [
+    "ir-3",
+    "ir-3.1",
+    "ir-8",
+    "ir-6",
+    "ir-7.1",
+    "ir-3.3",
+    "ir-2",
+    "sa-15.10",
+    "ir-2.2",
+    "cp-4"
+   ]
+  },
+  "03.06.04": {
+   "split": "dev",
+   "title": "Incident Response Training",
+   "expected": [
+    "ir-2"
+   ],
+   "top10": [
+    "ir-2",
+    "cp-3",
+    "at-3",
+    "ir-9.2",
+    "ir-1",
+    "ir-8",
+    "at-2",
+    "ir-2.1",
+    "ir-2.2",
+    "cp-2"
+   ]
+  },
+  "03.06.05": {
+   "split": "test",
+   "title": "Incident Response Plan",
+   "expected": [
+    "ir-8"
+   ],
+   "top10": [
+    "ir-8",
+    "cp-2",
+    "ir-2",
+    "sa-15.10",
+    "ir-4",
+    "ir-4.11",
+    "ir-3",
+    "ir-7",
+    "ir-1",
+    "ir-3.1"
+   ]
+  },
+  "03.07.04": {
+   "split": "dev",
+   "title": "Maintenance Tools",
+   "expected": [
+    "ma-3",
+    "ma-3.1",
+    "ma-3.2",
+    "ma-3.3"
+   ],
+   "top10": [
+    "ma-3.3",
+    "ma-3.2",
+    "ma-3",
+    "ma-4.3",
+    "ma-2",
+    "ma-6.2",
+    "ma-6.1",
+    "pe-6.1",
+    "pe-3.4",
+    "ma-6.3"
+   ]
+  },
+  "03.07.05": {
+   "split": "dev",
+   "title": "Nonlocal Maintenance",
+   "expected": [
+    "ma-4"
+   ],
+   "top10": [
+    "ma-4",
+    "ma-4.7",
+    "ma-4.1",
+    "ma-4.6",
+    "ma-4.4",
+    "ma-4.3",
+    "ma-4.5",
+    "ma-2",
+    "ma-5.4",
+    "ma-3"
+   ]
+  },
+  "03.07.06": {
+   "split": "dev",
+   "title": "Maintenance Personnel",
+   "expected": [
+    "ma-5"
+   ],
+   "top10": [
+    "ma-5",
+    "ma-5.5",
+    "ma-5.1",
+    "ma-5.2",
+    "sa-21",
+    "ma-5.3",
+    "pe-8.1",
+    "ma-5.4",
+    "pe-2.3",
+    "pe-2"
+   ]
+  },
+  "03.08.01": {
+   "split": "test",
+   "title": "Media Storage",
+   "expected": [
+    "mp-4"
+   ],
+   "top10": [
+    "mp-4",
+    "au-9.2",
+    "sc-7.7",
+    "mp-6",
+    "sc-34.2",
+    "sc-7.29",
+    "mp-5",
+    "au-9.7",
+    "ac-20.1",
+    "ac-24.1"
+   ]
+  },
+  "03.08.02": {
+   "split": "dev",
+   "title": "Media Access",
+   "expected": [
+    "mp-2"
+   ],
+   "top10": [
+    "mp-2",
+    "mp-5",
+    "mp-4.2",
+    "mp-7",
+    "ma-3.4",
+    "au-9",
+    "ir-9",
+    "pe-2.3",
+    "mp-4",
+    "sc-7.11"
+   ]
+  },
+  "03.08.03": {
+   "split": "dev",
+   "title": "Media Sanitization",
+   "expected": [
+    "mp-6"
+   ],
+   "top10": [
+    "mp-6",
+    "mp-8.3",
+    "mp-8.4",
+    "si-19.3",
+    "sr-12",
+    "au-10.4",
+    "mp-8",
+    "mp-6.1",
+    "ac-3.9",
+    "pe-5.2"
+   ]
+  },
+  "03.08.04": {
+   "split": "dev",
+   "title": "Media Marking",
+   "expected": [
+    "mp-3"
+   ],
+   "top10": [
+    "mp-3",
+    "pe-22",
+    "ma-3.2",
+    "mp-8",
+    "ma-3.1",
+    "ir-4",
+    "ir-4.10",
+    "mp-6.7",
+    "mp-1",
+    "sc-8.5"
+   ]
+  },
+  "03.08.05": {
+   "split": "dev",
+   "title": "Media Transport",
+   "expected": [
+    "mp-5",
+    "sc-28"
+   ],
+   "top10": [
+    "mp-5",
+    "mp-5.3",
+    "mp-4",
+    "pe-16",
+    "mp-3",
+    "pe-10",
+    "mp-6",
+    "mp-8",
+    "ac-19",
+    "mp-4.2"
+   ]
+  },
+  "03.08.07": {
+   "split": "test",
+   "title": "Media Use",
+   "expected": [
+    "mp-7"
+   ],
+   "top10": [
+    "mp-7",
+    "mp-7.2",
+    "mp-2",
+    "mp-5",
+    "mp-3",
+    "mp-4",
+    "mp-6",
+    "mp-8",
+    "pl-4.1",
+    "ma-7"
+   ]
+  },
+  "03.08.09": {
+   "split": "test",
+   "title": "System Backup \u2013 Cryptographic Protection",
+   "expected": [
+    "cp-9",
+    "cp-9.8"
+   ],
+   "top10": [
+    "cp-9.8",
+    "sc-8.1",
+    "sc-28.1",
+    "cp-9",
+    "cp-9.3",
+    "ma-4.6",
+    "si-7.6",
+    "cp-9.5",
+    "cp-9.1",
+    "ac-17.2"
+   ]
+  },
+  "03.09.01": {
+   "split": "dev",
+   "title": "Personnel Screening",
+   "expected": [
+    "ps-3"
+   ],
+   "top10": [
+    "ps-3",
+    "ps-6",
+    "pe-5",
+    "cm-7.2",
+    "ac-2.13",
+    "ac-20.3",
+    "ps-3.3",
+    "ac-8",
+    "pl-4",
+    "au-9.4"
+   ]
+  },
+  "03.09.02": {
+   "split": "test",
+   "title": "Personnel Termination and Transfer",
+   "expected": [
+    "ps-4",
+    "ps-5"
+   ],
+   "top10": [
+    "ps-5",
+    "ps-4",
+    "pe-2",
+    "ac-2",
+    "pe-3",
+    "pe-2.3",
+    "cm-5",
+    "ps-4.2",
+    "ps-7",
+    "ac-17.9"
+   ]
+  },
+  "03.10.01": {
+   "split": "test",
+   "title": "Physical Access Authorizations",
+   "expected": [
+    "pe-2"
+   ],
+   "top10": [
+    "pe-2",
+    "pe-8",
+    "pe-2.2",
+    "pe-2.1",
+    "pe-13.2",
+    "ma-5",
+    "pe-2.3",
+    "pe-13.1",
+    "pe-3.3",
+    "pe-6.1"
+   ]
+  },
+  "03.10.02": {
+   "split": "dev",
+   "title": "Monitoring Physical Access",
+   "expected": [
+    "pe-6"
+   ],
+   "top10": [
+    "pe-6",
+    "pe-2",
+    "pe-3",
+    "pe-6.1",
+    "pe-3.3",
+    "pe-6.4",
+    "pe-3.1",
+    "pe-2.3",
+    "pe-2.1",
+    "at-3.2"
+   ]
+  },
+  "03.10.06": {
+   "split": "test",
+   "title": "Alternate Work Site",
+   "expected": [
+    "pe-17"
+   ],
+   "top10": [
+    "pe-17",
+    "cp-6",
+    "cp-7",
+    "cp-8",
+    "cp-6.1",
+    "cp-7.1",
+    "cp-2.6",
+    "cp-9.5",
+    "cp-6.3",
+    "si-13.5"
+   ]
+  },
+  "03.10.07": {
+   "split": "dev",
+   "title": "Physical Access Control",
+   "expected": [
+    "pe-3",
+    "pe-5"
+   ],
+   "top10": [
+    "pe-3",
+    "pe-5",
+    "pe-2",
+    "pe-3.3",
+    "pe-6.1",
+    "pe-3.8",
+    "pe-3.1",
+    "pe-6",
+    "pe-18",
+    "pe-2.3"
+   ]
+  },
+  "03.10.08": {
+   "split": "test",
+   "title": "Access Control for Transmission",
+   "expected": [
+    "pe-4"
+   ],
+   "top10": [
+    "pe-4",
+    "sc-8.5",
+    "sc-8",
+    "pe-3.1",
+    "cp-8.2",
+    "sc-7.14",
+    "sc-16",
+    "pe-3.8",
+    "pe-6",
+    "pe-6.4"
+   ]
+  },
+  "03.11.01": {
+   "split": "test",
+   "title": "Risk Assessment",
+   "expected": [
+    "ra-3",
+    "ra-3.1",
+    "sr-6"
+   ],
+   "top10": [
+    "ra-3.1",
+    "ra-3",
+    "pm-30",
+    "sr-2",
+    "sr-5.2",
+    "sr-1",
+    "sr-2.1",
+    "sr-6",
+    "pm-9",
+    "pm-30.1"
+   ]
+  },
+  "03.11.02": {
+   "split": "test",
+   "title": "Vulnerability Monitoring and Scanning",
+   "expected": [
+    "ra-5",
+    "ra-5.2"
+   ],
+   "top10": [
+    "ra-5.2",
+    "ra-5",
+    "ir-6.2",
+    "sa-15.7",
+    "ra-5.11",
+    "cm-3",
+    "ca-8",
+    "ca-5",
+    "sa-8.7",
+    "sa-15.10"
+   ]
+  },
+  "03.11.04": {
+   "split": "test",
+   "title": "Risk Response",
+   "expected": [
+    "ra-7"
+   ],
+   "top10": [
+    "ra-7",
+    "sr-8",
+    "ca-5",
+    "ca-2",
+    "ca-7.3",
+    "pm-4",
+    "pm-14",
+    "ca-2.2",
+    "au-6.1",
+    "ca-7.1"
+   ]
+  },
+  "03.12.01": {
+   "split": "test",
+   "title": "Security Assessment",
+   "expected": [
+    "ca-2"
+   ],
+   "top10": [
+    "ca-2",
+    "sa-4",
+    "sa-15",
+    "pl-2",
+    "ca-7.4",
+    "sa-4.11",
+    "sa-8.30",
+    "cp-4",
+    "si-2.2",
+    "cm-4.1"
+   ]
+  },
+  "03.12.02": {
+   "split": "test",
+   "title": "Plan of Action and Milestones",
+   "expected": [
+    "ca-5"
+   ],
+   "top10": [
+    "ca-5",
+    "pm-4",
+    "ra-7",
+    "ca-5.1",
+    "ca-2",
+    "sa-4.8",
+    "sa-11",
+    "pm-1",
+    "si-2",
+    "pl-2"
+   ]
+  },
+  "03.12.03": {
+   "split": "dev",
+   "title": "Continuous Monitoring",
+   "expected": [
+    "ca-7"
+   ],
+   "top10": [
+    "ca-7",
+    "pm-31",
+    "ca-7.4",
+    "pm-14",
+    "ca-7.1",
+    "ca-2",
+    "sa-4.8",
+    "pm-4",
+    "ca-7.6",
+    "pm-30"
+   ]
+  },
+  "03.12.05": {
+   "split": "dev",
+   "title": "Information Exchange",
+   "expected": [
+    "ca-3"
+   ],
+   "top10": [
+    "ca-3",
+    "ac-17.6",
+    "ps-6",
+    "pl-4",
+    "sa-9",
+    "ac-17",
+    "cm-10",
+    "cp-7.3",
+    "sr-8",
+    "at-3.5"
+   ]
+  },
+  "03.13.01": {
+   "split": "dev",
+   "title": "Boundary Protection",
+   "expected": [
+    "sc-7"
+   ],
+   "top10": [
+    "sc-7",
+    "sc-7.13",
+    "sc-7.18",
+    "sc-7.26",
+    "sc-7.9",
+    "sc-7.8",
+    "sc-7.14",
+    "sa-8.1",
+    "sc-7.5",
+    "sc-7.4"
+   ]
+  },
+  "03.13.04": {
+   "split": "test",
+   "title": "Information in Shared System Resources",
+   "expected": [
+    "sc-4"
+   ],
+   "top10": [
+    "sc-4",
+    "sc-4.2",
+    "ca-3.6",
+    "sa-8.6",
+    "ac-4.31",
+    "ia-2.5",
+    "au-10.4",
+    "ac-12.1",
+    "pm-32",
+    "sc-7.7"
+   ]
+  },
+  "03.13.06": {
+   "split": "dev",
+   "title": "Network Communications \u2013 Deny by Default \u2013 Allow by Exception",
+   "expected": [
+    "sc-7.5"
+   ],
+   "top10": [
+    "sc-7.5",
+    "si-4.15",
+    "au-5.3",
+    "sc-7.9",
+    "sc-7.11",
+    "si-4.11",
+    "si-4.10",
+    "si-4.4",
+    "si-4.25",
+    "si-4.13"
+   ]
+  },
+  "03.13.08": {
+   "split": "dev",
+   "title": "Transmission and Storage Confidentiality",
+   "expected": [
+    "sc-28",
+    "sc-28.1",
+    "sc-8",
+    "sc-8.1"
+   ],
+   "top10": [
+    "sc-8.1",
+    "cp-9.8",
+    "sc-8.5",
+    "sc-28.1",
+    "ma-4.6",
+    "sc-40.4",
+    "sc-8.2",
+    "au-9.3",
+    "si-7.6",
+    "sc-8.3"
+   ]
+  },
+  "03.13.09": {
+   "split": "dev",
+   "title": "Network Disconnect",
+   "expected": [
+    "sc-10"
+   ],
+   "top10": [
+    "sc-10",
+    "ac-12",
+    "ac-12.3",
+    "ma-4.7",
+    "sc-23",
+    "ac-2.5",
+    "au-14",
+    "sc-23.3",
+    "sc-23.1",
+    "ma-4"
+   ]
+  },
+  "03.13.10": {
+   "split": "dev",
+   "title": "Cryptographic Key Establishment and Management",
+   "expected": [
+    "sc-12"
+   ],
+   "top10": [
+    "sc-12",
+    "sc-12.3",
+    "sc-28.3",
+    "sc-12.2",
+    "sc-12.1",
+    "au-9.3",
+    "cp-9.8",
+    "si-7.6",
+    "si-7.15",
+    "ac-2.7"
+   ]
+  },
+  "03.13.11": {
+   "split": "test",
+   "title": "Cryptographic Protection",
+   "expected": [
+    "sc-13"
+   ],
+   "top10": [
+    "sc-13",
+    "au-9.3",
+    "si-7.6",
+    "mp-5",
+    "cm-3.6",
+    "si-4.10",
+    "sc-5",
+    "si-7.10",
+    "sc-28.1",
+    "ma-4.6"
+   ]
+  },
+  "03.13.12": {
+   "split": "dev",
+   "title": "Collaborative Computing Devices and Applications",
+   "expected": [
+    "sc-15"
+   ],
+   "top10": [
+    "sc-15",
+    "sc-42",
+    "sc-15.4",
+    "sc-15.1",
+    "sc-15.3",
+    "ia-2.13",
+    "sc-7.7",
+    "sc-7.4",
+    "ia-3.1",
+    "ac-17"
+   ]
+  },
+  "03.13.13": {
+   "split": "test",
+   "title": "Mobile Code",
+   "expected": [
+    "sc-18"
+   ],
+   "top10": [
+    "sc-18",
+    "sc-43",
+    "sc-18.2",
+    "sc-18.1",
+    "sc-18.5",
+    "sc-18.4",
+    "ac-19",
+    "sc-18.3",
+    "si-3",
+    "ac-4.25"
+   ]
+  },
+  "03.13.15": {
+   "split": "dev",
+   "title": "Session Authenticity",
+   "expected": [
+    "sc-23"
+   ],
+   "top10": [
+    "sc-23",
+    "ma-4.4",
+    "ac-17.2",
+    "ma-4.6",
+    "ac-12.2",
+    "sc-10",
+    "ac-12",
+    "si-7.10",
+    "ac-12.1",
+    "si-4.10"
+   ]
+  },
+  "03.14.01": {
+   "split": "dev",
+   "title": "Flaw Remediation",
+   "expected": [
+    "si-2"
+   ],
+   "top10": [
+    "si-2",
+    "si-2.5",
+    "sa-10.6",
+    "si-2.2",
+    "cm-14",
+    "sa-10.5",
+    "cm-11",
+    "si-2.6",
+    "cm-8.1",
+    "sa-10.1"
+   ]
+  },
+  "03.14.02": {
+   "split": "dev",
+   "title": "Malicious Code Protection",
+   "expected": [
+    "si-3"
+   ],
+   "top10": [
+    "si-3",
+    "si-8",
+    "si-3.6",
+    "si-3.4",
+    "sc-35",
+    "si-3.10",
+    "ir-4.12",
+    "si-7.10",
+    "at-2.4",
+    "sr-11"
+   ]
+  },
+  "03.14.03": {
+   "split": "test",
+   "title": "Security Alerts, Advisories, and Directives",
+   "expected": [
+    "si-5"
+   ],
+   "top10": [
+    "si-5",
+    "si-5.1",
+    "si-4.12",
+    "si-4.5",
+    "at-2",
+    "ps-4.2",
+    "au-5.2",
+    "cm-3.5",
+    "sa-9",
+    "pm-15"
+   ]
+  },
+  "03.14.06": {
+   "split": "test",
+   "title": "System Monitoring",
+   "expected": [
+    "si-4",
+    "si-4.4"
+   ],
+   "top10": [
+    "si-4.4",
+    "si-4.15",
+    "sc-7.5",
+    "si-4.14",
+    "sc-7.4",
+    "si-4.11",
+    "sc-5.3",
+    "cm-11.3",
+    "si-4.18",
+    "si-4"
+   ]
+  },
+  "03.14.08": {
+   "split": "test",
+   "title": "Information Management and Retention",
+   "expected": [
+    "si-12"
+   ],
+   "top10": [
+    "ia-7",
+    "sc-12",
+    "pl-10",
+    "si-12",
+    "pm-19",
+    "ia-8.4",
+    "ps-3",
+    "si-4.19",
+    "ir-6",
+    "pm-8"
+   ]
+  },
+  "03.15.01": {
+   "split": "dev",
+   "title": "Policy and Procedures",
+   "expected": [
+    "ac-1",
+    "at-1",
+    "au-1",
+    "ca-1",
+    "cm-1",
+    "ia-1",
+    "ir-1",
+    "ma-1",
+    "mp-1",
+    "pe-1",
+    "pl-1",
+    "ps-1",
+    "ra-1",
+    "sa-1",
+    "sc-1",
+    "si-1",
+    "sr-1"
+   ],
+   "top10": [
+    "mp-1",
+    "pe-1",
+    "sc-1",
+    "ps-1",
+    "ma-1",
+    "pl-1",
+    "ac-1",
+    "at-1",
+    "cp-1",
+    "ir-1"
+   ]
+  },
+  "03.15.02": {
+   "split": "test",
+   "title": "System Security Plan",
+   "expected": [
+    "pl-2"
+   ],
+   "top10": [
+    "pl-2",
+    "pm-1",
+    "pm-18",
+    "ir-8",
+    "cp-2",
+    "ca-2",
+    "sr-2",
+    "pl-8",
+    "cm-9",
+    "cm-12"
+   ]
+  },
+  "03.15.03": {
+   "split": "dev",
+   "title": "Rules of Behavior",
+   "expected": [
+    "pl-4"
+   ],
+   "top10": [
+    "pl-4",
+    "ps-6",
+    "cm-7.2",
+    "pl-4.1",
+    "ia-5.8",
+    "ia-5.1",
+    "ac-3.13",
+    "ac-17.6",
+    "ia-10",
+    "sc-7.24"
+   ]
+  },
+  "03.16.01": {
+   "split": "test",
+   "title": "Security Engineering Principles",
+   "expected": [
+    "sa-8"
+   ],
+   "top10": [
+    "sa-8",
+    "sa-24",
+    "sa-4.3",
+    "sa-3",
+    "sa-8.3",
+    "sa-8.17",
+    "sa-8.32",
+    "sc-3",
+    "sa-8.23",
+    "sr-2"
+   ]
+  },
+  "03.16.02": {
+   "split": "test",
+   "title": "Unsupported System Components",
+   "expected": [
+    "sa-22"
+   ],
+   "top10": [
+    "sa-22",
+    "si-22",
+    "sa-20",
+    "si-21",
+    "ma-6",
+    "ma-2",
+    "sa-15.8",
+    "cm-8.3",
+    "ca-9",
+    "sa-10.2"
+   ]
+  },
+  "03.16.03": {
+   "split": "test",
+   "title": "External System Services",
+   "expected": [
+    "sa-9"
+   ],
+   "top10": [
+    "sa-9",
+    "ps-7",
+    "sa-9.5",
+    "sa-9.3",
+    "sa-9.2",
+    "ir-7.2",
+    "cp-2.7",
+    "sc-40",
+    "si-5",
+    "sa-4.9"
+   ]
+  },
+  "03.17.01": {
+   "split": "test",
+   "title": "Supply Chain Risk Management Plan",
+   "expected": [
+    "sr-2"
+   ],
+   "top10": [
+    "sr-2",
+    "pm-30",
+    "sr-3",
+    "sr-4.1",
+    "sr-6.1",
+    "ra-3.1",
+    "sr-1",
+    "pm-4",
+    "sr-2.1",
+    "sr-3.2"
+   ]
+  },
+  "03.17.02": {
+   "split": "dev",
+   "title": "Acquisition Strategies, Tools, and Methods",
+   "expected": [
+    "sr-5"
+   ],
+   "top10": [
+    "sr-5",
+    "sr-3",
+    "pm-30",
+    "sr-2",
+    "sr-2.1",
+    "sr-6.1",
+    "sr-4.1",
+    "ir-6.3",
+    "sa-9.1",
+    "sa-2"
+   ]
+  },
+  "03.17.03": {
+   "split": "test",
+   "title": "Supply Chain Requirements and Processes",
+   "expected": [
+    "sr-3"
+   ],
+   "top10": [
+    "sr-3",
+    "sr-7",
+    "sr-4.1",
+    "sr-2",
+    "sr-6.1",
+    "ra-3.1",
+    "pm-30",
+    "sr-5",
+    "sr-3.2",
+    "sr-3.1"
+   ]
+  }
+ }
+}
