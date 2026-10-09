@@ -2,7 +2,7 @@
 
 Ask a security question in plain English and get the NIST SP 800-53 controls that answer it, each one cited and linked. When the catalog doesn't cover a question, it says so. Its accuracy is measured against an answer key built from NIST's own data, and every result is published.
 
-**Status:** in progress. Steps 1 to 4 of 7 are done, and the first half of step 5: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; and the controls in a vector database (PostgreSQL with pgvector), checked against the earlier search. The steps are in [docs/plan.md](docs/plan.md).
+**Status:** in progress. Steps 1 to 5 of 7 are done: two answer keys from NIST's own data; keyword, vector, hybrid, and reranked search measured on both; and a vector database (PostgreSQL with pgvector) and an API, both checked against the published rankings. The steps are in [docs/plan.md](docs/plan.md).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
@@ -32,6 +32,13 @@ The controls are also loaded into PostgreSQL with pgvector, from the committed e
 - **pgvector's default setting returns only 40 rows.** Its HNSW index keeps 40 candidates by default (`hnsw.ef_search`) and returns no more, so a request for a top 100 gets 40, with no error. Over 10 index builds, that changed the step 3 hybrid's top 10 for 60 to 63 of the 203 questions, and on CSF 2.0 test it put a right control in the top 10 for 76.1% of questions instead of 78.3%. With ef_search 100, every test score matched exact search.
 - **At 1,014 controls, the index saves little.** For a top 100, PostgreSQL's planner skipped the index and scanned the table. Forced, the index took 3.25 ms per question (median) against 4.07 ms for exact search. Sending the question alone took 1.76 ms, and the in-memory search took 0.08 ms. These times come from one Apple-silicon Mac, so they're a guide, not a benchmark.
 
+## The API (step 5)
+`GET /search` answers a question with the controls that fit it (`method` = hybrid, the default, vector, or keyword), `GET /controls/{id}` returns a control's text and its assessment objectives, and `GET /health` says what can be reached. Details: [the API](docs/results-api.md).
+- **It returns the published rankings.** Run for real, with the model embedding each question, it gave the published top 10 for all 203 questions with every method, and hybrid's top 30 matched the reranker's candidates in step 4.
+- **Speed:** a hybrid search took 22.79 ms (median) when the question was new, 11.31 ms of it embedding the question, and 5.37 ms when it had been asked before. Keyword search took 1.05 ms. These times come from one Apple-silicon Mac.
+- **When something is down:** keyword search still works without the database or the model, and the other methods answer 503 with the reason. Questions are capped at 2,000 characters and results at 50.
+- **Not served yet:** the reranker from step 4, which would add PyTorch to the service. The API serves the weighted hybrid search.
+
 ## Run it
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
@@ -43,9 +50,11 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 .venv/bin/python scripts/run_rerank.py            # tries 3 rerankers on dev, runs the best on test (about 8 min on CPU)
 docker compose up -d --wait                       # step 5's database: PostgreSQL with pgvector, on 127.0.0.1:55432 only
 .venv/bin/python scripts/run_database_check.py    # loads the controls and compares the searches (about 1 min)
-.venv/bin/python -m pytest -q                    # 45 tests, including that the published numbers reproduce
+.venv/bin/python -m uvicorn controlfinder.api:app --app-dir src --host 127.0.0.1 --port 8000  # the API (needs Ollama); docs at /docs
+.venv/bin/python scripts/run_api_check.py         # runs the API and checks it against the published rankings (about 15 s)
+.venv/bin/python -m pytest -q                    # 61 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
-  .venv/bin/python -m pytest -q tests/test_database.py  # the 5 database tests, which need that database
+  .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 8 tests that need that database
 ```
 
 ## The data

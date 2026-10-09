@@ -17,10 +17,12 @@ Control Finder answers security questions from NIST SP 800-53 with cited control
    - CSF 2.0 test MRR: hybrid 0.411 (step 3), weighted 0.463, reranked 0.491, the best so far. The largest reranker (bge-reranker-base) did worse on dev than no reranking.
    - Trade-off: on SP 800-171 the weighted search drops to 0.906 (from 0.967), and reranking brings it to 0.924.
    - Limit: the top 30 candidates hold 53.2% of CSF 2.0's right controls, so a better first search would raise the ceiling.
-5. **A vector database and an API.** PostgreSQL with pgvector (done), then a FastAPI service.
+5. **A vector database and an API** (done). PostgreSQL with pgvector, and a FastAPI service.
    - Exact search in the database gave the same top 10 as the in-memory search for all 203 questions, and every published test score came back (`docs/results-database.md`).
    - Two things that are easy to miss, both measured: pgvector's default `hnsw.ef_search` (40) caps a search at 40 rows, so a top 100 silently loses 60, which changed the step 3 hybrid's results; and PostgreSQL decides for itself when to use the index (here, for a top 10 but not for a top 100).
-   - At 1,014 controls, the index saves under a millisecond per question, and the in-memory search is faster than any database query. The service will use exact search, or set ef_search to at least the number of rows it asks for.
+   - At 1,014 controls, the index saves under a millisecond per question, and the in-memory search is faster than any database query.
+   - The API (`src/controlfinder/api.py`): `/search`, `/controls/{id}`, and `/health`. Run for real, with the model embedding each question, it returned the published top 10 for all 203 questions with every method (`docs/results-api.md`). It uses exact search, so ef_search can't cut its lists short.
+   - Not served yet: the reranker, which would add PyTorch to the service.
 6. **Cited answers.** A local model writes the answer from the retrieved controls only, cites their IDs, and says "not covered" when nothing fits. Measured: citation precision, recall, and F1; faithfulness (every cited ID was retrieved); refusal accuracy; latency.
 7. **An MCP server, a website, and a write-up.**
 

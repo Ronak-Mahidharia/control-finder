@@ -1,0 +1,129 @@
+# ============================================================================
+# The Control Finder API (step 5): search the 1,014 active SP 800-53 controls
+# and enhancements, and read any one of them.
+#
+# Run:   docker compose up -d --wait            (the database)
+#        ollama serve, with nomic-embed-text    (embeds each question)
+#        uvicorn controlfinder.api:app --app-dir src --host 127.0.0.1 --port 8000
+# Then:  http://127.0.0.1:8000/docs for every endpoint, or for example
+#        curl "http://127.0.0.1:8000/search?q=How+should+we+store+passwords%3F&k=5"
+# At startup it loads the committed embeddings into the database if they
+# aren't there. Keyword search works even without the database or Ollama;
+# the other methods answer 503 until both can be reached.
+# ============================================================================
+import urllib.request
+from contextlib import asynccontextmanager
+from typing import Annotated, Literal
+
+from fastapi import FastAPI, HTTPException, Query, Request, Response
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
+
+from controlfinder.catalog import load_catalog
+from controlfinder.embeddings import URL as EMBED_URL
+from controlfinder.search import DEPTH, VECTOR_WEIGHT, Pool, Searcher, Unavailable
+
+MAX_QUESTION = 2000  # characters; far below the embedding model's 2,048-token limit
+MAX_K = 50
+
+
+class Result(BaseModel):
+    rank: int
+    id: str = Field(description='OSCAL id, for example "ia-5.1"')
+    label: str = Field(description='as NIST prints it, for example "IA-5(1)"')
+    title: str
+    family: str
+    keyword_rank: int | None = Field(description=f"its rank in the keyword top {DEPTH}, if it's there (keyword and hybrid)")
+    vector_rank: int | None = Field(description=f"its rank in the vector top {DEPTH}, if it's there (vector and hybrid)")
+
+
+class SearchResponse(BaseModel):
+    query: str
+    method: Literal["hybrid", "vector", "keyword"]
+    vector_weight: float | None = Field(description="the vector list's weight in the fusion (hybrid only)")
+    results: list[Result]
+
+
+class ControlDetail(BaseModel):
+    id: str
+    label: str
+    title: str
+    family: str
+    parent: str | None = Field(description="the base control, for an enhancement")
+    statement: str
+    guidance: str
+    assessment_objectives: list[str] = Field(description="what an assessor checks (SP 800-53A Rev 5.2.0)")
+
+
+class Health(BaseModel):
+    status: Literal["ok", "degraded"] = Field(description="degraded: only keyword search works right now")
+    controls: int
+    database: Literal["ready", "loaded", "unreachable"] = Field(description="at startup: found ready, loaded then, or not reachable")
+    postgresql: str | None
+    pgvector: str | None
+    embedding_model: Literal["reachable", "unreachable"]
+
+
+def _ollama_reachable():
+    try:
+        with urllib.request.urlopen(EMBED_URL.replace("/api/embed", "/api/version"), timeout=2):
+            return True
+    except OSError:
+        return False
+
+
+def create_app(searcher=None, embedding_model_check=_ollama_reachable):
+    @asynccontextmanager
+    async def lifespan(app):
+        app.state.searcher = searcher or Searcher(Pool())
+        app.state.database = app.state.searcher.prepare_database()
+        yield
+        app.state.searcher.pool.close()
+
+    app = FastAPI(title="Control Finder", version="0.1.0", lifespan=lifespan,
+                  description="Find the NIST SP 800-53 Rev 5.2.0 controls that answer a security question. "
+                              "Not affiliated with or endorsed by NIST; a reference tool, not compliance advice.")
+
+    @app.exception_handler(Unavailable)
+    async def unavailable(request: Request, exc: Unavailable):
+        return JSONResponse(status_code=503, content={"detail": f"{exc}; keyword search still works (method=keyword)"})
+
+    @app.get("/health", response_model=Health)
+    def health(request: Request):
+        s = request.app.state.searcher
+        versions = s.database_versions() or {}
+        model = "reachable" if embedding_model_check() else "unreachable"
+        ok = bool(versions) and model == "reachable"
+        return {"status": "ok" if ok else "degraded", "controls": len(s.controls), "database": request.app.state.database,
+                "postgresql": versions.get("postgresql"), "pgvector": versions.get("pgvector"), "embedding_model": model}
+
+    @app.get("/search", response_model=SearchResponse)
+    def search(request: Request, response: Response,
+               q: Annotated[str, Query(min_length=1, max_length=MAX_QUESTION, description="the question, in plain English")],
+               method: Literal["hybrid", "vector", "keyword"] = "hybrid",
+               k: Annotated[int, Query(ge=1, le=MAX_K, description="how many results")] = 10):
+        q = q.strip()
+        if not q:
+            raise HTTPException(status_code=422, detail="q is only spaces")
+        s = request.app.state.searcher
+        results, timings = s.search(q, method, k)
+        response.headers["Server-Timing"] = ", ".join(f"{name};dur={ms:.2f}" for name, ms in timings.items())
+        for r in results:
+            c = s.by_id[r["id"]]
+            r.update(label=c.label, title=c.title, family=c.family)
+        return {"query": q, "method": method, "vector_weight": VECTOR_WEIGHT if method == "hybrid" else None, "results": results}
+
+    @app.get("/controls/{control_id}", response_model=ControlDetail)
+    def control(request: Request, control_id: str):
+        c = request.app.state.searcher.by_id.get(control_id.lower())
+        if c is None:
+            gone = next((w for w in load_catalog() if w.id == control_id.lower() and w.withdrawn), None)
+            detail = f"{gone.label} is withdrawn in SP 800-53 Rev 5.2.0" if gone else f"no control or enhancement has the id {control_id!r}"
+            raise HTTPException(status_code=404, detail=detail)
+        return {"id": c.id, "label": c.label, "title": c.title, "family": c.family, "parent": c.parent,
+                "statement": c.statement, "guidance": c.guidance, "assessment_objectives": list(c.objectives)}
+
+    return app
+
+
+app = create_app()
