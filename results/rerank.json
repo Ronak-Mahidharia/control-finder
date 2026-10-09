@@ -1,0 +1,192 @@
+{
+ "settings": {
+  "vector_text": "title + statement + guidance",
+  "weights_tried": [
+   1.0,
+   1.5,
+   2.0,
+   3.0
+  ],
+  "candidates": 30,
+  "reranker_text": "title + statement",
+  "reranker_max_tokens": 512,
+  "models": {
+   "cross-encoder/ms-marco-MiniLM-L6-v2": {
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "license": "Apache-2.0"
+   },
+   "mixedbread-ai/mxbai-rerank-xsmall-v1": {
+    "revision": "b5c6e9da73abc3711f593f705371cdbe9e0fe422",
+    "license": "Apache-2.0"
+   },
+   "BAAI/bge-reranker-base": {
+    "revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+    "license": "MIT"
+   }
+  },
+  "chosen_on": "CSF 2.0 dev questions, by MRR"
+ },
+ "dev_csf2": {
+  "weights": {
+   "hybrid, vector weight 1": {
+    "questions": 60,
+    "mrr": 0.422,
+    "recall@1": 0.048,
+    "hit@1": 0.233,
+    "recall@5": 0.302,
+    "hit@5": 0.717,
+    "recall@10": 0.419,
+    "hit@10": 0.817,
+    "precision@5": 0.233
+   },
+   "hybrid, vector weight 1.5": {
+    "questions": 60,
+    "mrr": 0.439,
+    "recall@1": 0.051,
+    "hit@1": 0.25,
+    "recall@5": 0.297,
+    "hit@5": 0.717,
+    "recall@10": 0.404,
+    "hit@10": 0.817,
+    "precision@5": 0.237
+   },
+   "hybrid, vector weight 2": {
+    "questions": 60,
+    "mrr": 0.461,
+    "recall@1": 0.059,
+    "hit@1": 0.283,
+    "recall@5": 0.302,
+    "hit@5": 0.7,
+    "recall@10": 0.402,
+    "hit@10": 0.833,
+    "precision@5": 0.24
+   },
+   "hybrid, vector weight 3": {
+    "questions": 60,
+    "mrr": 0.47,
+    "recall@1": 0.059,
+    "hit@1": 0.283,
+    "recall@5": 0.28,
+    "hit@5": 0.683,
+    "recall@10": 0.406,
+    "hit@10": 0.833,
+    "precision@5": 0.237
+   }
+  },
+  "rerankers": {
+   "reranked: cross-encoder/ms-marco-MiniLM-L6-v2": {
+    "questions": 60,
+    "mrr": 0.482,
+    "recall@1": 0.076,
+    "hit@1": 0.317,
+    "recall@5": 0.279,
+    "hit@5": 0.733,
+    "recall@10": 0.386,
+    "hit@10": 0.8,
+    "precision@5": 0.217
+   },
+   "reranked: mixedbread-ai/mxbai-rerank-xsmall-v1": {
+    "questions": 60,
+    "mrr": 0.596,
+    "recall@1": 0.106,
+    "hit@1": 0.483,
+    "recall@5": 0.331,
+    "hit@5": 0.717,
+    "recall@10": 0.458,
+    "hit@10": 0.883,
+    "precision@5": 0.243
+   },
+   "reranked: BAAI/bge-reranker-base": {
+    "questions": 60,
+    "mrr": 0.405,
+    "recall@1": 0.049,
+    "hit@1": 0.217,
+    "recall@5": 0.279,
+    "hit@5": 0.717,
+    "recall@10": 0.389,
+    "hit@10": 0.8,
+    "precision@5": 0.22
+   }
+  }
+ },
+ "chosen": {
+  "vector_weight": 3.0,
+  "reranker": "mixedbread-ai/mxbai-rerank-xsmall-v1"
+ },
+ "test_recall_of_candidates": {
+  "csf2": 0.532,
+  "sp800_171": 0.978
+ },
+ "test": {
+  "csf2": {
+   "hybrid, vector weight 1 (step 3)": {
+    "questions": 46,
+    "mrr": 0.411,
+    "recall@1": 0.039,
+    "hit@1": 0.261,
+    "recall@5": 0.216,
+    "hit@5": 0.63,
+    "recall@10": 0.334,
+    "hit@10": 0.783,
+    "precision@5": 0.165
+   },
+   "hybrid, vector weight 3": {
+    "questions": 46,
+    "mrr": 0.463,
+    "recall@1": 0.054,
+    "hit@1": 0.326,
+    "recall@5": 0.253,
+    "hit@5": 0.674,
+    "recall@10": 0.295,
+    "hit@10": 0.761,
+    "precision@5": 0.196
+   },
+   "reranked: mixedbread-ai/mxbai-rerank-xsmall-v1": {
+    "questions": 46,
+    "mrr": 0.491,
+    "recall@1": 0.109,
+    "hit@1": 0.326,
+    "recall@5": 0.277,
+    "hit@5": 0.761,
+    "recall@10": 0.366,
+    "hit@10": 0.804,
+    "precision@5": 0.222
+   }
+  },
+  "sp800_171": {
+   "hybrid, vector weight 1 (step 3)": {
+    "questions": 45,
+    "mrr": 0.967,
+    "recall@1": 0.822,
+    "hit@1": 0.956,
+    "recall@5": 0.963,
+    "hit@5": 0.978,
+    "recall@10": 0.978,
+    "hit@10": 0.978,
+    "precision@5": 0.249
+   },
+   "hybrid, vector weight 3": {
+    "questions": 45,
+    "mrr": 0.906,
+    "recall@1": 0.722,
+    "hit@1": 0.844,
+    "recall@5": 0.963,
+    "hit@5": 0.978,
+    "recall@10": 0.97,
+    "hit@10": 0.978,
+    "precision@5": 0.249
+   },
+   "reranked: mixedbread-ai/mxbai-rerank-xsmall-v1": {
+    "questions": 45,
+    "mrr": 0.924,
+    "recall@1": 0.796,
+    "hit@1": 0.889,
+    "recall@5": 0.896,
+    "hit@5": 0.978,
+    "recall@10": 0.937,
+    "hit@10": 0.978,
+    "precision@5": 0.218
+   }
+  }
+ }
+}
