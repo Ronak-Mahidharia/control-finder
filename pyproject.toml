@@ -5,10 +5,10 @@ description = "Find the NIST SP 800-53 security controls that answer a question,
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
-dependencies = ["numpy>=2.5", "pg8000>=1.31"]
+dependencies = ["numpy>=2.5", "pg8000>=1.31", "fastapi>=0.143", "uvicorn>=0.54"]
 
 [project.optional-dependencies]
-dev = ["pytest>=9.1"]
+dev = ["pytest>=9.1", "httpx2>=2.13"]
 
 [build-system]
 requires = ["setuptools>=80"]

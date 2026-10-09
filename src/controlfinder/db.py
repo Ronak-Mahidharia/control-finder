@@ -73,6 +73,18 @@ def load(conn, controls, vectors):
     conn.run("ANALYZE controls")
 
 
+def ensure_loaded(conn, controls, vectors):
+    """Creates and fills the table unless it already holds these controls in catalog order. True if it filled it.
+    It checks the ids, not the vectors: the table is only ever filled from the committed embeddings."""
+    conn.run("CREATE EXTENSION IF NOT EXISTS vector")
+    if conn.run("SELECT to_regclass('controls') IS NOT NULL")[0][0]:
+        if [row[0] for row in conn.run("SELECT id FROM controls ORDER BY position")] == [c.id for c in controls]:
+            return False
+    create_table(conn)
+    load(conn, controls, vectors)
+    return True
+
+
 def create_index(conn):
     conn.run(f"DROP INDEX IF EXISTS {INDEX}")
     conn.run(f"""CREATE INDEX {INDEX} ON controls USING hnsw (embedding vector_ip_ops)

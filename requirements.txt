@@ -1,5 +1,6 @@
 # Exact versions used for the published results. The keyword search and metrics use only
-# Python's standard library; vector search uses numpy; the database step (step 5) uses pg8000.
+# Python's standard library; vector search uses numpy; the database step (step 5) uses pg8000;
+# the API (step 5) uses FastAPI on uvicorn.
 # Install everything with:
 #   pip install -r requirements-dev.txt
 numpy==2.5.3
@@ -9,3 +10,18 @@ pg8000==1.31.5
 python-dateutil==2.9.0.post0
 scramp==1.4.17
 six==1.17.0
+# The API: FastAPI (MIT) on uvicorn (BSD-3-Clause), and what they need (MIT, BSD-3-Clause, Apache-2.0, PSF-2.0)
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anyio==4.15.1
+click==8.5.0
+fastapi==0.143.0
+h11==0.16.0
+idna==3.20
+opentelemetry-api==1.45.1
+pydantic==2.14.0
+pydantic_core==2.50.0
+starlette==1.7.0
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+uvicorn==0.54.0

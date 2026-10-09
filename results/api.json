@@ -1,0 +1,104 @@
+{
+ "server": {
+  "fastapi": "0.143.0",
+  "uvicorn": "0.54.0",
+  "workers": 1,
+  "postgresql": "18.6",
+  "pgvector": "0.8.7",
+  "embedding_model": "nomic-embed-text through Ollama 0.35.0",
+  "settings": {
+   "depth": 100,
+   "rrf_k": 60,
+   "vector_weight": 3.0
+  }
+ },
+ "machine": "macOS arm64",
+ "questions": 203,
+ "same_as_published": {
+  "keyword": {
+   "top 10": 203
+  },
+  "vector": {
+   "top 10": 203
+  },
+  "hybrid": {
+   "top 10": 203,
+   "top 30, the reranker's candidates": 203
+  }
+ },
+ "test_scores_reproduced": {
+  "keyword": true,
+  "vector": true,
+  "hybrid": true
+ },
+ "milliseconds": {
+  "keyword": {
+   "first time": {
+    "request": {
+     "median": 1.05,
+     "p95": 3.1
+    },
+    "server parts (median)": {
+     "keyword": 0.68
+    }
+   },
+   "asked before": {
+    "request": {
+     "median": 1.02,
+     "p95": 4.51
+    },
+    "server parts (median)": {
+     "keyword": 0.62
+    }
+   }
+  },
+  "vector": {
+   "first time": {
+    "request": {
+     "median": 22.99,
+     "p95": 28.82
+    },
+    "server parts (median)": {
+     "embed": 12.01,
+     "vector": 9.32
+    }
+   },
+   "asked before": {
+    "request": {
+     "median": 5.15,
+     "p95": 7.17
+    },
+    "server parts (median)": {
+     "embed": 0.03,
+     "vector": 4.1
+    }
+   }
+  },
+  "hybrid": {
+   "first time": {
+    "request": {
+     "median": 22.79,
+     "p95": 29.37
+    },
+    "server parts (median)": {
+     "keyword": 2.08,
+     "embed": 11.31,
+     "vector": 8.14,
+     "fuse": 0.1
+    }
+   },
+   "asked before": {
+    "request": {
+     "median": 5.37,
+     "p95": 8.74
+    },
+    "server parts (median)": {
+     "keyword": 1.03,
+     "embed": 0.02,
+     "vector": 3.34,
+     "fuse": 0.06
+    }
+   }
+  }
+ }
+}

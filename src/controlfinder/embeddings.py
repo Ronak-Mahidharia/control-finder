@@ -9,9 +9,11 @@
 # many texts reached that limit.
 # Vectors are scaled to length 1, so a dot product is the cosine similarity.
 # Results are cached in data/processed/ (never committed), keyed by the exact
-# texts and prefix, so any changed text is embedded again.
+# texts and prefix, so any changed text is embedded again. The embeddings
+# behind the published results are committed in embeddings/ (step 5).
 # ============================================================================
 import hashlib
+import io
 import json
 import urllib.request
 from pathlib import Path
@@ -24,6 +26,7 @@ MAX_TOKENS = 2048
 DOCUMENT = "search_document: "
 QUERY = "search_query: "
 CACHE = Path(__file__).resolve().parents[2] / "data" / "processed"
+COMMITTED = Path(__file__).resolve().parents[2] / "embeddings"
 
 
 def _post(texts):
@@ -57,3 +60,15 @@ def cached_embed(name, texts, prefix):
     CACHE.mkdir(parents=True, exist_ok=True)
     np.savez(path, vectors=vectors, cut=cut)
     return vectors, cut
+
+
+def committed_controls(controls):
+    """The committed control embeddings, after checking their hash and that their ids follow the catalog."""
+    manifest = json.loads((COMMITTED / "manifest.json").read_text(encoding="utf-8"))
+    name = manifest["controls"]["file"]
+    data = (COMMITTED / name).read_bytes()
+    if hashlib.sha256(data).hexdigest() != manifest["sha256"][name]:
+        raise ValueError(f"embeddings/{name} doesn't match the hash in embeddings/manifest.json")
+    if manifest["controls"]["ids"] != [c.id for c in controls]:
+        raise ValueError("embeddings/manifest.json doesn't list the catalog's active controls in order")
+    return np.load(io.BytesIO(data))
