@@ -14,11 +14,13 @@ jobs:
   test:
     runs-on: ubuntu-26.04
     timeout-minutes: 10
-    # Step 5's database, for tests/test_database.py: the image in docker-compose.yml, pinned by digest.
+    # Step 5's database, for the database tests: the image in docker-compose.yml, pinned by the same digest.
+    # It comes from Google's Docker Hub mirror, because GitHub's runners hit Docker Hub's limit on anonymous
+    # pulls (Oct 9, 2026). The digest pins the content, so the mirror can't serve a different image.
     # It exists only for this job and holds only NIST's public data; its password protects nothing else.
     services:
       db:
-        image: pgvector/pgvector:0.8.7-pg18@sha256:2358fcba361ed2233a5ed81b5fe4ca779ccb304120ce531a3bf51c0ed7e2bc11
+        image: mirror.gcr.io/pgvector/pgvector:0.8.7-pg18@sha256:2358fcba361ed2233a5ed81b5fe4ca779ccb304120ce531a3bf51c0ed7e2bc11
         env:
           POSTGRES_USER: controlfinder
           POSTGRES_PASSWORD: controlfinder-local
