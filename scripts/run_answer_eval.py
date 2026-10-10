@@ -2,7 +2,7 @@
 # Step 6: cited answers from a local model, measured.
 #
 # Run:   Ollama with granite4:3b, qwen3:8b, and nomic-embed-text
-#        python scripts/run_answer_eval.py     (about 80 minutes on this Mac;
+#        python scripts/run_answer_eval.py     (about 55 minutes on this Mac;
 #        answers are cached in data/processed/, so a rerun skips them)
 # Questions, each split into dev and test halves:
 #   - NIST's answer keys (SP 800-171 Rev 3 and CSF 2.0): citation precision,

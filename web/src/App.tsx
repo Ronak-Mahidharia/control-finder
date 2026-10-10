@@ -23,7 +23,15 @@ export type View =
   | { kind: "busy"; what: "search" | "answer" }
   | { kind: "results"; data: SearchResponse }
   | { kind: "answer"; data: AnswerResponse; seconds: number | null }
-  | { kind: "error"; message: string };
+  | { kind: "error"; message: string; field?: "question" };
+
+// Where keyboard and screen-reader focus goes when something comes back.
+function focusTarget(view: View): string | null {
+  if (view.kind === "results") return "results-heading";
+  if (view.kind === "answer") return "answer-heading";
+  if (view.kind === "error") return view.field ?? "error-message";
+  return null;
+}
 
 interface PageProps {
   question: string;
@@ -119,7 +127,7 @@ export function Page({ question, method, view, status, fetchFn, onQuestion, onMe
           )}
         </div>
         {view.kind === "error" && (
-          <p role="alert" className="card error">
+          <p role="alert" id="error-message" tabIndex={-1} className="card error">
             {view.message}
           </p>
         )}
@@ -145,21 +153,25 @@ export function App({ fetchFn = browserFetch }: { fetchFn?: Fetch }) {
   const [view, setView] = useState<View>({ kind: "idle" });
   const [status, setStatus] = useState<Health | "unreachable" | null>(null);
   const running = useRef<AbortController | null>(null);
+  const startedFrom = useRef<Element | null>(null);
 
   useEffect(() => {
     health(fetchFn).then(setStatus, () => setStatus("unreachable"));
   }, [fetchFn]);
 
   useEffect(() => {
-    // Move keyboard and screen-reader focus to the new results.
-    if (view.kind === "results") document.getElementById("results-heading")?.focus();
-    if (view.kind === "answer") document.getElementById("answer-heading")?.focus();
+    // Move focus to what came back, unless the person has moved on while waiting (say, back into the
+    // question box): then it stays where they put it.
+    const target = focusTarget(view);
+    const here = document.activeElement;
+    if (target && (!here || here === document.body || here === startedFrom.current)) document.getElementById(target)?.focus();
   }, [view]);
 
   const run = async (what: "search" | "answer") => {
+    startedFrom.current = document.activeElement;
     const q = question.trim();
     if (!q) {
-      setView({ kind: "error", message: "Type a question first, or pick an example." });
+      setView({ kind: "error", message: "Type a question first, or pick an example.", field: "question" });
       return;
     }
     running.current?.abort();

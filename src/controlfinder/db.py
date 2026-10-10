@@ -14,14 +14,18 @@
 #          use_index() forces it; hnsw.ef_search sets how many candidates it
 #          keeps, and that's also the most rows one search returns (default 40).
 # Connects to CONTROLFINDER_DB_URL, or else the docker-compose.yml database.
+# The database tests and scripts/run_database_check.py rebuild the table, so
+# they use a database of their own on the same server (connect_for_checks).
 # ============================================================================
 import json
 import os
 import urllib.parse
 
 import pg8000.native
+from pg8000.exceptions import DatabaseError
 
 LOCAL_URL = "postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder"
+CHECK_DATABASE = "controlfinder_check"
 DIMENSIONS = 768
 HNSW = {"m": 16, "ef_construction": 64}  # pgvector's defaults, written out
 INDEX = "controls_embedding_hnsw"
@@ -29,10 +33,31 @@ EXACT_SQL = "SELECT id FROM controls ORDER BY inner_product(embedding, CAST(:v A
 INDEX_SQL = "SELECT id FROM controls ORDER BY embedding <#> CAST(:v AS vector) LIMIT :k"
 
 
+def _plain(text):
+    return urllib.parse.unquote(text) if text else text  # a URL writes characters like @ in a password as %40
+
+
 def connect(url=None):
     parts = urllib.parse.urlparse(url or os.environ.get("CONTROLFINDER_DB_URL", LOCAL_URL))
-    return pg8000.native.Connection(user=parts.username, password=parts.password, host=parts.hostname,
-                                    port=parts.port or 5432, database=parts.path.lstrip("/"), timeout=30)
+    return pg8000.native.Connection(user=_plain(parts.username), password=_plain(parts.password), host=parts.hostname,
+                                    port=parts.port or 5432, database=_plain(parts.path.lstrip("/")), timeout=30)
+
+
+def connect_for_checks(url=None):
+    """A connection to CHECK_DATABASE on the same server, which is made if it's missing. The checks drop and
+    rebuild the controls table, so the table the site searches is never touched while they run."""
+    url = url or os.environ.get("CONTROLFINDER_DB_URL", LOCAL_URL)
+    server = connect(url)
+    try:
+        if not server.run("SELECT 1 FROM pg_database WHERE datname = :name", name=CHECK_DATABASE):
+            try:
+                server.run(f"CREATE DATABASE {CHECK_DATABASE}")
+            except DatabaseError as exc:
+                if not (exc.args and isinstance(exc.args[0], dict) and exc.args[0].get("C") == "42P04"):
+                    raise  # 42P04: another run made it at the same moment, which is fine
+    finally:
+        server.close()
+    return connect(urllib.parse.urlparse(url)._replace(path="/" + CHECK_DATABASE).geturl())
 
 
 def versions(conn):

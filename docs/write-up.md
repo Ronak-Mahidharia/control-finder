@@ -55,7 +55,7 @@ The main weakness is citing too much: 4.15 controls per answer on NIST's test qu
 An MCP server gives Claude Desktop, Claude Code, and other MCP clients three read-only tools: `search_controls`, `get_control`, and `answer_question`. It searches in memory, which the database step showed gives the same rankings, so it needs only Ollama. Over stdio, with the model embedding each question live, it gave the published top 20 for all 203 questions, connected in 336 ms, and answered later searches in 12.7 ms. Its instructions ask the assistant to cite controls by label, describe only what a control's text says, and pass on "not covered" instead of answering from general knowledge.
 
 ## Seeing it work: a local website
-A small React and TypeScript website, served by the API at http://127.0.0.1:8000/, puts it all on one page. You type a question, see the closest controls, open any control's text and what an assessor checks, or ask for a cited answer. One script starts everything. A browser check clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode, and all 25 of its checks pass. Every color pair meets WCAG AA contrast in both themes, and the page may only talk to its own API.
+A small React and TypeScript website, served by the API at http://127.0.0.1:8000/, puts it all on one page. You type a question, see the closest controls, open any control's text and what an assessor checks, or ask for a cited answer. One script starts everything. A browser check clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode, and all 27 of its checks pass. Every color pair meets WCAG AA contrast in both themes, and the page may only talk to its own API.
 
 Looking at the screenshots caught a bug the tests had missed: the line listing the controls the model saw showed ids like "ia-5.1" instead of NIST's labels like "IA-5(1)". The API sends ids there, but my test data had used labels. The test data now matches the API, and the browser check looks for the labels.
 
@@ -68,7 +68,8 @@ Trying the site by hand found a second problem: the "Search by" choice seemed to
 - **Search a control's numbered parts** instead of the whole control, so a long control's main point doesn't get diluted.
 
 ## How it's checked
-- 110 Python tests run on every change, with the website's own tests, in GitHub Actions pinned to exact commits, with read-only permissions. The 11 database tests run against a pgvector container pinned by digest.
+- 117 Python tests run on every change, with the website's own tests, in GitHub Actions pinned to exact commits, with read-only permissions. The 12 database tests run against a pgvector container pinned by digest.
 - The embeddings, the vector lists, every reranker score, and every model answer are committed, so CI recomputes every published number without running a model.
-- Each step planted bugs on purpose to test the tests, 79 in all, and every one was caught; one was caught only after a test was added for it.
+- Each step planted bugs on purpose to test the tests, 90 in all, and every one was caught; one was caught only after a test was added for it.
+- A full check on Oct 9 started from a fresh copy, in a folder with a space in its name. Every script reproduced its published results, apart from timings and the random index builds. Taking the database and Ollama away on purpose, and reading the code through, found problems that are now fixed. The page called a stopped database "ready", the database tests rebuilt the very table the site searches, and stale connections failed the first search after the database restarted.
 - All models run locally through Ollama, so the project costs $0 to run, and it uses only NIST's public-domain data.

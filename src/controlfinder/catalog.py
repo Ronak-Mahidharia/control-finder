@@ -17,6 +17,16 @@ from pathlib import Path
 RAW = Path(__file__).resolve().parents[2] / "data" / "raw"
 SP_800_53 = RAW / "NIST_SP-800-53_rev5_catalog.json"
 INSERT = re.compile(r"\{\{\s*insert:\s*param,\s*([^}\s]+)\s*\}\}")
+ID = re.compile(r"^([a-z]{2})-(\d{1,2})(?:\((\d{1,2})\)|\.(\d{1,2}))?$", re.I)
+
+
+def to_id(text: str) -> str | None:
+    """'IA-5(1)', 'ia-5.1', and 'IA-05(01)' all become 'ia-5.1'."""
+    m = ID.match(text.strip())
+    if not m:
+        return None
+    family, number, enhancement = m.group(1).lower(), int(m.group(2)), m.group(3) or m.group(4)
+    return f"{family}-{number}" + (f".{int(enhancement)}" if enhancement else "")
 
 
 @dataclass(frozen=True)

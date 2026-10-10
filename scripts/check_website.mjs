@@ -114,10 +114,12 @@ await shot("answer-desktop-light");
 
 await clickText("button.example", HTTPS_PORT);
 await click("button.secondary");
+await js("document.querySelector('#question').focus()"); // the person clicks back into the question while waiting
 await until("document.querySelector('.badge')?.textContent === 'Not covered'", 400);
 check("a question the catalog doesn't cover gets Not covered", (await js("document.querySelector('.badge')?.textContent")) === "Not covered");
 check("with the fixed sentence, not the model's own words", (await text()).includes(NOT_COVERED) && !(await text()).includes("443"));
 check("and no citations", !(await text()).includes("Cited controls"));
+check("clicking back into the question while waiting keeps the cursor there", (await js("document.activeElement?.id")) === "question");
 
 await clickText("button.example", PASSWORDS);
 await js("[...document.querySelectorAll('input[name=method]')].find((i) => i.value === 'keyword').click()");
@@ -136,6 +138,13 @@ check("and searching again gives that choice's own list", (await text()).include
   && !(await text()).includes("You changed"), `keywords: ${keywordList} | meaning: ${await listed()}`);
 const small = await js("[...document.querySelectorAll('button, summary, .choice')].filter((e) => e.offsetParent && e.getBoundingClientRect().height < 44).map((e) => e.textContent.trim().slice(0, 30))");
 check("every button and toggle is at least 44 px tall", small.length === 0, small.join("; "));
+await js(`(() => { const box = document.querySelector('#question');
+  Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(box, '');
+  box.dispatchEvent(new Event('input', { bubbles: true })); })()`); // empty the question, as a person would
+await click("form button[type=submit]");
+await until("document.body.innerText.includes('Type a question first')", 20);
+check("an empty question says so and puts the cursor in the question box",
+  (await text()).includes("Type a question first, or pick an example.") && (await js("document.activeElement?.id")) === "question");
 
 // ---- Desktop, dark
 await view(1280, 900, false, "dark");

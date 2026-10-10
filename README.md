@@ -16,7 +16,7 @@ The first time, you'll need the Python setup in [Run it](#run-it), Docker Deskto
 - Type a question or pick an example. **Find controls** lists the 10 closest controls, each with NIST's text and what an assessor checks. **Answer with citations** gives the local model's answer, citing only controls it was shown.
 - **Search by** picks hybrid, meaning-only, or keyword search for Find controls, and every list says which one found it. Answers always use hybrid search, the setup they were measured with, and the page says so.
 - A question the catalog doesn't cover, such as the HTTPS port, gets "Not covered" and a fixed sentence.
-- A browser check (`node scripts/check_website.mjs`) clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode: 25 of 25 checks pass. More pictures: [search on a desktop](docs/screenshots/search-desktop-light.png), [an answer in dark mode](docs/screenshots/answer-desktop-dark.png), [search on a phone](docs/screenshots/search-phone-light.png).
+- A browser check (`node scripts/check_website.mjs`) clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode: 27 of 27 checks pass. More pictures: [search on a desktop](docs/screenshots/search-desktop-light.png), [an answer in dark mode](docs/screenshots/answer-desktop-dark.png), [search on a phone](docs/screenshots/search-phone-light.png).
 
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
@@ -68,6 +68,8 @@ AI assistants such as Claude Desktop and Claude Code can use Control Finder as t
 - **Its instructions** ask the assistant to cite controls by label, describe only what a control's text says, and pass on "not covered" instead of answering from general knowledge.
 
 ## Run it
+Needs Python 3.12 or newer (`python3 --version` shows yours).
+
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 .venv/bin/python scripts/download_data.py        # NIST's files, pinned and hash-checked
@@ -85,10 +87,12 @@ docker compose up -d --wait                       # step 5's database: PostgreSQ
 .venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
 (cd web && npm ci && npm test && npm run build)   # the website: its tests, then the build the API serves
 node scripts/check_website.mjs                    # with scripts/start_local.sh running: the browser check, and the screenshots
-.venv/bin/python -m pytest -q                    # 110 tests, including that the published numbers reproduce
+.venv/bin/python -m pytest -q                    # 117 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
-  .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 11 tests that need that database
+  .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 12 tests that need that database
 ```
+
+The database tests and `scripts/run_database_check.py` rebuild their table in a database of their own on the same server (`controlfinder_check`), so the site's table is never touched and they can run while the site does.
 
 ## The data
 - **The catalog:** NIST SP 800-53 Rev 5.2.0, with the SP 800-53A Rev 5.2.0 assessment procedures, from NIST's machine-readable OSCAL files ([usnistgov/oscal-content](https://github.com/usnistgov/oscal-content)). It has 20 families, 300 active controls, 714 active enhancements, and 3,715 assessment objectives.

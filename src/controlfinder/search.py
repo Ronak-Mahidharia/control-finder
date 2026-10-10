@@ -6,13 +6,15 @@
 # A question is embedded with the same local model and query prefix as the
 # published results, so the API returns the rankings that were measured.
 # ============================================================================
+import logging
 import queue
+import threading
 import time
 from contextlib import contextmanager
 from functools import lru_cache
 
 import numpy as np
-from pg8000.exceptions import InterfaceError
+from pg8000.exceptions import DatabaseError, InterfaceError
 
 from controlfinder import db
 from controlfinder.bm25 import BM25
@@ -25,6 +27,8 @@ DEPTH = 100  # each list's length before fusion, as in steps 3 and 4
 RRF_K = 60
 VECTOR_WEIGHT = 3.0  # chosen on CSF 2.0 dev questions in step 4 (results/rerank.json)
 METHODS = ("hybrid", "vector", "keyword")
+NO_DATABASE = "the database isn't reachable (docker compose up -d --wait)"
+log = logging.getLogger(__name__)
 
 
 class Unavailable(Exception):
@@ -63,16 +67,33 @@ class Pool:
             if conn is None:
                 conn = db.connect(self._url)
             yield conn
-        except Exception:
+        except Exception as exc:
             if conn is not None:
                 try:
                     conn.close()
                 except Exception:
                     pass
             conn = None  # a fresh connection next time
+            if isinstance(exc, (OSError, InterfaceError)):
+                self._drop_idle()  # the connection was lost, so the database restarted: the idle ones are stale too
             raise
         finally:
             self._free.put(conn)
+
+    def _drop_idle(self):
+        idle = []
+        while True:
+            try:
+                idle.append(self._free.get_nowait())
+            except queue.Empty:
+                break
+        for conn in idle:
+            if conn is not None:
+                try:
+                    conn.close()
+                except Exception:
+                    pass
+            self._free.put(None)
 
     def close(self):
         while not self._free.empty():
@@ -91,31 +112,61 @@ class Searcher:
         self.by_id = {c.id: c for c in self.controls}
         self.bm25 = BM25([f"{c.title}. {c.statement} {c.guidance}" for c in self.controls])
         self.pool, self.embed = pool, embed
+        self.database = None  # "ready" or "loaded" once the controls are known to be in the database
+        self._preparing = threading.Lock()
 
-    def prepare_database(self):
-        """Loads the controls into the database unless they're there already: "ready", "loaded", or "unreachable"."""
+    def _run(self, work):
+        """work(conn) on a pooled connection. A lost connection is tried once more on a fresh one, because
+        the pool's connections go stale when the database restarts."""
         try:
             with self.pool.connection() as conn:
-                return "loaded" if db.ensure_loaded(conn, self.controls, committed_controls(self.controls)) else "ready"
+                return work(conn)
         except (OSError, InterfaceError):
-            return "unreachable"
+            with self.pool.connection() as conn:
+                return work(conn)
+
+    def prepare_database(self):
+        """Loads the controls into the database unless they're there already: "ready", "loaded", or "unreachable".
+        Once it has worked it isn't done again, and a database that starts after the API is prepared on first use."""
+        with self._preparing:
+            if self.database is None:
+                try:
+                    loaded = self._run(lambda conn: db.ensure_loaded(conn, self.controls, committed_controls(self.controls)))
+                except (OSError, InterfaceError):
+                    return "unreachable"
+                except DatabaseError as exc:  # it answered but refused: still starting up, or a wrong password
+                    log.warning("the database refused: %s", exc)
+                    return "unreachable"
+                self.database = "loaded" if loaded else "ready"
+            return self.database
 
     def database_versions(self):
         try:
-            with self.pool.connection() as conn:
-                return db.versions(conn)
-        except (OSError, InterfaceError):
+            return self._run(db.versions)
+        except (OSError, InterfaceError, DatabaseError):
             return None
+
+    def database_status(self):
+        """The database as it is now, for /health: ("unreachable", {}), or ("ready" or "loaded", its versions)."""
+        versions = self.database_versions()
+        if not versions:
+            return "unreachable", {}
+        return self.prepare_database(), versions
 
     def keyword(self, question):
         return [self.controls[i].id for i, _ in self.bm25.search(question, DEPTH)]
 
     def vector(self, vector):
+        if self.database is None and self.prepare_database() == "unreachable":
+            raise Unavailable(NO_DATABASE)
         try:
-            with self.pool.connection() as conn:
-                return db.nearest(conn, vector, DEPTH, exact=True)
+            return self._run(lambda conn: db.nearest(conn, vector, DEPTH, exact=True))
         except (OSError, InterfaceError) as exc:
-            raise Unavailable("the database isn't reachable (docker compose up -d --wait)") from exc
+            raise Unavailable(NO_DATABASE) from exc
+        except DatabaseError as exc:  # for example, its table was dropped: the next search checks and fills it again
+            self.database = None
+            log.warning("vector search failed in the database: %s", exc)
+            raise Unavailable("the database isn't ready; try again in a moment") from exc
 
     def search(self, question, method="hybrid", k=10):
         """The top k, each with its rank in each list that was searched, and the milliseconds each part took.

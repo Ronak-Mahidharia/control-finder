@@ -1,5 +1,6 @@
 # Step 5 against a real database. These run when CONTROLFINDER_DB_URL is set: CI starts one, and
-# locally `docker compose up -d --wait` starts the one at db.LOCAL_URL. They rebuild the controls table.
+# locally `docker compose up -d --wait` starts the one at db.LOCAL_URL. They rebuild the controls table in a
+# database of their own on that server (db.CHECK_DATABASE), so the site's table is never touched.
 import json
 import os
 import statistics
@@ -31,12 +32,16 @@ PROBE = QUESTIONS["csf2"][MANIFEST["questions"]["csf2"]["ids"][0]]
 
 @pytest.fixture(scope="module")
 def conn():
-    connection = db.connect()
+    connection = db.connect_for_checks()
     db.create_table(connection)
     db.load(connection, active_controls(), DOCS)
     db.create_index(connection)
     yield connection
     connection.close()
+
+
+def test_the_checks_use_a_database_of_their_own(conn):
+    assert conn.run("SELECT current_database()")[0][0] == db.CHECK_DATABASE != db.LOCAL_URL.rsplit("/", 1)[1]
 
 
 @pytest.fixture(scope="module")

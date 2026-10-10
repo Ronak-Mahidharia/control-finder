@@ -3,7 +3,7 @@
 # with the real models) and checked against the published rankings.
 #
 # Run:   Ollama with nomic-embed-text and qwen3:8b
-#        python scripts/run_mcp_check.py   (about 1 minute)
+#        python scripts/run_mcp_check.py   (about 20 seconds)
 #   1. Starts the server as its own process, the way Claude Desktop or Claude
 #      Code would, and times the connection and the list of tools.
 #   2. Asks search_controls all 203 questions (hybrid, top 20) and compares

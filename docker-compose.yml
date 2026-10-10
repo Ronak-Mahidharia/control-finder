@@ -15,7 +15,9 @@ services:
     volumes:
       - controlfinder-db:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U controlfinder -d controlfinder"]
+      # Over TCP: on the first start, the image sets the database up with a temporary server that only
+      # listens on a local socket, and that one must not count as ready.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U controlfinder -d controlfinder"]
       interval: 2s
       timeout: 3s
       retries: 30

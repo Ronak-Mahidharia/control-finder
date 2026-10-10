@@ -59,8 +59,9 @@ export function statusLine(h: Health | "unreachable" | null): { ok: boolean; tex
   if (h === null) return { ok: true, text: "Checking what's running…" };
   if (h === "unreachable") return { ok: false, text: `The API isn't reachable. ${START_HINT}` };
   const missing = [h.database === "unreachable" ? "the database" : "", h.embedding_model === "unreachable" ? "the embedding model (Ollama)" : ""].filter(Boolean);
-  if (!missing.length) return { ok: true, text: `Ready: ${h.controls.toLocaleString("en-US")} controls and enhancements, PostgreSQL with pgvector ${h.pgvector}, and the local embedding model.` };
-  return { ok: false, text: `Only keyword search works right now: ${missing.join(" and ")} can't be reached. ${START_HINT}` };
+  if (h.status === "ok" && !missing.length) return { ok: true, text: `Ready: ${h.controls.toLocaleString("en-US")} controls and enhancements, PostgreSQL with pgvector ${h.pgvector}, and the local embedding model.` };
+  const why = missing.length ? `: ${missing.join(" and ")} can't be reached` : ""; // "degraded" is enough to warn, even without a reason
+  return { ok: false, text: `Only keyword search works right now${why}. ${START_HINT}` };
 }
 
 // An OSCAL id as NIST prints it: "ia-5.1" becomes "IA-5(1)", and "ac-2" becomes "AC-2".

@@ -1,7 +1,7 @@
 {
  "base": "http://127.0.0.1:8000/",
- "passed": 25,
- "total": 25,
+ "passed": 27,
+ "total": 27,
  "checks": [
   {
    "name": "the page loads, titled Control Finder",
@@ -76,6 +76,10 @@
    "passed": true
   },
   {
+   "name": "clicking back into the question while waiting keeps the cursor there",
+   "passed": true
+  },
+  {
    "name": "keyword search works too",
    "passed": true
   },
@@ -89,6 +93,10 @@
   },
   {
    "name": "every button and toggle is at least 44 px tall",
+   "passed": true
+  },
+  {
+   "name": "an empty question says so and puts the cursor in the question box",
    "passed": true
   },
   {

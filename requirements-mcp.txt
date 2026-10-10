@@ -2,9 +2,13 @@
 # all MIT, MIT-0, BSD-3-Clause, or Apache-2.0 (cryptography: Apache-2.0 or BSD-3-Clause). pip-audit found no
 # known vulnerabilities on Oct 9, 2026. Installed with requirements-dev.txt, or alone with:
 #   pip install -r requirements.txt -r requirements-mcp.txt
+# mcp needs httpx2 (BSD-3-Clause), which needs httpcore2 (BSD-3-Clause) and truststore (MIT); Starlette's
+# test client uses httpx2 too, for the API's tests.
 attrs==26.1.0
 cffi==2.1.1
 cryptography==50.0.2
+httpcore2==2.13.1
+httpx2==2.13.1
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
 mcp==2.3.0
@@ -15,3 +19,4 @@ python-multipart==0.0.32
 referencing==0.37.0
 rpds-py==2026.9.1
 sse-starlette==3.5.0
+truststore==0.10.4

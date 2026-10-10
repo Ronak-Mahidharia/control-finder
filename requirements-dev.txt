@@ -2,11 +2,7 @@
 # Install with: pip install -r requirements-dev.txt
 -r requirements.txt
 -r requirements-mcp.txt
-# httpx2 (BSD-3-Clause) runs the API's tests (Starlette's test client asks for it instead of httpx); it needs
-# httpcore2 (BSD-3-Clause) and truststore (MIT)
-httpcore2==2.13.1
-httpx2==2.13.1
-truststore==0.10.4
+# httpx2, which Starlette's test client uses for the API's tests, comes with requirements-mcp.txt
 iniconfig==2.3.0
 packaging==26.3
 pluggy==1.6.0
