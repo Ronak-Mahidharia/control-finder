@@ -29,7 +29,7 @@ def test_the_results_back_the_claims():
 
 def test_readme_numbers_match_the_results():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    start = readme.index("## The vector database (step 5)")
+    start = readme.index("## The vector database")
     section = readme[start:readme.index("\n## ", start)]  # up to the next heading
     e, default = RESULTS["exact"], RESULTS["hnsw"]["settings"]["ef_search 40 (default)"]
     ms = {name: m["median"] for name, m in RESULTS["speed"]["milliseconds_per_question_top_100"].items()}
