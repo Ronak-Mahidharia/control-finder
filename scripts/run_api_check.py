@@ -2,7 +2,7 @@
 # Step 5: the API, run for real and checked against the published rankings.
 #
 # Run:   docker compose up -d --wait, and Ollama with nomic-embed-text
-#        python scripts/run_api_check.py   (about 1 minute)
+#        python scripts/run_api_check.py   (about 15 seconds)
 #   1. Starts the API (uvicorn, one worker) on a free local port, fresh for
 #      each method, so no question has been asked before.
 #   2. Sends one warm-up question (not in either answer key), which loads the

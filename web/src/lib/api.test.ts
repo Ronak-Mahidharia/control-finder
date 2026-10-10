@@ -61,6 +61,16 @@ describe("status line", () => {
     });
     expect(statusLine("unreachable").ok).toBe(false);
   });
+
+  it("never calls a degraded API ready", () => {
+    // What an older API said when the database stopped after it started: "ready", but no versions.
+    const stale: Health = { ...ready, status: "degraded", postgresql: null, pgvector: null };
+    expect(statusLine(stale)).toEqual({
+      ok: false,
+      text: "Only keyword search works right now. Start everything with scripts/start_local.sh, then reload this page.",
+    });
+    expect(statusLine(stale).text).not.toContain("null");
+  });
 });
 
 describe("labels", () => {

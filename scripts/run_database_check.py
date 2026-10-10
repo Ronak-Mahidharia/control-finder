@@ -4,7 +4,9 @@
 #
 # Run:   docker compose up -d --wait   (the database in docker-compose.yml)
 #        python scripts/run_database_check.py   (about 1 minute)
-#   1. Loads the committed embeddings (embeddings/) into a fresh table.
+#   1. Loads the committed embeddings (embeddings/) into a fresh table, in a
+#      database of its own on that server (db.CHECK_DATABASE), so the site's
+#      table isn't touched.
 #   2. Exact search: every question's top 100, compared with the committed
 #      in-memory lists (results/vector_top100.json), then scored on the test
 #      questions alone and inside the hybrid searches of steps 3 and 4.
@@ -125,7 +127,7 @@ def main():
     def scores(ranked):
         return {n: {m: score(ranked[m][n], qs) for m in methods} for n, qs in keys.items()}
 
-    conn = db.connect()
+    conn = db.connect_for_checks()
     t = time.perf_counter()
     db.create_table(conn)
     db.load(conn, controls, docs)

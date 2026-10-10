@@ -14,7 +14,6 @@ showed gives the same rankings as the database, so it needs no database. Nothing
 """
 from __future__ import annotations
 
-import re
 from typing import Annotated, Literal, TypedDict
 
 from mcp.server.mcpserver import MCPServer
@@ -23,12 +22,11 @@ from mcp.types import ToolAnnotations
 from pydantic import Field
 
 from controlfinder import answer
-from controlfinder.catalog import load_catalog
+from controlfinder.catalog import load_catalog, to_id
 from controlfinder.search import InMemorySearcher, Unavailable
 
 MAX_QUESTION = 2000  # characters, as in the API
 MAX_K = 20
-ID = re.compile(r"^([a-z]{2})-(\d{1,2})(?:\((\d{1,2})\)|\.(\d{1,2}))?$", re.I)
 
 INSTRUCTIONS = """Find the NIST SP 800-53 Rev 5.2.0 security controls that answer a question, and read them.
 - Cite controls by their label (for example IA-5(1)), and describe only what a control's own text says; get_control returns it.
@@ -101,15 +99,6 @@ def current() -> InMemorySearcher:
     if searcher is None:
         searcher = InMemorySearcher()
     return searcher
-
-
-def to_id(text: str) -> str | None:
-    """'IA-5(1)', 'ia-5.1', and 'IA-05(01)' all become 'ia-5.1'."""
-    m = ID.match(text.strip())
-    if not m:
-        return None
-    family, number, enhancement = m.group(1).lower(), int(m.group(2)), m.group(3) or m.group(4)
-    return f"{family}-{number}" + (f".{int(enhancement)}" if enhancement else "")
 
 
 def nonempty(question: str) -> str:

@@ -31,12 +31,12 @@ ollama pull nomic-embed-text && ollama pull qwen3:8b
 python -m controlfinder.mcp_server              # starts and waits for an assistant; press Ctrl+C to stop
 ```
 
-The examples below use `/path/to/control-finder` for the folder you cloned. Use the full path, not a relative one.
+The examples below use `/path/to/control-finder` for the folder you cloned. Use the full path, not a relative one, and keep the quotes: they matter when the path has a space in it.
 
 **Claude Code:**
 
 ```bash
-claude mcp add control-finder -- /path/to/control-finder/.venv/bin/python -m controlfinder.mcp_server
+claude mcp add control-finder -- "/path/to/control-finder/.venv/bin/python" -m controlfinder.mcp_server
 ```
 
 **Claude Desktop:**
@@ -55,7 +55,7 @@ claude mcp add control-finder -- /path/to/control-finder/.venv/bin/python -m con
    ```
 3. Save, then quit Claude Desktop completely and open it again.
 
-**Other MCP clients:** run the same command, `/path/to/control-finder/.venv/bin/python -m controlfinder.mcp_server`, as a stdio server.
+**Other MCP clients:** run the same command, `"/path/to/control-finder/.venv/bin/python" -m controlfinder.mcp_server`, as a stdio server.
 
 ## How it's checked
 - `tests/test_mcp_server.py` connects a real MCP client to the server in-process. It checks the tools and their limits, and every question's search results against the published rankings, with the committed embeddings standing in for the model. A stand-in replaces the answer model.

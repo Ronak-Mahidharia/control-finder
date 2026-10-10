@@ -13,6 +13,7 @@
 # the database if they aren't there. Keyword search works even without the database or Ollama;
 # the other methods answer 503 until both can be reached.
 # ============================================================================
+import json
 import time
 import urllib.request
 from contextlib import asynccontextmanager
@@ -25,7 +26,8 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from controlfinder import answer
-from controlfinder.catalog import load_catalog
+from controlfinder.catalog import load_catalog, to_id
+from controlfinder.embeddings import MODEL as EMBED_MODEL
 from controlfinder.embeddings import URL as EMBED_URL
 from controlfinder.search import DEPTH, VECTOR_WEIGHT, Pool, Searcher, Unavailable
 
@@ -80,25 +82,28 @@ class AnswerResponse(BaseModel):
 class Health(BaseModel):
     status: Literal["ok", "degraded"] = Field(description="degraded: only keyword search works right now")
     controls: int
-    database: Literal["ready", "loaded", "unreachable"] = Field(description="at startup: found ready, loaded then, or not reachable")
+    database: Literal["ready", "loaded", "unreachable"] = Field(
+        description="right now: ready (the controls were already there), loaded (this API loaded them), or not reachable")
     postgresql: str | None
     pgvector: str | None
     embedding_model: Literal["reachable", "unreachable"]
 
 
-def _ollama_reachable():
+def _embedding_model_ready():
+    """Ollama is running and has the embedding model: without the model, it can't embed a question."""
     try:
-        with urllib.request.urlopen(EMBED_URL.replace("/api/embed", "/api/version"), timeout=2):
-            return True
-    except OSError:
+        with urllib.request.urlopen(EMBED_URL.replace("/api/embed", "/api/tags"), timeout=2) as response:
+            names = {m.get("name") for m in json.load(response).get("models", [])}
+    except (OSError, ValueError):
         return False
+    return EMBED_MODEL in names or f"{EMBED_MODEL}:latest" in names
 
 
-def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=answer.ask_chosen, site=SITE):
+def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answerer=answer.ask_chosen, site=SITE):
     @asynccontextmanager
     async def lifespan(app):
         app.state.searcher = searcher or Searcher(Pool())
-        app.state.database = app.state.searcher.prepare_database()
+        app.state.searcher.prepare_database()  # or on first use, if the database starts later
         yield
         app.state.searcher.pool.close()
 
@@ -113,10 +118,10 @@ def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=
     @app.get("/health", response_model=Health)
     def health(request: Request):
         s = request.app.state.searcher
-        versions = s.database_versions() or {}
+        database, versions = s.database_status()  # as it is now: it may have stopped, or started, since the API did
         model = "reachable" if embedding_model_check() else "unreachable"
-        ok = bool(versions) and model == "reachable"
-        return {"status": "ok" if ok else "degraded", "controls": len(s.controls), "database": request.app.state.database,
+        ok = database != "unreachable" and model == "reachable"
+        return {"status": "ok" if ok else "degraded", "controls": len(s.controls), "database": database,
                 "postgresql": versions.get("postgresql"), "pgvector": versions.get("pgvector"), "embedding_model": model}
 
     @app.get("/search", response_model=SearchResponse)
@@ -161,9 +166,10 @@ def create_app(searcher=None, embedding_model_check=_ollama_reachable, answerer=
 
     @app.get("/controls/{control_id}", response_model=ControlDetail)
     def control(request: Request, control_id: str):
-        c = request.app.state.searcher.by_id.get(control_id.lower())
+        cid = to_id(control_id)  # "ia-5.1", or NIST's label "IA-5(1)", as the MCP server takes them
+        c = request.app.state.searcher.by_id.get(cid) if cid else None
         if c is None:
-            gone = next((w for w in load_catalog() if w.id == control_id.lower() and w.withdrawn), None)
+            gone = next((w for w in load_catalog() if w.id == cid and w.withdrawn), None) if cid else None
             detail = f"{gone.label} is withdrawn in SP 800-53 Rev 5.2.0" if gone else f"no control or enhancement has the id {control_id!r}"
             raise HTTPException(status_code=404, detail=detail)
         return {"id": c.id, "label": c.label, "title": c.title, "family": c.family, "parent": c.parent,
