@@ -18,6 +18,38 @@ The first time, you'll need the Python setup in [Run it](#run-it), Docker Deskto
 - A question the catalog doesn't cover, such as the HTTPS port, gets "Not covered" and a fixed sentence.
 - A browser check (`node scripts/check_website.mjs`) clicks through the site in headless Chrome on a desktop and a phone, in light and dark mode: 27 of 27 checks pass. More pictures: [search on a desktop](docs/screenshots/search-desktop-light.png), [an answer in dark mode](docs/screenshots/answer-desktop-dark.png), [search on a phone](docs/screenshots/search-phone-light.png).
 
+## How it fits together
+```mermaid
+flowchart TB
+    nist[("NIST's files<br/>SP 800-53 with 800-53A, SP 800-171, CSF 2.0")]
+
+    subgraph offline["Built and measured offline, in Python"]
+        keys["Answer keys<br/>NIST's own links, plus hand-made questions"]
+        emb["Embeddings of every active control<br/>committed in embeddings/"]
+        exp["Experiments<br/>keyword, vector, hybrid, reranking, cited answers"]
+        results["Published results<br/>results/ and docs/"]
+    end
+
+    subgraph live["Used live, on this computer only"]
+        db[("PostgreSQL with pgvector<br/>in Docker")]
+        api["API (FastAPI) on 127.0.0.1<br/>/search, /answer, /controls, /health"]
+        site["Website<br/>React and TypeScript"]
+        mcp["MCP server<br/>3 read-only tools over stdio"]
+        assistant["AI assistant<br/>Claude Desktop, Claude Code"]
+        ollama["Ollama<br/>nomic-embed-text, qwen3:8b"]
+    end
+
+    nist --> keys & emb
+    keys & emb --> exp --> results
+    emb --> db --> api --> site
+    emb --> mcp
+    mcp <--> assistant
+    api & mcp --> ollama
+```
+
+- **Offline, in Python:** NIST's own links between its documents are the answer key. Settings are chosen on dev questions only, and every result is published in [`results/`](results) and [`docs/`](docs).
+- **Live:** the API searches the database (exact search, so it returns the rankings that were measured) and serves the website. The MCP server searches the same embeddings in memory, which gives the same rankings with no database. Questions go only to Ollama on this computer.
+
 ## Results so far
 Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
 
