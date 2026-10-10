@@ -9,7 +9,7 @@ AI assistants (Claude Desktop, Claude Code, and other MCP clients) can use Contr
 | `get_control` | A control's statement, guidance, and SP 800-53A assessment objectives, by id or label (`ia-5.1` or `IA-5(1)`). A withdrawn id says so. |
 | `answer_question` | A cited answer from the local model (qwen3:8b), from the controls the search found. When none of them answer the question, a fixed sentence says it isn't covered. |
 
-Questions are capped at 2,000 characters. The search runs in memory from the committed embeddings, which step 5 showed gives the same rankings as the database, so no database is needed.
+Questions are capped at 2,000 characters. The search runs in memory from the committed embeddings, which gives the same rankings as the database, so no database is needed.
 
 ## What it tells the assistant
 ```text

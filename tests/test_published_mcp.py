@@ -34,7 +34,7 @@ def test_the_setup_guide_quotes_the_servers_own_instructions():
 
 def test_readme_numbers_match_the_results():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    start = readme.index("## The MCP server (step 7)")
+    start = readme.index("## The MCP server")
     section = readme[start:readme.index("\n## ", start)]
     s = RESULTS["search"]
     for phrase in (f"it gave the published top 20 for {s['same_top_20_as_published']} of {s['questions']} questions",

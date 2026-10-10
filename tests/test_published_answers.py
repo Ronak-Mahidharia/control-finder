@@ -67,7 +67,7 @@ def test_the_page_is_generated_from_the_results(ev, context):
 
 def test_readme_numbers_match_the_results():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    start = readme.index("## Cited answers (step 6)")
+    start = readme.index("## Cited answers")
     section = readme[start:readme.index("\n## ", start)]
     t, n = RESULTS["test"], RESULTS["test"]["nist"]
     nc = t["answers"]["not_covered_text"]

@@ -25,7 +25,7 @@ def test_the_results_back_the_claims():
 
 def test_readme_numbers_match_the_results():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    start = readme.index("## The API (step 5)")
+    start = readme.index("## The API")
     section = readme[start:readme.index("\n## ", start)]  # up to the next heading
     ms = RESULTS["milliseconds"]
     hybrid_new, hybrid_again = ms["hybrid"]["first time"], ms["hybrid"]["asked before"]
