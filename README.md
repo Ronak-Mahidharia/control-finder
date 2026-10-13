@@ -62,7 +62,7 @@ flowchart TB
 - **Live:** the API searches the database (exact search, so it returns the rankings that were measured) and serves the website. The MCP server searches the same embeddings in memory, which gives the same rankings with no database. Questions go only to Ollama on this computer.
 
 ## Results
-Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md).
+Three ways to search the 1,014 active controls and enhancements, scored on the test questions of two answer keys built from NIST's own data. Settings were chosen on dev questions only; each method was scored once on test. Details: [keyword search](docs/results.md), [vector and hybrid search](docs/results-vector-hybrid.md), [weighting and reranking](docs/results-rerank.md), [following NIST's links](docs/results-related.md).
 
 | Answer key | Method | Test questions | MRR | First result right | A right control in the top 10 |
 |---|---|---|---|---|---|
@@ -71,15 +71,18 @@ Three ways to search the 1,014 active controls and enhancements, scored on the t
 | CSF 2.0 | Hybrid (RRF) | 46 | 0.411 | 26.1% | 78.3% |
 | CSF 2.0 | Hybrid, vector weight 3 | 46 | 0.463 | 32.6% | 76.1% |
 | CSF 2.0 | Hybrid + reranker (mxbai-rerank-xsmall-v1) | 46 | 0.491 | 32.6% | 80.4% |
+| CSF 2.0 | Hybrid + NIST's links between controls | 46 | 0.567 | 41.3% | 87.0% |
 | SP 800-171 | Keyword (BM25) | 45 | 0.983 | 97.8% | 100.0% |
 | SP 800-171 | Vector (nomic-embed-text) | 45 | 0.902 | 84.4% | 97.8% |
 | SP 800-171 | Hybrid (RRF) | 45 | 0.967 | 95.6% | 97.8% |
 | SP 800-171 | Hybrid, vector weight 3 | 45 | 0.906 | 84.4% | 97.8% |
 | SP 800-171 | Hybrid + reranker (mxbai-rerank-xsmall-v1) | 45 | 0.924 | 88.9% | 97.8% |
+| SP 800-171 | Hybrid + NIST's links between controls | 45 | 0.569 | 35.6% | 97.8% |
 
 - **CSF 2.0 is the real test.** Its outcomes are worded unlike the controls ("Vulnerabilities in assets are identified, validated, and recorded"). Searching by meaning nearly doubles keyword search's MRR there.
 - **Hybrid search isn't automatically better.** On CSF 2.0 it found the most right controls (recall@10 0.334, against 0.303 for vectors alone) but put a right one first less often. Across both keys it's the most balanced: on SP 800-171, which keyword search nearly aces because NIST adapted each requirement's wording from its source controls, it keeps most of keyword search's lead.
 - **Reranking helps most on the hard key.** Weighting the vector list 3 times (chosen on dev) and reranking its top 30 with mxbai-rerank-xsmall-v1 gives CSF 2.0's best MRR, 0.491. A bigger reranker isn't automatically better: bge-reranker-base did worse on dev than no reranking (0.405 against 0.470). And there's a trade-off: tuned for CSF 2.0, the weighted search loses ground on SP 800-171. Reranking can only reorder the top 30, which hold 53.2% of CSF 2.0's right controls on test.
+- **Following NIST's own links helps the hard key and hurts the easy one.** Each control lists related controls (3,509 links between the active ones); letting the hybrid search's top 10 lend a quarter of their score to the controls they list (chosen on CSF 2.0 dev from 12 settings) gives CSF 2.0's best MRR yet, 0.567, with a right control in the top 10 for 87.0% of questions. On SP 800-171 MRR falls from 0.906 to 0.569: its requirements come from one or two specific controls, and related ones push them down. So the API doesn't use it.
 - **Everything runs locally and free:** the embedding model is nomic-embed-text through Ollama. The embeddings, every question's top 100 vector results, and every reranker score are committed, so CI checks these numbers without the models.
 - **Stated openly:** a first exploratory run, while the CSF 2.0 key was being built, also printed its keyword test numbers. Nothing was tuned on them.
 
@@ -130,7 +133,7 @@ docker compose up -d --wait                       # the database: PostgreSQL wit
 .venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
 (cd web && npm ci && npm test && npm run build)   # the website: its tests, then the build the API serves
 node scripts/check_website.mjs                    # with scripts/start_local.sh running: the browser check, and the screenshots
-.venv/bin/python -m pytest -q                    # 117 tests, including that the published numbers reproduce
+.venv/bin/python -m pytest -q                    # 123 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
   .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 12 tests that need that database
 ```
