@@ -43,7 +43,7 @@ flowchart TB
 
     subgraph live["Used live, on this computer only"]
         db[("PostgreSQL with pgvector<br/>in Docker")]
-        api["API (FastAPI) on 127.0.0.1<br/>/search, /answer, /controls, /health"]
+        api["API (FastAPI) on 127.0.0.1<br/>/search, /answer, /controls, /health, /stats"]
         site["Website<br/>React and TypeScript"]
         mcp["MCP server<br/>3 read-only tools over stdio"]
         assistant["AI assistant<br/>Claude Desktop, Claude Code"]
@@ -98,6 +98,7 @@ The controls are also loaded into PostgreSQL with pgvector, from the committed e
 - **Speed:** a hybrid search took 22.79 ms (median) when the question was new, 11.31 ms of it embedding the question, and 5.37 ms when it had been asked before. Keyword search took 1.05 ms. These times come from one Apple-silicon Mac.
 - **When something is down:** keyword search still works without the database or the model, and the other methods answer 503 with the reason. Questions are capped at 2,000 characters and results at 50.
 - **Not served:** the reranker, which would add PyTorch to the service. The API serves the weighted hybrid search.
+- **A record of every request:** each response sends back an `X-Request-ID`, and `GET /stats` shows the recent requests: each route's count and errors, the median and 95th-percentile time of each step (keyword search, embedding, vector search, fusion, the answer), and the answer model's tokens. With `CONTROLFINDER_TRACE_FILE` set, each record is also added to that file as one line of JSON. A question's text is never kept, only its length. A record takes about 0.2 µs in memory and 31 µs with the file, against about 23 ms for a hybrid search (one Apple-silicon Mac).
 
 ## Cited answers
 `GET /answer` has a local model (qwen3:8b, chosen on dev) read the hybrid search's top 10 controls and answer from them only. Its citations can only name controls it was shown. Details: [cited answers](docs/results-answers.md).
@@ -133,7 +134,7 @@ docker compose up -d --wait                       # the database: PostgreSQL wit
 .venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
 (cd web && npm ci && npm test && npm run build)   # the website: its tests, then the build the API serves
 node scripts/check_website.mjs                    # with scripts/start_local.sh running: the browser check, and the screenshots
-.venv/bin/python -m pytest -q                    # 123 tests, including that the published numbers reproduce
+.venv/bin/python -m pytest -q                    # 128 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
   .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 12 tests that need that database
 ```
