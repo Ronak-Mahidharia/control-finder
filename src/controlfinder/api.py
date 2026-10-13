@@ -14,6 +14,7 @@
 # the other methods answer 503 until both can be reached.
 # ============================================================================
 import json
+import os
 import time
 import urllib.request
 from contextlib import asynccontextmanager
@@ -30,10 +31,12 @@ from controlfinder.catalog import load_catalog, to_id
 from controlfinder.embeddings import MODEL as EMBED_MODEL
 from controlfinder.embeddings import URL as EMBED_URL
 from controlfinder.search import DEPTH, VECTOR_WEIGHT, Pool, Searcher, Unavailable
+from controlfinder.trace import Tracer, request_id
 
 MAX_QUESTION = 2000  # characters; far below the embedding model's 2,048-token limit
 SITE = Path(__file__).resolve().parents[2] / "web" / "dist"
 MAX_K = 50
+TRACED = ("/search", "/answer", "/health", "/controls/{control_id}")  # the API's routes; /stats and the site aren't
 
 
 class Result(BaseModel):
@@ -99,7 +102,8 @@ def _embedding_model_ready():
     return EMBED_MODEL in names or f"{EMBED_MODEL}:latest" in names
 
 
-def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answerer=answer.ask_chosen, site=SITE):
+def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answerer=answer.ask_chosen, site=SITE,
+               tracer=None):
     @asynccontextmanager
     async def lifespan(app):
         app.state.searcher = searcher or Searcher(Pool())
@@ -111,9 +115,40 @@ def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answ
                   description="Find the NIST SP 800-53 Rev 5.2.0 controls that answer a security question. "
                               "Not affiliated with or endorsed by NIST; a reference tool, not compliance advice.")
 
+    app.state.tracer = tracer or Tracer(os.environ.get("CONTROLFINDER_TRACE_FILE"))
+
+    @app.middleware("http")
+    async def trace_requests(request: Request, call_next):
+        """One record per API request (src/controlfinder/trace.py), and its id in X-Request-ID."""
+        rid = request_id(request.headers.get("x-request-id"))
+        request.state.trace = {}  # the endpoints add their steps to it
+        start = time.perf_counter()
+        status = 500
+        try:
+            response = await call_next(request)
+            status = response.status_code
+        except Exception as exc:  # recorded, then left to the server's own handling
+            request.state.trace.setdefault("error", type(exc).__name__)
+            raise
+        finally:
+            route = getattr(request.scope.get("route"), "path", None)
+            if route in TRACED:
+                request.app.state.tracer.record({"id": rid, "route": route, "status": status,
+                                                 "ms": round((time.perf_counter() - start) * 1000, 3),
+                                                 **request.state.trace})
+        response.headers["X-Request-ID"] = rid
+        return response
+
     @app.exception_handler(Unavailable)
     async def unavailable(request: Request, exc: Unavailable):
+        request.state.trace["error"] = str(exc)
         return JSONResponse(status_code=503, content={"detail": f"{exc}; keyword search still works (method=keyword)"})
+
+    @app.get("/stats")
+    def stats(request: Request):
+        """The recent requests: each route's count, errors, and time, each step's time, and the answer model's tokens
+        (medians and 95th percentiles, in milliseconds). Questions themselves are never kept."""
+        return request.app.state.tracer.stats()
 
     @app.get("/health", response_model=Health)
     def health(request: Request):
@@ -133,7 +168,9 @@ def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answ
         if not q:
             raise HTTPException(status_code=422, detail="q is only spaces")
         s = request.app.state.searcher
+        request.state.trace.update(method=method, k=k, question_chars=len(q))
         results, timings = s.search(q, method, k)
+        request.state.trace.update(steps={name: round(ms, 3) for name, ms in timings.items()}, results=len(results))
         response.headers["Server-Timing"] = ", ".join(f"{name};dur={ms:.2f}" for name, ms in timings.items())
         for r in results:
             c = s.by_id[r["id"]]
@@ -147,6 +184,7 @@ def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answ
         if not q:
             raise HTTPException(status_code=422, detail="q is only spaces")
         s = request.app.state.searcher
+        request.state.trace.update(method="hybrid", question_chars=len(q), model=answer.CHOSEN["model"])
         results, timings = s.search(q, "hybrid", answer.CHOSEN["shown"])
         shown = [s.by_id[r["id"]] for r in results]
         start = time.perf_counter()
@@ -155,8 +193,11 @@ def create_app(searcher=None, embedding_model_check=_embedding_model_ready, answ
         except OSError as exc:
             raise Unavailable(f"the answer model isn't reachable (Ollama with {answer.CHOSEN['model']})") from exc
         timings["answer"] = (time.perf_counter() - start) * 1000
+        request.state.trace.update(steps={name: round(ms, 3) for name, ms in timings.items()},
+                                   prompt_tokens=reply.get("prompt_tokens"), output_tokens=reply.get("output_tokens"))
         parsed = answer.parse(reply["raw"], shown)
         if parsed is None:
+            request.state.trace["error"] = "the model's answer wasn't valid JSON"
             raise HTTPException(status_code=502, detail="the model's answer wasn't valid JSON")
         covered, text, cited = parsed
         response.headers["Server-Timing"] = ", ".join(f"{name};dur={ms:.2f}" for name, ms in timings.items())
