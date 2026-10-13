@@ -1,0 +1,268 @@
+{
+  "settings": [
+    {
+      "both_ways": false,
+      "seeds": 5,
+      "weight": 0.25
+    },
+    {
+      "both_ways": false,
+      "seeds": 5,
+      "weight": 0.5
+    },
+    {
+      "both_ways": false,
+      "seeds": 5,
+      "weight": 1.0
+    },
+    {
+      "both_ways": false,
+      "seeds": 10,
+      "weight": 0.25
+    },
+    {
+      "both_ways": false,
+      "seeds": 10,
+      "weight": 0.5
+    },
+    {
+      "both_ways": false,
+      "seeds": 10,
+      "weight": 1.0
+    },
+    {
+      "both_ways": true,
+      "seeds": 5,
+      "weight": 0.25
+    },
+    {
+      "both_ways": true,
+      "seeds": 5,
+      "weight": 0.5
+    },
+    {
+      "both_ways": true,
+      "seeds": 5,
+      "weight": 1.0
+    },
+    {
+      "both_ways": true,
+      "seeds": 10,
+      "weight": 0.25
+    },
+    {
+      "both_ways": true,
+      "seeds": 10,
+      "weight": 0.5
+    },
+    {
+      "both_ways": true,
+      "seeds": 10,
+      "weight": 1.0
+    }
+  ],
+  "links_between_active_controls": {
+    "one_way": 3509,
+    "both_ways": 2660
+  },
+  "dev_csf2": {
+    "hybrid, vector weight 3 (step 4)": {
+      "questions": 60,
+      "mrr": 0.47,
+      "recall@1": 0.059,
+      "hit@1": 0.283,
+      "recall@5": 0.28,
+      "hit@5": 0.683,
+      "recall@10": 0.406,
+      "hit@10": 0.833,
+      "precision@5": 0.237
+    },
+    "one way, 5 seeds, weight 0.25": {
+      "questions": 60,
+      "mrr": 0.612,
+      "recall@1": 0.156,
+      "hit@1": 0.483,
+      "recall@5": 0.365,
+      "hit@5": 0.767,
+      "recall@10": 0.462,
+      "hit@10": 0.883,
+      "precision@5": 0.283
+    },
+    "one way, 5 seeds, weight 0.5": {
+      "questions": 60,
+      "mrr": 0.609,
+      "recall@1": 0.152,
+      "hit@1": 0.467,
+      "recall@5": 0.386,
+      "hit@5": 0.783,
+      "recall@10": 0.481,
+      "hit@10": 0.85,
+      "precision@5": 0.293
+    },
+    "one way, 5 seeds, weight 1": {
+      "questions": 60,
+      "mrr": 0.565,
+      "recall@1": 0.149,
+      "hit@1": 0.417,
+      "recall@5": 0.379,
+      "hit@5": 0.767,
+      "recall@10": 0.465,
+      "hit@10": 0.833,
+      "precision@5": 0.277
+    },
+    "one way, 10 seeds, weight 0.25": {
+      "questions": 60,
+      "mrr": 0.62,
+      "recall@1": 0.156,
+      "hit@1": 0.533,
+      "recall@5": 0.373,
+      "hit@5": 0.75,
+      "recall@10": 0.476,
+      "hit@10": 0.85,
+      "precision@5": 0.29
+    },
+    "one way, 10 seeds, weight 0.5": {
+      "questions": 60,
+      "mrr": 0.611,
+      "recall@1": 0.153,
+      "hit@1": 0.5,
+      "recall@5": 0.392,
+      "hit@5": 0.8,
+      "recall@10": 0.494,
+      "hit@10": 0.883,
+      "precision@5": 0.293
+    },
+    "one way, 10 seeds, weight 1": {
+      "questions": 60,
+      "mrr": 0.545,
+      "recall@1": 0.14,
+      "hit@1": 0.4,
+      "recall@5": 0.342,
+      "hit@5": 0.717,
+      "recall@10": 0.494,
+      "hit@10": 0.883,
+      "precision@5": 0.247
+    },
+    "both ways, 5 seeds, weight 0.25": {
+      "questions": 60,
+      "mrr": 0.605,
+      "recall@1": 0.162,
+      "hit@1": 0.483,
+      "recall@5": 0.363,
+      "hit@5": 0.783,
+      "recall@10": 0.475,
+      "hit@10": 0.85,
+      "precision@5": 0.283
+    },
+    "both ways, 5 seeds, weight 0.5": {
+      "questions": 60,
+      "mrr": 0.572,
+      "recall@1": 0.149,
+      "hit@1": 0.417,
+      "recall@5": 0.365,
+      "hit@5": 0.8,
+      "recall@10": 0.477,
+      "hit@10": 0.883,
+      "precision@5": 0.277
+    },
+    "both ways, 5 seeds, weight 1": {
+      "questions": 60,
+      "mrr": 0.506,
+      "recall@1": 0.14,
+      "hit@1": 0.367,
+      "recall@5": 0.331,
+      "hit@5": 0.717,
+      "recall@10": 0.431,
+      "hit@10": 0.85,
+      "precision@5": 0.24
+    },
+    "both ways, 10 seeds, weight 0.25": {
+      "questions": 60,
+      "mrr": 0.567,
+      "recall@1": 0.13,
+      "hit@1": 0.45,
+      "recall@5": 0.369,
+      "hit@5": 0.783,
+      "recall@10": 0.446,
+      "hit@10": 0.817,
+      "precision@5": 0.273
+    },
+    "both ways, 10 seeds, weight 0.5": {
+      "questions": 60,
+      "mrr": 0.572,
+      "recall@1": 0.13,
+      "hit@1": 0.45,
+      "recall@5": 0.359,
+      "hit@5": 0.733,
+      "recall@10": 0.465,
+      "hit@10": 0.883,
+      "precision@5": 0.26
+    },
+    "both ways, 10 seeds, weight 1": {
+      "questions": 60,
+      "mrr": 0.507,
+      "recall@1": 0.119,
+      "hit@1": 0.367,
+      "recall@5": 0.289,
+      "hit@5": 0.65,
+      "recall@10": 0.443,
+      "hit@10": 0.867,
+      "precision@5": 0.217
+    }
+  },
+  "chosen": {
+    "both_ways": false,
+    "seeds": 10,
+    "weight": 0.25
+  },
+  "test": {
+    "csf2": {
+      "hybrid, vector weight 3 (step 4)": {
+        "questions": 46,
+        "mrr": 0.463,
+        "recall@1": 0.054,
+        "hit@1": 0.326,
+        "recall@5": 0.253,
+        "hit@5": 0.674,
+        "recall@10": 0.295,
+        "hit@10": 0.761,
+        "precision@5": 0.196
+      },
+      "with links: one way, 10 seeds, weight 0.25": {
+        "questions": 46,
+        "mrr": 0.567,
+        "recall@1": 0.085,
+        "hit@1": 0.413,
+        "recall@5": 0.358,
+        "hit@5": 0.783,
+        "recall@10": 0.471,
+        "hit@10": 0.87,
+        "precision@5": 0.313
+      }
+    },
+    "sp800_171": {
+      "hybrid, vector weight 3 (step 4)": {
+        "questions": 45,
+        "mrr": 0.906,
+        "recall@1": 0.722,
+        "hit@1": 0.844,
+        "recall@5": 0.963,
+        "hit@5": 0.978,
+        "recall@10": 0.97,
+        "hit@10": 0.978,
+        "precision@5": 0.249
+      },
+      "with links: one way, 10 seeds, weight 0.25": {
+        "questions": 45,
+        "mrr": 0.569,
+        "recall@1": 0.296,
+        "hit@1": 0.356,
+        "recall@5": 0.8,
+        "hit@5": 0.867,
+        "recall@10": 0.978,
+        "hit@10": 0.978,
+        "precision@5": 0.204
+      }
+    }
+  }
+}
