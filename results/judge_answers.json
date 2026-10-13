@@ -1,0 +1,2342 @@
+[
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.OC-04",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of understanding and communicating critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization.\", \"right\": true}",
+  "seconds": 3.062,
+  "prompt_tokens": 820,
+  "output_tokens": 43
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.RM-03",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls address cybersecurity risk management activities and outcomes as part of enterprise risk management processes.\", \"right\": true}",
+  "seconds": 1.742,
+  "prompt_tokens": 1198,
+  "output_tokens": 40
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.RM-04",
+  "raw": "{\"reason\": \"The answer is right because the cited controls RA-7 and PM-9 address the question of establishing and communicating strategic direction that describes appropriate risk response options.\", \"right\": true}",
+  "seconds": 1.742,
+  "prompt_tokens": 986,
+  "output_tokens": 41
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.RM-07",
+  "raw": "{\"reason\": \"The answer is right because PM-9 cites controls that address the question of including strategic opportunities (positive risks) in organizational cybersecurity risk discussions.\", \"right\": true}",
+  "seconds": 1.463,
+  "prompt_tokens": 941,
+  "output_tokens": 38
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.RR-02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address roles, responsibilities, and authorities related to cybersecurity risk management as defined in the question.\", \"right\": true}",
+  "seconds": 1.889,
+  "prompt_tokens": 1382,
+  "output_tokens": 36
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.OV-02",
+  "raw": "{\"reason\": \"The controls PM-9, PM-31, CA-7(4), PM-4, and PM-30 address the review and adjustment of the cybersecurity risk management strategy to ensure coverage of organizational requirements and risks.\", \"right\": true}",
+  "seconds": 2.088,
+  "prompt_tokens": 1248,
+  "output_tokens": 54
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.SC-09",
+  "raw": "{\"reason\": \"The answer is right because all the cited NIST SP 800-53 controls address supply chain security practices being integrated into cybersecurity and enterprise risk management programs, and their performance being monitored throughout the technology product and service life cycle.\", \"right\": true}",
+  "seconds": 1.987,
+  "prompt_tokens": 1111,
+  "output_tokens": 55
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "GV.SC-10",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls address supply chain risk management plans including provisions for activities after the conclusion of a partnership or service agreement.\", \"right\": true}",
+  "seconds": 1.988,
+  "prompt_tokens": 1079,
+  "output_tokens": 45
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.AM-03",
+  "raw": "{\"reason\": \"The answer is right because SC-7(4) and SC-7(25) address the representation of authorized network communication and data flows, specifically related to external telecommunications services and unclassified national security system connections.\", \"right\": true}",
+  "seconds": 1.598,
+  "prompt_tokens": 741,
+  "output_tokens": 53
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.AM-04",
+  "raw": "{\"reason\": \"The answer is right because the cited controls (CM-8(2), CM-8(1), CM-8(7), CM-8) address maintaining inventories of services provided by suppliers as described in the question.\", \"right\": true}",
+  "seconds": 1.533,
+  "prompt_tokens": 656,
+  "output_tokens": 56
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.RA-02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address receiving cyber threat intelligence from information sharing forums and sources.\", \"right\": true}",
+  "seconds": 1.056,
+  "prompt_tokens": 636,
+  "output_tokens": 30
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.RA-03",
+  "raw": "{\"reason\": \"The controls cited address the question of identifying and recording internal and external threats to the organization.\", \"right\": true}",
+  "seconds": 1.288,
+  "prompt_tokens": 935,
+  "output_tokens": 28
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.RA-04",
+  "raw": "{\"reason\": \"The answer is right because the cited controls RA-5(2), RA-5(10), RA-3, and CM-4 address the question of identifying potential impacts and likelihoods of threats exploiting vulnerabilities.\", \"right\": true}",
+  "seconds": 1.78,
+  "prompt_tokens": 821,
+  "output_tokens": 53
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.IM-01",
+  "raw": "{\"reason\": \"The answer is right because the controls SA-11 and SA-15(6) address the question of identifying improvements from evaluations. SA-11 requires ongoing security and privacy control assessments, testing, and flaw remediation, which directly relates to identifying improvements from evaluations. SA-15(6) requires continuous improvement of the development process, which also aligns with the goal of identifying improvements from evaluations.\", \"right\": true}",
+  "seconds": 2.316,
+  "prompt_tokens": 710,
+  "output_tokens": 90
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "ID.IM-02",
+  "raw": "{\"reason\": \"The answer is right because all the cited controls address the question of identifying improvements from security tests and exercises, including those done in coordination with suppliers and relevant third parties.\", \"right\": true}",
+  "seconds": 1.55,
+  "prompt_tokens": 923,
+  "output_tokens": 43
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.AA-01",
+  "raw": "{\"reason\": \"The answer is right because all the cited NIST SP 800-53 controls address the question of how the organization manages identities and credentials for authorized users, services, and hardware.\", \"right\": true}",
+  "seconds": 1.643,
+  "prompt_tokens": 828,
+  "output_tokens": 46
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.AA-02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the requirement of binding identities to credentials based on the context of interactions.\", \"right\": true}",
+  "seconds": 1.257,
+  "prompt_tokens": 697,
+  "output_tokens": 33
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.AA-03",
+  "raw": "{\"reason\": \"The answer is right because all of the cited controls address user, service, and hardware authentication as defined in the question.\", \"right\": true}",
+  "seconds": 1.127,
+  "prompt_tokens": 659,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.AA-05",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address defining, managing, enforcing, and reviewing access permissions, entitlements, and authorizations while incorporating the principles of least privilege and separation of duties.\", \"right\": true}",
+  "seconds": 1.633,
+  "prompt_tokens": 942,
+  "output_tokens": 48
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.AT-02",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls AT-2, AT-3, AT-3(5), PM-13, PM-14, and SA-16 address the requirement for providing awareness and training to individuals in specialized roles to help them understand and manage cybersecurity risks.\", \"right\": true}",
+  "seconds": 2.331,
+  "prompt_tokens": 982,
+  "output_tokens": 73
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.DS-01",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the confidentiality, integrity, and availability of data-at-rest.\", \"right\": true}",
+  "seconds": 1.075,
+  "prompt_tokens": 602,
+  "output_tokens": 31
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.DS-02",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls address the confidentiality, integrity, and availability of data-in-transit.\", \"right\": true}",
+  "seconds": 1.214,
+  "prompt_tokens": 692,
+  "output_tokens": 39
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.DS-10",
+  "raw": "{\"reason\": \"The answer is mostly right, but it misses a few controls that also address the confidentiality, integrity, and availability of data-in-use.\", \"right\": true}",
+  "seconds": 1.187,
+  "prompt_tokens": 678,
+  "output_tokens": 37
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.DS-11",
+  "raw": "{\"reason\": \"The answer is right because the cited controls (CP-9(1), CP-9(3), and CP-9(2)) address the creation, protection, maintenance, and testing of backups of data.\", \"right\": true}",
+  "seconds": 1.485,
+  "prompt_tokens": 610,
+  "output_tokens": 53
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.PS-01",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls address configuration management practices being established and applied.\", \"right\": true}",
+  "seconds": 1.524,
+  "prompt_tokens": 1030,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.PS-02",
+  "raw": "{\"reason\": \"The answer is right because all of the cited NIST SP 800-53 controls address the question of maintaining, replacing, and removing software commensurate with risk.\", \"right\": true}",
+  "seconds": 1.604,
+  "prompt_tokens": 911,
+  "output_tokens": 44
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.PS-04",
+  "raw": "{\"reason\": \"The answer is right because the cited controls (AU-12, AU-2, AU-4(1), AU-7, MA-4(1), CM-5(1)) address the requirement for log records to be generated and made available for continuous monitoring as described in CA-7 and PM-31.\", \"right\": true}",
+  "seconds": 2.309,
+  "prompt_tokens": 1036,
+  "output_tokens": 75
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.PS-05",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of preventing installation and execution of unauthorized software.\", \"right\": true}",
+  "seconds": 1.319,
+  "prompt_tokens": 897,
+  "output_tokens": 30
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.IR-03",
+  "raw": "{\"reason\": \"The answer is right because SA-24 addresses the question of implementing mechanisms to achieve resilience requirements in normal and adverse situations.\", \"right\": true}",
+  "seconds": 1.139,
+  "prompt_tokens": 633,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "PR.IR-04",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of ensuring adequate resource capacity to maintain availability.\", \"right\": true}",
+  "seconds": 1.176,
+  "prompt_tokens": 694,
+  "output_tokens": 30
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.CM-01",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address monitoring of networks and network services to find potentially adverse events.\", \"right\": true}",
+  "seconds": 1.351,
+  "prompt_tokens": 856,
+  "output_tokens": 31
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.CM-03",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address monitoring personnel activity and technology usage to find potentially adverse events.\", \"right\": true}",
+  "seconds": 1.459,
+  "prompt_tokens": 1049,
+  "output_tokens": 31
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.CM-06",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address monitoring external service provider activities and services to find potentially adverse events.\", \"right\": true}",
+  "seconds": 1.566,
+  "prompt_tokens": 948,
+  "output_tokens": 32
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.AE-02",
+  "raw": "{\"reason\": \"The answer is right because IR-4(13) specifically addresses analyzing potentially adverse events to better understand associated activities.\", \"right\": true}",
+  "seconds": 1.107,
+  "prompt_tokens": 675,
+  "output_tokens": 33
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.AE-04",
+  "raw": "{\"reason\": \"RA-3 cites the risk assessment process, which includes identifying the impact and scope of adverse events, making it relevant to understanding the estimated impact and scope of adverse events.\", \"right\": true}",
+  "seconds": 1.45,
+  "prompt_tokens": 732,
+  "output_tokens": 44
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.AE-06",
+  "raw": "{\"reason\": \"The answer is partially right. SI-7(2) and SI-7 cite controls that address providing information on adverse events to authorized staff, but they do not directly address the use of tools for this purpose.\", \"right\": false}",
+  "seconds": 1.488,
+  "prompt_tokens": 614,
+  "output_tokens": 53
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "DE.AE-08",
+  "raw": "{\"reason\": \"The answer is right because IR-1 cites IR-1, which includes a policy and procedures component that addresses how incidents are declared when adverse events meet the defined incident criteria.\", \"right\": true}",
+  "seconds": 1.46,
+  "prompt_tokens": 708,
+  "output_tokens": 45
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RS.AN-03",
+  "raw": "{\"reason\": \"The answer is right because the cited controls SI-2(7) and IR-4(12) address the analysis performed to establish what has taken place during an incident and the root cause of the incident.\", \"right\": true}",
+  "seconds": 1.468,
+  "prompt_tokens": 619,
+  "output_tokens": 52
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RS.AN-06",
+  "raw": "{\"reason\": \"The cited controls SR-4, AU-11, and SI-7(8) address the question of recording actions performed during an investigation and preserving the integrity and provenance of those records.\", \"right\": true}",
+  "seconds": 1.408,
+  "prompt_tokens": 654,
+  "output_tokens": 49
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RS.AN-07",
+  "raw": "{\"reason\": \"The answer is mostly right, as it cites controls that address collecting and preserving incident data and metadata integrity and provenance. However, it does not cite a control that specifically addresses archiving personally identifiable information (PII) elements if they will not be needed after archiving.\", \"right\": true}",
+  "seconds": 1.584,
+  "prompt_tokens": 556,
+  "output_tokens": 65
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RS.MI-01",
+  "raw": "{\"reason\": \"The answer is right because IR-4 and its sub-requirements directly address containing incidents by defining an incident handling capability and related activities.\", \"right\": true}",
+  "seconds": 1.05,
+  "prompt_tokens": 539,
+  "output_tokens": 37
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RS.MI-02",
+  "raw": "{\"reason\": \"The answer is right because IR-4 and its subcontrols IR-4(1), IR-4(6), and IR-4(7) address incident eradication as part of the incident handling process.\", \"right\": true}",
+  "seconds": 1.476,
+  "prompt_tokens": 682,
+  "output_tokens": 53
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RC.RP-02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of recovery actions being selected, scoped, prioritized, and performed.\", \"right\": true}",
+  "seconds": 1.152,
+  "prompt_tokens": 646,
+  "output_tokens": 35
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RC.RP-04",
+  "raw": "{\"reason\": \"The answer is right because IR-4(3) and IR-4(14) address establishing post-incident operational norms for critical mission functions and cybersecurity risk management.\", \"right\": true}",
+  "seconds": 1.591,
+  "prompt_tokens": 869,
+  "output_tokens": 44
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RC.RP-05",
+  "raw": "{\"reason\": \"The answer is partially right. It correctly cites controls SI-7(1), CP-9(1), and SA-10(5), which address verifying the integrity of restored assets, systems and services are restored, and normal operating status is confirmed.\", \"right\": true}",
+  "seconds": 1.642,
+  "prompt_tokens": 631,
+  "output_tokens": 61
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "csf2",
+  "id": "RC.RP-06",
+  "raw": "{\"reason\": \"The answer is right because IR-4 and its citation to itself address the question of declaring the end of incident recovery based on criteria and completing incident-related documentation.\", \"right\": true}",
+  "seconds": 1.392,
+  "prompt_tokens": 758,
+  "output_tokens": 42
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.01.02",
+  "raw": "{\"reason\": \"The answer is right because AC-3 cites controls that enforce approved authorizations for logical access to CUI and system resources in accordance with applicable access control policies.\", \"right\": true}",
+  "seconds": 1.558,
+  "prompt_tokens": 876,
+  "output_tokens": 42
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.01.03",
+  "raw": "{\"reason\": \"The answer is right because AC-4 addresses enforcing approved authorizations for controlling the flow of information within the system and between connected systems based on organization-defined information flow control policies.\", \"right\": true}",
+  "seconds": 1.335,
+  "prompt_tokens": 601,
+  "output_tokens": 45
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.01.06",
+  "raw": "{\"reason\": \"The answer is right because the cited controls AC-6(2) and AC-6(5) directly address the requirement to restrict privileged accounts to specific personnel or roles and require users with privileged accounts to use non-privileged accounts for non-security functions.\", \"right\": true}",
+  "seconds": 1.752,
+  "prompt_tokens": 742,
+  "output_tokens": 61
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.01.18",
+  "raw": "{\"reason\": \"The answer is right because the cited controls [AC-19], [AC-19(5)], and [SC-43] directly address the requirements to establish usage restrictions, configuration requirements, and connection requirements for mobile devices, as well as implementing full-device or container-based encryption to protect the confidentiality of CUI on mobile devices.\", \"right\": true}",
+  "seconds": 2.218,
+  "prompt_tokens": 858,
+  "output_tokens": 76
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.01.20",
+  "raw": "{\"reason\": \"The answer is right because the cited controls [AC-20], [AC-20(1)], [AC-20(3)], [AC-20(2)], and [AC-20(5)] directly address the question of prohibiting the use of external systems unless they are specifically authorized and establishing security requirements for those systems before allowing authorized individuals to use them to access the organizational system or process, store, or transmit CUI.\", \"right\": true}",
+  "seconds": 2.794,
+  "prompt_tokens": 1095,
+  "output_tokens": 97
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.01.22",
+  "raw": "{\"reason\": \"AC-22 addresses the training of authorized individuals to ensure publicly accessible information does not contain CUI, and includes a requirement to review and remove CUI if discovered.\", \"right\": true}",
+  "seconds": 1.555,
+  "prompt_tokens": 917,
+  "output_tokens": 43
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.02.02",
+  "raw": "{\"reason\": \"The answer is right because the NIST SP 800-53 control AT-3 addresses providing role-based security training to personnel before authorizing access, when required by system changes, and following system changes or events, as well as updating the training content based on defined frequencies and events.\", \"right\": true}",
+  "seconds": 2.253,
+  "prompt_tokens": 1187,
+  "output_tokens": 67
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.03.01",
+  "raw": "{\"reason\": \"The answer is right because the cited controls AU-2 and AU-6 address the event types selection and review/update requirements specified in the question.\", \"right\": true}",
+  "seconds": 1.684,
+  "prompt_tokens": 979,
+  "output_tokens": 39
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.03.04",
+  "raw": "{\"reason\": \"The answer is right because AU-5 and its sub-requirements (AU-5(1), AU-5(2), AU-5(4), and AU-5(c)) directly address the requirement to alert organizational personnel or roles within a defined time period in the event of an audit logging process failure, and to take additional actions as specified.\", \"right\": true}",
+  "seconds": 2.131,
+  "prompt_tokens": 750,
+  "output_tokens": 81
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.03.05",
+  "raw": "{\"reason\": \"The answer is right because the cited controls AU-6 and AU-6(3) directly address the question of reviewing and analyzing system audit records for indications of inappropriate or unusual activity and correlating audit records across different repositories to gain organization-wide situational awareness.\", \"right\": true}",
+  "seconds": 1.788,
+  "prompt_tokens": 804,
+  "output_tokens": 62
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.03.06",
+  "raw": "{\"reason\": \"AU-7 cites the control that directly addresses the question of implementing an audit record reduction and report generation capability that supports audit record review, analysis, reporting requirements, and after-the-fact investigations of incidents while preserving the original content and time ordering of audit records.\", \"right\": true}",
+  "seconds": 1.941,
+  "prompt_tokens": 852,
+  "output_tokens": 62
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.03.07",
+  "raw": "{\"reason\": \"The answer is right because AU-8 cites controls that address generating time stamps for audit records using internal system clocks and recording time stamps in UTC or with a fixed local time offset.\", \"right\": true}",
+  "seconds": 1.607,
+  "prompt_tokens": 928,
+  "output_tokens": 46
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.04.01",
+  "raw": "{\"reason\": \"The answer is right because the NIST SP 800-53 controls CM-2 and CM-3 address the requirement to develop and maintain a current baseline configuration of the system, review and update it when components are installed or modified, and manage configuration control.\", \"right\": true}",
+  "seconds": 1.919,
+  "prompt_tokens": 885,
+  "output_tokens": 62
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.04.02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of establishing, documenting, implementing, and managing the most restrictive configuration settings for a system while also identifying, documenting, and approving any deviations from those settings.\", \"right\": true}",
+  "seconds": 1.879,
+  "prompt_tokens": 1071,
+  "output_tokens": 52
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.04.05",
+  "raw": "{\"reason\": \"The answer is partially right. CM-5 addresses defining, documenting, approving, and enforcing access restrictions associated with changes to the system, which directly answers the question.\", \"right\": true}",
+  "seconds": 1.294,
+  "prompt_tokens": 667,
+  "output_tokens": 43
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.04.08",
+  "raw": "{\"reason\": \"The answer is right because CM-7(5) directly addresses the question of identifying authorized software programs and implementing a deny-all, allow-by-exception policy for their execution on the system.\", \"right\": true}",
+  "seconds": 1.518,
+  "prompt_tokens": 722,
+  "output_tokens": 48
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.04.10",
+  "raw": "{\"reason\": \"The answer is right because the cited controls [CM-8], [CM-8(1)], [CM-8(2)], [CM-8(4)], [CM-8(6)], [CM-8(7)] directly address the requirement to develop and document an inventory of system components and update it as part of installations, removals, and system updates.\", \"right\": true}",
+  "seconds": 2.244,
+  "prompt_tokens": 729,
+  "output_tokens": 86
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.05.02",
+  "raw": "{\"reason\": \"The answer is right because the control IA-3 Device Identification and Authentication addresses the requirement to uniquely identify and authenticate devices before establishing a system connection.\", \"right\": true}",
+  "seconds": 1.353,
+  "prompt_tokens": 690,
+  "output_tokens": 39
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.05.11",
+  "raw": "{\"reason\": \"The answer is right because IA-6 cites controls that address obscuring feedback of authentication information during the authentication process.\", \"right\": true}",
+  "seconds": 1.117,
+  "prompt_tokens": 593,
+  "output_tokens": 33
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.06.02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls IR-6(a) and IR-6(b) address reporting suspected incidents to the organizational incident response capability and reporting incident information to designated authorities, respectively. Control IR-5 also addresses tracking incidents and collecting incident information.\", \"right\": true}",
+  "seconds": 1.798,
+  "prompt_tokens": 812,
+  "output_tokens": 62
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.06.05",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls IR-8, IR-1, IR-4, IR-6, IR-7, IR-4(11), IR-2, IR-3, and CP-2 address the requirements for developing, distributing, updating, and protecting an incident response plan as described in the question.\", \"right\": true}",
+  "seconds": 2.688,
+  "prompt_tokens": 1215,
+  "output_tokens": 85
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.08.01",
+  "raw": "{\"reason\": \"The answer is right because MP-4a directly addresses the requirement to physically control and securely store system media that contain CUI.\", \"right\": true}",
+  "seconds": 1.292,
+  "prompt_tokens": 693,
+  "output_tokens": 36
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.08.07",
+  "raw": "{\"reason\": \"The answer is right because MP-7 and MP-2 address the question of restricting or prohibiting the use of removable system media without an identifiable owner.\", \"right\": true}",
+  "seconds": 1.525,
+  "prompt_tokens": 818,
+  "output_tokens": 40
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.08.09",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of protecting the confidentiality of backup information by implementing cryptographic mechanisms to prevent unauthorized disclosure of CUI at backup storage locations.\", \"right\": true}",
+  "seconds": 1.323,
+  "prompt_tokens": 628,
+  "output_tokens": 44
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.09.02",
+  "raw": "{\"reason\": \"The answer is right because the controls [PS-4] Personnel Termination and [PS-5] Personnel Transfer address the question of what actions should be taken when an individual's employment is terminated or they are reassigned within an organization.\", \"right\": true}",
+  "seconds": 2.133,
+  "prompt_tokens": 1199,
+  "output_tokens": 58
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.10.01",
+  "raw": "{\"reason\": \"The answer is right because PE-2 addresses the requirements for developing, approving, maintaining, and managing a list of individuals with authorized access to the facility where the system resides, including issuing authorization credentials, reviewing the access list, and removing individuals from the list when access is no longer required.\", \"right\": true}",
+  "seconds": 2.027,
+  "prompt_tokens": 909,
+  "output_tokens": 68
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.10.06",
+  "raw": "{\"reason\": \"The answer is right because PE-17 addresses determining alternate work sites allowed for employees and employing security requirements at those sites.\", \"right\": true}",
+  "seconds": 1.393,
+  "prompt_tokens": 900,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.10.08",
+  "raw": "{\"reason\": \"PE-4 addresses controlling physical access to system distribution and transmission lines within organizational facilities.\", \"right\": true}",
+  "seconds": 1.13,
+  "prompt_tokens": 710,
+  "output_tokens": 27
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.11.01",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the risk of unauthorized disclosure of CUI, including supply chain risk, as required by the question.\", \"right\": true}",
+  "seconds": 1.699,
+  "prompt_tokens": 1159,
+  "output_tokens": 39
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.11.02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls RA-5, RA-5(2), SI-2, and SI-2(3) address the requirements of monitoring and scanning for vulnerabilities, updating vulnerabilities to be scanned, analyzing vulnerability scan results, and measuring the time to remediate flaws and benchmarks for corrective actions.\", \"right\": true}",
+  "seconds": 2.148,
+  "prompt_tokens": 908,
+  "output_tokens": 74
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.11.04",
+  "raw": "{\"reason\": \"RA-7 cites responding to findings from security assessments, monitoring, and audits in accordance with organizational risk tolerance.\", \"right\": true}",
+  "seconds": 1.372,
+  "prompt_tokens": 860,
+  "output_tokens": 32
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.12.01",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address the question of assessing security requirements for the system and its environment of operation to determine if the requirements have been satisfied.\", \"right\": true}",
+  "seconds": 1.567,
+  "prompt_tokens": 861,
+  "output_tokens": 42
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.12.02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls CA-5, CA-5(1), PM-4, PM-14, RA-5, and SI-2 address the question of developing a plan of action and milestones for remediation and reducing system vulnerabilities based on security assessments, audits, reviews, and continuous monitoring.\", \"right\": true}",
+  "seconds": 2.52,
+  "prompt_tokens": 1310,
+  "output_tokens": 75
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.13.04",
+  "raw": "{\"reason\": \"The answer is right because SC-4 specifically addresses preventing unauthorized and unintended information transfer via shared system resources.\", \"right\": true}",
+  "seconds": 1.093,
+  "prompt_tokens": 634,
+  "output_tokens": 31
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.13.11",
+  "raw": "{\"reason\": \"The answer is right because SC-13 addresses the implementation of cryptography to protect the confidentiality of CUI based on organization-defined cryptographic uses.\", \"right\": true}",
+  "seconds": 1.051,
+  "prompt_tokens": 522,
+  "output_tokens": 37
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.13.13",
+  "raw": "{\"reason\": \"The answer is right because the cited controls SC-18 and SC-18(1) directly address defining acceptable and unacceptable mobile code and mobile code technologies, as well as authorizing, monitoring, and controlling the use of mobile code within the system.\", \"right\": true}",
+  "seconds": 1.747,
+  "prompt_tokens": 724,
+  "output_tokens": 60
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.14.03",
+  "raw": "{\"reason\": \"The SI-5 control addresses receiving system security alerts, advisories, and directives from external organizations and disseminating internal alerts as needed, which directly answers the question.\", \"right\": true}",
+  "seconds": 1.677,
+  "prompt_tokens": 1050,
+  "output_tokens": 43
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.14.06",
+  "raw": "{\"reason\": \"The answer is right because the cited NIST SP 800-53 controls address monitoring inbound and outbound communications traffic to detect unusual or unauthorized activities or conditions, as well as monitoring system traffic and events to detect attacks and unauthorized connections.\", \"right\": true}",
+  "seconds": 1.81,
+  "prompt_tokens": 903,
+  "output_tokens": 56
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.14.08",
+  "raw": "{\"reason\": \"The answer is right because SI-12 (Information Management and Retention) directly addresses managing and retaining CUI within the system and CUI output from the system in accordance with applicable laws, Executive Orders, directives, regulations, policies, standards, guidelines, and operational requirements.\", \"right\": true}",
+  "seconds": 2.22,
+  "prompt_tokens": 1127,
+  "output_tokens": 65
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.15.02",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address all the requirements listed in the question.\", \"right\": true}",
+  "seconds": 1.811,
+  "prompt_tokens": 1532,
+  "output_tokens": 27
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.16.01",
+  "raw": "{\"reason\": \"The answer is partially right. SA-4(3) does address the question of applying systems security engineering principles to the development or modification of the system and system components, as it requires the developer to demonstrate the use of a system development life cycle process that includes systems security and privacy engineering methods.\", \"right\": true}",
+  "seconds": 1.795,
+  "prompt_tokens": 674,
+  "output_tokens": 69
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.16.02",
+  "raw": "{\"reason\": \"The answer is right because SA-22 specifically addresses replacing system components when support is no longer available from the developer, vendor, or manufacturer.\", \"right\": true}",
+  "seconds": 1.338,
+  "prompt_tokens": 719,
+  "output_tokens": 38
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.16.03",
+  "raw": "{\"reason\": \"The answer is right because the cited controls [SA-9] External System Services and [SA-9(2)] Identification of Functions, Ports, Protocols, and Services address the question of requiring external service providers to comply with security requirements for processing, storing, or transmitting CUI.\", \"right\": true}",
+  "seconds": 2.247,
+  "prompt_tokens": 1094,
+  "output_tokens": 68
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.17.01",
+  "raw": "{\"reason\": \"The answer is right because the NIST SP 800-53 control SR-2 (Supply Chain Risk Management Plan) addresses the question of developing a plan for managing supply chain risks associated with various stages of the system lifecycle, including development, design, manufacturing, acquisition, delivery, integration, operations, maintenance, and disposal.\", \"right\": true}",
+  "seconds": 2.406,
+  "prompt_tokens": 1114,
+  "output_tokens": 75
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "sp800_171",
+  "id": "03.17.03",
+  "raw": "{\"reason\": \"The answer is right because SR-3(a) and SR-3(b) directly address the question of establishing a process for identifying and addressing weaknesses or deficiencies in the supply chain elements and processes, and enforcing security requirements to protect against supply chain risks and limit harm from supply chain-related events.\", \"right\": true}",
+  "seconds": 2.262,
+  "prompt_tokens": 987,
+  "output_tokens": 68
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-02",
+  "raw": "{\"reason\": \"The answer is right because the NIST SP 800-53 controls specify that the frequency of system backups should be defined by the organization based on the organization's requirements.\", \"right\": true}",
+  "seconds": 1.319,
+  "prompt_tokens": 677,
+  "output_tokens": 44
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-03",
+  "raw": "{\"reason\": \"The answer is right because the NIST SP 800-53 controls cited directly address incident handling and response procedures, including incident handling capability, incident response plan, integrated incident response team, and reporting of incidents.\", \"right\": true}",
+  "seconds": 1.962,
+  "prompt_tokens": 1125,
+  "output_tokens": 52
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-04",
+  "raw": "{\"reason\": \"The answer is right because the PE-2 control specifies that the organization should develop, approve, and maintain a list of individuals with authorized access to the facility where the system resides.\", \"right\": true}",
+  "seconds": 1.471,
+  "prompt_tokens": 767,
+  "output_tokens": 46
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-06",
+  "raw": "{\"reason\": \"The answer is mostly right, as it cites the relevant controls from NIST SP 800-53 Rev 5.2.0 that address ensuring software patches get installed. However, it does not mention the control [CM-11] User-installed Software, which also plays a role in ensuring software patches are installed.\", \"right\": true}",
+  "seconds": 2.047,
+  "prompt_tokens": 786,
+  "output_tokens": 75
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-07",
+  "raw": "{\"reason\": \"The answer is right because the controls AC-17(2), SC-7(10), AC-18(1), and SC-8 address the requirement to encrypt data sent over the network to protect confidentiality and integrity.\", \"right\": true}",
+  "seconds": 1.525,
+  "prompt_tokens": 580,
+  "output_tokens": 55
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-08",
+  "raw": "{\"reason\": \"The answer is right because it correctly cites the relevant NIST SP 800-53 controls [AC-2(3)] and [PS-5] to support the recommendation to disable a person's accounts when they leave the company.\", \"right\": true}",
+  "seconds": 1.852,
+  "prompt_tokens": 853,
+  "output_tokens": 57
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-11",
+  "raw": "{\"reason\": \"The answer is right because the cited controls (AU-2, MA-4(1), and AC-6(9)) address the question of what events should be logged.\", \"right\": true}",
+  "seconds": 1.627,
+  "prompt_tokens": 891,
+  "output_tokens": 46
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-13",
+  "raw": "{\"reason\": \"The controls cited support scanning systems for vulnerabilities.\", \"right\": true}",
+  "seconds": 0.96,
+  "prompt_tokens": 799,
+  "output_tokens": 19
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-14",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address protecting data stored on laptops as defined in the NIST SP 800-53 controls provided.\", \"right\": true}",
+  "seconds": 1.2,
+  "prompt_tokens": 653,
+  "output_tokens": 38
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-15",
+  "raw": "{\"reason\": \"The controls cited address the need for a plan to keep operations running after a disaster, including contingency plans, recovery and reconstitution plans, and incident response plans.\", \"right\": true}",
+  "seconds": 1.563,
+  "prompt_tokens": 816,
+  "output_tokens": 42
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-16",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address handling visitors to the office by requiring identification, controlling access to public areas, escorting visitors, maintaining visitor records, and monitoring physical access.\", \"right\": true}",
+  "seconds": 1.846,
+  "prompt_tokens": 1112,
+  "output_tokens": 47
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-19",
+  "raw": "{\"reason\": \"The answer is right because it correctly cites the relevant NIST SP 800-53 controls for disposing of old hard drives.\", \"right\": true}",
+  "seconds": 1.263,
+  "prompt_tokens": 785,
+  "output_tokens": 35
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-20",
+  "raw": "{\"reason\": \"The controls cited address the requirement to maintain an inventory of hardware and software components.\", \"right\": true}",
+  "seconds": 1.092,
+  "prompt_tokens": 756,
+  "output_tokens": 26
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-21",
+  "raw": "{\"reason\": \"The [AC-11] Device Lock control addresses the question by requiring the system to lock the screen after a period of inactivity.\", \"right\": true}",
+  "seconds": 1.453,
+  "prompt_tokens": 905,
+  "output_tokens": 37
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-23",
+  "raw": "{\"reason\": \"The answer is right because the cited controls (IA-5(8), AC-2(12), and AU-6) address the need to regularly review who has accounts on the systems.\", \"right\": true}",
+  "seconds": 1.689,
+  "prompt_tokens": 912,
+  "output_tokens": 49
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-25",
+  "raw": "{\"reason\": \"The controls SC-7(27), SC-7(25), SC-7(26), and SC-7(28) address the question and require a firewall or boundary protection device between the network and the internet.\", \"right\": true}",
+  "seconds": 1.668,
+  "prompt_tokens": 700,
+  "output_tokens": 55
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-27",
+  "raw": "{\"reason\": \"The answer is mostly right, as it cites the relevant NIST SP 800-53 controls that address ensuring suppliers do not put systems at risk.\", \"right\": true}",
+  "seconds": 1.494,
+  "prompt_tokens": 933,
+  "output_tokens": 40
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-28",
+  "raw": "{\"reason\": \"The answer is right because the cited controls address limiting the use of USB drives based on organization-defined restrictions and prohibitions.\", \"right\": true}",
+  "seconds": 1.265,
+  "prompt_tokens": 723,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "plain_english",
+  "id": "plain-30",
+  "raw": "{\"reason\": \"The controls AC-6(5) and CM-5(5) address the question of limiting the number of people with administrator rights.\", \"right\": true}",
+  "seconds": 1.322,
+  "prompt_tokens": 782,
+  "output_tokens": 38
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-03",
+  "raw": "{\"reason\": \"The answer is right because the NIST SP 800-53 controls listed do not directly address or cover the specific question about the CVSS base score assigned to CVE-2021-44228, the Log4Shell vulnerability.\", \"right\": true}",
+  "seconds": 1.676,
+  "prompt_tokens": 740,
+  "output_tokens": 56
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-04",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls listed do not directly address the cost of a SOC 2 Type II audit for a startup.\", \"right\": true}",
+  "seconds": 1.333,
+  "prompt_tokens": 736,
+  "output_tokens": 38
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-05",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls address penetration testing and security testing activities, but they do not specifically address which certification is better for starting a career in penetration testing.\", \"right\": true}",
+  "seconds": 1.626,
+  "prompt_tokens": 829,
+  "output_tokens": 45
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-06",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls do not directly address the specific question about the default port number used by HTTPS.\", \"right\": true}",
+  "seconds": 1.144,
+  "prompt_tokens": 649,
+  "output_tokens": 35
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-07",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not directly address which programming language is the most secure to learn first.\", \"right\": true}",
+  "seconds": 1.162,
+  "prompt_tokens": 641,
+  "output_tokens": 35
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-08",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls listed do not address writing a Python function to reverse a string.\", \"right\": true}",
+  "seconds": 1.099,
+  "prompt_tokens": 587,
+  "output_tokens": 32
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-14",
+  "raw": "{\"reason\": \"The answer is partially right and partially wrong. It correctly cites the relevant NIST controls (AU-10 and AC-4(15)) that address the legal and technical requirements for recording and verifying communications. However, it states that the question is generally illegal to record a phone call without informing the other party in California, which is not directly addressed by the cited controls.\", \"right\": false}",
+  "seconds": 2.186,
+  "prompt_tokens": 796,
+  "output_tokens": 84
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-18",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of which VPN app is the fastest.\", \"right\": true}",
+  "seconds": 1.118,
+  "prompt_tokens": 599,
+  "output_tokens": 33
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-20",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls do not address the question of how many bitcoins were stolen in the largest cryptocurrency exchange hack.\", \"right\": true}",
+  "seconds": 1.051,
+  "prompt_tokens": 522,
+  "output_tokens": 37
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-21",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of how long to boil an egg for a soft yolk.\", \"right\": true}",
+  "seconds": 1.52,
+  "prompt_tokens": 854,
+  "output_tokens": 38
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-22",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of what the capital of Australia is.\", \"right\": true}",
+  "seconds": 1.125,
+  "prompt_tokens": 603,
+  "output_tokens": 33
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-24",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of a good recipe for vegetable soup.\", \"right\": true}",
+  "seconds": 1.228,
+  "prompt_tokens": 807,
+  "output_tokens": 33
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-27",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of calculating a specific percentage of a number.\", \"right\": true}",
+  "seconds": 1.132,
+  "prompt_tokens": 653,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-28",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of which planet is closest to the sun.\", \"right\": true}",
+  "seconds": 1.128,
+  "prompt_tokens": 597,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-29",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address how to care for a succulent plant.\", \"right\": true}",
+  "seconds": 1.349,
+  "prompt_tokens": 897,
+  "output_tokens": 32
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-31",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question of how to say 'good morning' in Spanish.\", \"right\": true}",
+  "seconds": 1.294,
+  "prompt_tokens": 735,
+  "output_tokens": 36
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-34",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address how to remove a red wine stain from a carpet.\", \"right\": true}",
+  "seconds": 1.132,
+  "prompt_tokens": 660,
+  "output_tokens": 34
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-35",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the question about which film won the Academy Award for Best Picture in 1997.\", \"right\": true}",
+  "seconds": 1.247,
+  "prompt_tokens": 604,
+  "output_tokens": 40
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-36",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls do not address how to fix a flat bicycle tire.\", \"right\": true}",
+  "seconds": 1.18,
+  "prompt_tokens": 810,
+  "output_tokens": 30
+ },
+ {
+  "judge": "granite4:3b",
+  "set": "out_of_scope",
+  "id": "oos-40",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls do not address the question of the population of Canada.\", \"right\": true}",
+  "seconds": 0.958,
+  "prompt_tokens": 549,
+  "output_tokens": 30
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.OC-04",
+  "raw": "{\n  \"reason\": \"The cited controls address the question by ensuring external stakeholders' dependencies are understood through trust relationships, service identification, coordination with providers, and personnel security.\",\n  \"right\": true\n}",
+  "seconds": 5.347,
+  "prompt_tokens": 843,
+  "output_tokens": 43
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.RM-03",
+  "raw": "{\n  \"reason\": \"The question addresses the integration of cybersecurity risk management into enterprise risk management processes, which is covered by multiple controls including PM-9, PM-7, PM-10, PM-4, PM-29, RA-1, SR-1, and SR-2(1). These controls collectively support the management and integration of cybersecurity risk within an enterprise-wide risk management framework.\",\n  \"right\": true\n}",
+  "seconds": 6.249,
+  "prompt_tokens": 1219,
+  "output_tokens": 92
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.RM-04",
+  "raw": "{\n  \"reason\": \"The question about establishing and communicating strategic direction for risk response is directly addressed by PM-9, which involves developing and implementing a comprehensive risk management strategy. RA-7 is also relevant as it deals with responding to findings in accordance with risk tolerance. Both controls are appropriate.\",\n  \"right\": true\n}",
+  "seconds": 5.044,
+  "prompt_tokens": 1001,
+  "output_tokens": 68
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.RM-07",
+  "raw": "{\n  \"reason\": \"PM-9 addresses the development and implementation of a risk management strategy, which includes considering strategic opportunities (positive risks) in organizational cybersecurity risk discussions.\",\n  \"right\": true\n}",
+  "seconds": 4.117,
+  "prompt_tokens": 959,
+  "output_tokens": 43
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.RR-02",
+  "raw": "{\n  \"reason\": \"The question addresses the establishment, communication, understanding, and enforcement of roles, responsibilities, and authorities related to cybersecurity risk management. The cited controls cover these aspects through policy development, role-based training, risk management strategy, position risk designation, and other related functions.\",\n  \"right\": true\n}",
+  "seconds": 5.416,
+  "prompt_tokens": 1402,
+  "output_tokens": 66
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.OV-02",
+  "raw": "{\n  \"reason\": \"The question addresses the review and adjustment of the cybersecurity risk management strategy to ensure coverage of organizational requirements and risks, which is directly covered by PM-9 (review and update the risk management strategy) and PM-4 (review plans of action and milestones for consistency with the risk management strategy). Other cited controls like PM-31, CA-7(4), and PM-30 are related but not as directly relevant to the specific question.\",\n  \"right\": true\n}",
+  "seconds": 6.768,
+  "prompt_tokens": 1267,
+  "output_tokens": 104
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.SC-09",
+  "raw": "{\n  \"reason\": \"The question addresses integrating supply chain security into cybersecurity and enterprise risk management and monitoring throughout the life cycle. The cited controls cover policy development (SR-1), risk assessment (RA-3(1)), risk management strategy (PM-30), risk management plan (SR-2), supply chain controls (SR-3), and coordination (IR-4(10), IR-6(3)), which collectively address the question.\",\n  \"right\": true\n}",
+  "seconds": 6.445,
+  "prompt_tokens": 1131,
+  "output_tokens": 101
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "GV.SC-10",
+  "raw": "{\n  \"reason\": \"The question addresses activities that occur after the conclusion of a partnership or service agreement, which is covered by controls like SR-8 (Notification Agreements) and PM-4 (Plan of Action and Milestones Process). These controls are relevant to post-partnership activities such as notification of compromises and ongoing risk management.\",\n  \"right\": true\n}",
+  "seconds": 5.366,
+  "prompt_tokens": 1099,
+  "output_tokens": 77
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.AM-03",
+  "raw": "{\n  \"reason\": \"The question is about maintaining representations of authorized network communication and data flows, which is more related to network architecture and documentation. The cited controls (SC-7(4) and SC-7(25)) focus on managing external telecommunications services and protecting unclassified national security systems, which do not directly address the maintenance of network communication representations.\",\n  \"right\": false\n}",
+  "seconds": 4.845,
+  "prompt_tokens": 762,
+  "output_tokens": 82
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.AM-04",
+  "raw": "{\n  \"reason\": \"The question about maintaining inventories of services provided by suppliers is directly addressed by CM-8 controls, which include maintaining the inventory of system components and ensuring its currency, completeness, and availability.\",\n  \"right\": true\n}",
+  "seconds": 3.291,
+  "prompt_tokens": 671,
+  "output_tokens": 52
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.RA-02",
+  "raw": "{\n  \"reason\": \"The answer cites controls that directly relate to receiving and utilizing cyber threat intelligence from information sharing sources, such as SI-4(24) for collecting and distributing indicators of compromise and RA-3(3) for dynamic threat awareness.\",\n  \"right\": true\n}",
+  "seconds": 3.678,
+  "prompt_tokens": 662,
+  "output_tokens": 61
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.RA-03",
+  "raw": "{\n  \"reason\": \"The question addresses identifying and recording internal and external threats, which is covered by multiple controls such as IR-4(6), IR-4(7), IR-4(8), SI-5, and others that relate to threat detection, coordination, and incident handling.\",\n  \"right\": true\n}",
+  "seconds": 5.232,
+  "prompt_tokens": 955,
+  "output_tokens": 69
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.RA-04",
+  "raw": "{\n  \"reason\": \"The question addresses identifying and recording potential impacts and likelihoods of threats exploiting vulnerabilities, which is directly covered by RA-3 (Risk Assessment) and indirectly supported by RA-5(2) and RA-5(10). CM-4 is not directly relevant to the question.\",\n  \"right\": true\n}",
+  "seconds": 4.78,
+  "prompt_tokens": 841,
+  "output_tokens": 71
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.IM-01",
+  "raw": "{\n  \"reason\": \"The question about improvements identified from evaluations is addressed by SA-11 and SA-15(6), which both relate to testing, evaluation, and continuous improvement processes.\",\n  \"right\": true\n}",
+  "seconds": 3.512,
+  "prompt_tokens": 732,
+  "output_tokens": 49
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "ID.IM-02",
+  "raw": "{\n  \"reason\": \"The question addresses identifying improvements from security tests and exercises, including those with suppliers and third parties. The cited controls cover testing, training, assessments, and coordination with external entities, which align with the question.\",\n  \"right\": true\n}",
+  "seconds": 3.907,
+  "prompt_tokens": 943,
+  "output_tokens": 55
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.AA-01",
+  "raw": "{\n  \"reason\": \"The question addresses the management of identities and credentials for authorized users, services, and hardware, which is covered by multiple controls including IA-2, IA-13, IA-9, PE-2, CM-7(9), MA-5, and CM-7(5).\",\n  \"right\": true\n}",
+  "seconds": 4.941,
+  "prompt_tokens": 847,
+  "output_tokens": 74
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.AA-02",
+  "raw": "{\n  \"reason\": \"The question addresses dynamic binding of identities to credentials based on context, which is directly covered by IA-5(10) and other cited controls that relate to identity proofing, validation, and binding.\",\n  \"right\": true\n}",
+  "seconds": 3.751,
+  "prompt_tokens": 736,
+  "output_tokens": 55
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.AA-03",
+  "raw": "{\n  \"reason\": \"The cited controls address the question of authenticating users, services, and hardware by covering identification and authentication mechanisms, multi-factor authentication, and hardware integrity verification.\",\n  \"right\": true\n}",
+  "seconds": 2.992,
+  "prompt_tokens": 683,
+  "output_tokens": 45
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.AA-05",
+  "raw": "{\n  \"reason\": \"The answer correctly cites multiple NIST SP 800-53 controls that address defining, managing, enforcing, and reviewing access permissions, entitlements, and authorizations, as well as incorporating least privilege and separation of duties.\",\n  \"right\": true\n}",
+  "seconds": 4.833,
+  "prompt_tokens": 964,
+  "output_tokens": 61
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.AT-02",
+  "raw": "{\n  \"reason\": \"The question addresses providing specialized roles with cybersecurity training, which is covered by AT-2 (security literacy training), AT-3 (role-based training), AT-3(5) (PII processing training), PM-13 (security and privacy workforce development), PM-14 (testing, training, and monitoring), and SA-16 (developer-provided training).\",\n  \"right\": true\n}",
+  "seconds": 5.975,
+  "prompt_tokens": 1005,
+  "output_tokens": 91
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.DS-01",
+  "raw": "{\n  \"reason\": \"The question addresses the protection of data-at-rest confidentiality, integrity, and availability. SC-28 directly addresses confidentiality and integrity of information at rest. AC-19(5) covers full-device encryption for data-at-rest. Other controls like SC-8(1), SC-8(2), and MA-4(6) relate to transmission and not data-at-rest. The answer includes relevant controls for confidentiality and integrity but not availability.\",\n  \"right\": false\n}",
+  "seconds": 5.442,
+  "prompt_tokens": 630,
+  "output_tokens": 104
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.DS-02",
+  "raw": "{\n  \"reason\": \"The answer cites controls that directly address the protection of confidentiality, integrity, and availability of data-in-transit, such as SC-8, AC-17(2), SC-8(1), SC-8(2), and SI-4(10).\",\n  \"right\": true\n}",
+  "seconds": 4.362,
+  "prompt_tokens": 719,
+  "output_tokens": 70
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.DS-10",
+  "raw": "{\n  \"reason\": \"The answer cites controls that address confidentiality, integrity, and availability of data-in-use, including SC-8, SC-8(1), SC-8(2), AC-17(2), IA-13(2), SI-7, and SA-8(20). However, SC-28 addresses data-at-rest, not data-in-use, so it should not be included.\",\n  \"right\": false\n}",
+  "seconds": 5.456,
+  "prompt_tokens": 706,
+  "output_tokens": 97
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.DS-11",
+  "raw": "{\n  \"reason\": \"The answer cites CP-9(1), CP-9(3), and CP-9(2), which directly address testing, separate storage, and testing restoration, respectively. These controls cover the aspects of testing and protection, but not the full scope of creation and maintenance of backups.\",\n  \"right\": false\n}",
+  "seconds": 4.142,
+  "prompt_tokens": 629,
+  "output_tokens": 72
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.PS-01",
+  "raw": "{\n  \"reason\": \"The question asks about establishing and applying configuration management practices, which is directly addressed by multiple controls listed in the answer, including CM-9, CM-1, CM-6, CM-2, and others.\",\n  \"right\": true\n}",
+  "seconds": 4.376,
+  "prompt_tokens": 1050,
+  "output_tokens": 57
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.PS-02",
+  "raw": "{\n  \"reason\": \"The cited controls address the question by covering software maintenance, replacement, removal, and risk management aspects.\",\n  \"right\": true\n}",
+  "seconds": 2.988,
+  "prompt_tokens": 931,
+  "output_tokens": 34
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.PS-04",
+  "raw": "{\n  \"reason\": \"The cited controls (AU-12, AU-2, AU-4(1), AU-7, MA-4(1), CM-5(1)) directly address the generation and availability of log records for continuous monitoring as required by the question.\",\n  \"right\": true\n}",
+  "seconds": 4.855,
+  "prompt_tokens": 1054,
+  "output_tokens": 67
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.PS-05",
+  "raw": "{\n  \"reason\": \"The answer cites multiple controls that directly address the prevention of unauthorized software installation and execution, including CM-7(4), CM-7(2), CM-11, CM-14, SI-16, SC-18(4), SI-3(8), CM-7(9), and CM-8(3). These controls align with the question's intent.\",\n  \"right\": true\n}",
+  "seconds": 5.607,
+  "prompt_tokens": 923,
+  "output_tokens": 94
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.IR-03",
+  "raw": "{\n  \"reason\": \"SA-24 directly addresses designing systems for cyber resiliency, which includes achieving resilience requirements in both normal and adverse situations.\",\n  \"right\": true\n}",
+  "seconds": 2.782,
+  "prompt_tokens": 655,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "PR.IR-04",
+  "raw": "{\n  \"reason\": \"The question about maintaining adequate resource capacity for availability is addressed by multiple controls including SC-6, SC-5(2), CP-2(2), SR-5(1), and SC-5(3), which directly relate to resource allocation, capacity management, and availability.\",\n  \"right\": true\n}",
+  "seconds": 4.414,
+  "prompt_tokens": 714,
+  "output_tokens": 71
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.CM-01",
+  "raw": "{\n  \"reason\": \"The question about monitoring networks and network services for adverse events is addressed by multiple NIST SP 800-53 controls, including SI-4, SI-4(2), SI-4(13), SI-4(22), and SI-4(25). These controls cover system monitoring, real-time analysis, traffic pattern analysis, unauthorized network services, and network traffic visibility.\",\n  \"right\": true\n}",
+  "seconds": 5.751,
+  "prompt_tokens": 881,
+  "output_tokens": 97
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.CM-03",
+  "raw": "{\n  \"reason\": \"The answer cites multiple controls that address monitoring of personnel activity and technology usage to detect adverse events, including AC-2(12), SI-4, SI-4(5), SI-4(7), SI-4(12), PE-6, PE-14(2), and AU-6, which are all relevant to the question.\",\n  \"right\": true\n}",
+  "seconds": 5.708,
+  "prompt_tokens": 1072,
+  "output_tokens": 88
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.CM-06",
+  "raw": "{\n  \"reason\": \"The question is about monitoring external service provider activities and services to find potentially adverse events. The cited controls (SA-9, SA-9(4), SA-9(2), SA-9(3), SC-7(4), PS-7, SR-5(2)) all relate to monitoring, oversight, and compliance with external service providers, which directly address the question.\",\n  \"right\": true\n}",
+  "seconds": 6.182,
+  "prompt_tokens": 962,
+  "output_tokens": 93
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.AE-02",
+  "raw": "{\n  \"reason\": \"The question involves analyzing potentially adverse events to understand associated activities, which aligns with the purpose of IR-4(13) which focuses on analyzing anomalous or suspected adversarial behavior.\",\n  \"right\": true\n}",
+  "seconds": 3.627,
+  "prompt_tokens": 692,
+  "output_tokens": 52
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.AE-04",
+  "raw": "{\n  \"reason\": \"RA-3 addresses risk assessment, which includes analyzing the likelihood and impact of adverse effects, aligning with understanding the impact and scope of adverse events.\",\n  \"right\": true\n}",
+  "seconds": 3.267,
+  "prompt_tokens": 747,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.AE-06",
+  "raw": "{\n  \"reason\": \"SI-7(2) addresses automated notifications for integrity violations, which can include adverse events, and SI-7 covers integrity verification and actions for unauthorized changes, which is relevant to the question.\",\n  \"right\": true\n}",
+  "seconds": 3.362,
+  "prompt_tokens": 630,
+  "output_tokens": 53
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "DE.AE-08",
+  "raw": "{\n  \"reason\": \"The question about declaring incidents based on defined criteria is addressed by IR-1, which establishes the policy and procedures for incident response, including the criteria for declaring incidents.\",\n  \"right\": true\n}",
+  "seconds": 3.466,
+  "prompt_tokens": 722,
+  "output_tokens": 47
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RS.AN-03",
+  "raw": "{\n  \"reason\": \"The question focuses on establishing what has taken place during an incident and identifying the root cause. SI-2(7) directly addresses root cause analysis, and IR-4(12) relates to forensic analysis of malicious code and residual artifacts, which supports the investigation of an incident's cause.\",\n  \"right\": true\n}",
+  "seconds": 4.232,
+  "prompt_tokens": 638,
+  "output_tokens": 73
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RS.AN-06",
+  "raw": "{\n  \"reason\": \"SR-4 addresses the preservation of provenance, AU-11 ensures audit records are retained for investigations, and SI-7(8) provides auditing capabilities for integrity violations, all of which relate to recording actions and preserving their integrity and provenance during an investigation.\",\n  \"right\": true\n}",
+  "seconds": 3.942,
+  "prompt_tokens": 672,
+  "output_tokens": 68
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RS.AN-07",
+  "raw": "{\n  \"reason\": \"The cited controls address the collection and preservation of incident data and metadata, including integrity and provenance.\",\n  \"right\": true\n}",
+  "seconds": 2.537,
+  "prompt_tokens": 580,
+  "output_tokens": 34
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RS.MI-01",
+  "raw": "{\n  \"reason\": \"The control IR-4 directly addresses incident handling, including containment, which is central to the question about incidents being contained.\",\n  \"right\": true\n}",
+  "seconds": 2.345,
+  "prompt_tokens": 554,
+  "output_tokens": 38
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RS.MI-02",
+  "raw": "{\n  \"reason\": \"IR-4 directly addresses incident eradication as part of the incident handling process, making it the correct control to cite.\",\n  \"right\": true\n}",
+  "seconds": 3.028,
+  "prompt_tokens": 696,
+  "output_tokens": 38
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RC.RP-02",
+  "raw": "{\n  \"reason\": \"The cited controls address the selection, scoping, prioritization, and performance of recovery actions as outlined in the question.\",\n  \"right\": true\n}",
+  "seconds": 2.72,
+  "prompt_tokens": 666,
+  "output_tokens": 38
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RC.RP-04",
+  "raw": "{\n  \"reason\": \"The question addresses establishing post-incident operational norms, which is covered by IR-4(3) (Continuity of Operations) and IR-4(14) (Security Operations Center). These controls directly relate to maintaining mission functions and managing cybersecurity risks after an incident.\",\n  \"right\": true\n}",
+  "seconds": 4.585,
+  "prompt_tokens": 889,
+  "output_tokens": 69
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RC.RP-05",
+  "raw": "{\n  \"reason\": \"The control CP-9(1) addresses testing backup information to verify media reliability and information integrity, which relates to verifying the integrity of restored assets. SA-10(5) relates to maintaining the integrity of version control mappings, which is more about development processes than restoration. SI-7(1) involves performing integrity checks at defined times or events, which could include post-restoration checks. However, the most direct control for restoring systems and confirming normal operating status is SA-8(24), which is not cited in the answer.\",\n  \"right\": false\n}",
+  "seconds": 6.272,
+  "prompt_tokens": 651,
+  "output_tokens": 124
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "csf2",
+  "id": "RC.RP-06",
+  "raw": "{\n  \"reason\": \"IR-4 addresses the declaration of the end of incident recovery and the completion of incident-related documentation through its focus on incident handling, including recovery and ensuring consistent and predictable incident handling activities across the organization.\",\n  \"right\": true\n}",
+  "seconds": 3.686,
+  "prompt_tokens": 772,
+  "output_tokens": 54
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.01.02",
+  "raw": "{\n  \"reason\": \"The question is about enforcing approved authorizations for logical access to CUI and system resources in accordance with access control policies, which is directly addressed by control AC-3.\",\n  \"right\": true\n}",
+  "seconds": 3.74,
+  "prompt_tokens": 895,
+  "output_tokens": 48
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.01.03",
+  "raw": "{\n  \"reason\": \"The question is about enforcing approved authorizations for controlling the flow of CUI, which is directly addressed by AC-4 (Information Flow Enforcement).\",\n  \"right\": true\n}",
+  "seconds": 2.99,
+  "prompt_tokens": 617,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.01.06",
+  "raw": "{\n  \"reason\": \"The question addresses restricting privileged accounts and requiring non-privileged access for non-security functions, which is directly covered by AC-6(5) and AC-6(2).\",\n  \"right\": true\n}",
+  "seconds": 3.495,
+  "prompt_tokens": 758,
+  "output_tokens": 50
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.01.18",
+  "raw": "{\n  \"reason\": \"The answer cites AC-19 for establishing configuration, connection requirements, and authorizing connections, AC-19(5) for encryption, and SC-43 for usage restrictions, which directly address all parts of the question.\",\n  \"right\": true\n}",
+  "seconds": 4.265,
+  "prompt_tokens": 883,
+  "output_tokens": 61
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.01.20",
+  "raw": "{\n  \"reason\": \"The answer cites controls that address the question's requirements, including the use of external systems, verification of security requirements, restrictions on portable storage devices, and prohibited use of external systems.\",\n  \"right\": true\n}",
+  "seconds": 4.326,
+  "prompt_tokens": 1125,
+  "output_tokens": 50
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.01.22",
+  "raw": "{\n  \"reason\": \"The question involves training individuals to prevent CUI from being publicly accessible and reviewing content to remove CUI, which is directly addressed by AC-22's requirements for training and reviewing content for nonpublic information.\",\n  \"right\": true\n}",
+  "seconds": 3.958,
+  "prompt_tokens": 939,
+  "output_tokens": 56
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.02.02",
+  "raw": "{\"reason\": \"The question specifically addresses role-based security training, which is directly covered by the AT-3 control.\", \"right\": true}",
+  "seconds": 3.662,
+  "prompt_tokens": 1202,
+  "output_tokens": 30
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.03.01",
+  "raw": "{\n  \"reason\": \"The answer correctly cites AU-2c for specifying event types and AU-6a for reviewing and updating them, which directly addresses the question.\",\n  \"right\": true\n}",
+  "seconds": 4.241,
+  "prompt_tokens": 997,
+  "output_tokens": 43
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.03.04",
+  "raw": "{\n  \"reason\": \"The question is about alerting personnel and taking additional actions in the event of an audit logging process failure, which is directly addressed by AU-5.\",\n  \"right\": true\n}",
+  "seconds": 3.307,
+  "prompt_tokens": 766,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.03.05",
+  "raw": "{\n  \"reason\": \"The question involves reviewing audit records, analyzing for inappropriate activity, reporting findings, and correlating audit records across repositories. AU-6 directly addresses reviewing and analyzing audit records and reporting findings, while AU-6(3) specifically addresses correlating audit record repositories. These controls fully address the question.\",\n  \"right\": true\n}",
+  "seconds": 4.868,
+  "prompt_tokens": 819,
+  "output_tokens": 73
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.03.06",
+  "raw": "{\n  \"reason\": \"The question specifically asks for audit record reduction and report generation that supports review, analysis, reporting, and after-the-fact investigations while preserving original content and time ordering. AU-7 directly addresses this with its requirement for audit record reduction and report generation that supports these functions without altering the original content or time ordering.\",\n  \"right\": true\n}",
+  "seconds": 4.969,
+  "prompt_tokens": 868,
+  "output_tokens": 76
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.03.07",
+  "raw": "{\n  \"reason\": \"The question specifically addresses the generation and recording of time stamps for audit records, which is directly covered by control AU-8.\",\n  \"right\": true\n}",
+  "seconds": 4.003,
+  "prompt_tokens": 947,
+  "output_tokens": 39
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.04.01",
+  "raw": "{\n  \"reason\": \"The question is about developing and maintaining a baseline configuration and reviewing/updating it, which is directly addressed by CM-2. CM-3 supports the change control process, which is also relevant. Both controls are appropriate.\",\n  \"right\": true\n}",
+  "seconds": 4.159,
+  "prompt_tokens": 901,
+  "output_tokens": 58
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.04.02",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address establishing, documenting, implementing, and managing configuration settings as required by the question.\",\n  \"right\": true\n}",
+  "seconds": 3.665,
+  "prompt_tokens": 1088,
+  "output_tokens": 37
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.04.05",
+  "raw": "{\n  \"reason\": \"The question specifically asks about defining, documenting, approving, and enforcing physical and logical access restrictions associated with changes to the system, which is directly addressed by CM-5.\",\n  \"right\": true\n}",
+  "seconds": 3.155,
+  "prompt_tokens": 684,
+  "output_tokens": 48
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.04.08",
+  "raw": "{\n  \"reason\": \"The question asks about identifying authorized software, implementing a deny-all, allow-by-exception policy, and reviewing the list of authorized software, which directly aligns with the requirements of CM-7(5).\",\n  \"right\": true\n}",
+  "seconds": 3.753,
+  "prompt_tokens": 739,
+  "output_tokens": 56
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.04.10",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the question, including the development, documentation, review, and updating of the system component inventory as required.\",\n  \"right\": true\n}",
+  "seconds": 3.213,
+  "prompt_tokens": 743,
+  "output_tokens": 42
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.05.02",
+  "raw": "{\n  \"reason\": \"The question asks about uniquely identifying and authenticating devices before establishing a system connection, which is directly addressed by [IA-3] Device Identification and Authentication.\",\n  \"right\": true\n}",
+  "seconds": 3.358,
+  "prompt_tokens": 708,
+  "output_tokens": 45
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.05.11",
+  "raw": "{\n  \"reason\": \"The control [IA-6] directly addresses the obscuring of authentication feedback to protect information from exploitation, which matches the question.\",\n  \"right\": true\n}",
+  "seconds": 2.806,
+  "prompt_tokens": 610,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.06.02",
+  "raw": "{\n  \"reason\": \"The answer cites IR-5 and IR-6, which directly address tracking, reporting, and incident response requirements in the question.\",\n  \"right\": true\n}",
+  "seconds": 3.522,
+  "prompt_tokens": 826,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.06.05",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the question's requirements, including developing the incident response plan, defining reportable incidents, designating responsibilities, sharing information, and updating the plan.\",\n  \"right\": true\n}",
+  "seconds": 4.513,
+  "prompt_tokens": 1238,
+  "output_tokens": 50
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.08.01",
+  "raw": "{\n  \"reason\": \"The question is about physically controlling and securely storing system media containing CUI, which is directly addressed by MP-4a. The cited control MP-4 also supports this requirement.\",\n  \"right\": true\n}",
+  "seconds": 3.69,
+  "prompt_tokens": 709,
+  "output_tokens": 50
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.08.07",
+  "raw": "{\n  \"reason\": \"The answer cites MP-7 and MP-2, which directly address restricting media use and access, aligning with the question's requirements.\",\n  \"right\": true\n}",
+  "seconds": 3.598,
+  "prompt_tokens": 835,
+  "output_tokens": 42
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.08.09",
+  "raw": "{\n  \"reason\": \"The answer cites CP-9(8) and SC-28(1), which directly address cryptographic protection of backup information. CP-9(3) relates to separate storage of critical information, which is relevant but not the primary focus. SC-28 is cited without a specific identifier, but it generally covers protection of information at rest, which is relevant. Overall, the cited controls address the question.\",\n  \"right\": true\n}",
+  "seconds": 5.311,
+  "prompt_tokens": 648,
+  "output_tokens": 97
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.09.02",
+  "raw": "{\n  \"reason\": \"The answer is correct because [PS-4] directly addresses personnel termination, including disabling access, revoking credentials, and retrieving security property. [PS-5] addresses personnel transfer, including reviewing and modifying access authorizations. These controls fully cover the question.\",\n  \"right\": true\n}",
+  "seconds": 5.079,
+  "prompt_tokens": 1213,
+  "output_tokens": 66
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.10.01",
+  "raw": "{\n  \"reason\": \"The question is about developing, approving, maintaining, and managing access to a facility, which is directly addressed by PE-2.\",\n  \"right\": true\n}",
+  "seconds": 3.261,
+  "prompt_tokens": 924,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.10.06",
+  "raw": "{\n  \"reason\": \"The question is about determining alternate work sites and applying security requirements, which is directly addressed by PE-17.\",\n  \"right\": true\n}",
+  "seconds": 3.166,
+  "prompt_tokens": 917,
+  "output_tokens": 37
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.10.08",
+  "raw": "{\n  \"reason\": \"PE-4 directly addresses controlling physical access to system distribution and transmission lines within organizational facilities, which matches the question.\",\n  \"right\": true\n}",
+  "seconds": 3.028,
+  "prompt_tokens": 726,
+  "output_tokens": 37
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.11.01",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the risk assessment of unauthorized disclosure of CUI, including supply chain risk, as required by the question.\",\n  \"right\": true\n}",
+  "seconds": 4.022,
+  "prompt_tokens": 1177,
+  "output_tokens": 42
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.11.02",
+  "raw": "{\n  \"reason\": \"The answer correctly cites RA-5 and RA-5(2) for vulnerability monitoring and scanning, and SI-2 and SI-2(3) for remediation and time-to-remediate benchmarks, which directly address the question.\",\n  \"right\": true\n}",
+  "seconds": 4.211,
+  "prompt_tokens": 924,
+  "output_tokens": 63
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.11.04",
+  "raw": "{\n  \"reason\": \"RA-7 directly addresses responding to findings from security assessments, monitoring, and audits in accordance with organizational risk tolerance, which aligns with the question.\",\n  \"right\": true\n}",
+  "seconds": 3.64,
+  "prompt_tokens": 875,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.12.01",
+  "raw": "{\n  \"reason\": \"The question focuses on assessing security requirements for the system and its environment of operation, which is directly addressed by the [SA-4] Acquisition Process control. The other cited controls relate to specific aspects like vulnerability analysis, user privileges, threat awareness, and integrity checks, but none comprehensively address the broader requirement assessment question.\",\n  \"right\": false\n}",
+  "seconds": 4.959,
+  "prompt_tokens": 880,
+  "output_tokens": 78
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.12.02",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the development and maintenance of a plan of action and milestones, including remediation of vulnerabilities, automation, and continuous monitoring.\",\n  \"right\": true\n}",
+  "seconds": 4.323,
+  "prompt_tokens": 1328,
+  "output_tokens": 45
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.13.04",
+  "raw": "{\n  \"reason\": \"The control SC-4 directly addresses the question about preventing unauthorized and unintended information transfer via shared system resources.\",\n  \"right\": true\n}",
+  "seconds": 2.707,
+  "prompt_tokens": 650,
+  "output_tokens": 35
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.13.11",
+  "raw": "{\n  \"reason\": \"The question asks about implementing specific types of cryptography to protect the confidentiality of CUI, which is directly addressed by SC-13(a) and SC-13(b). These controls require determining cryptographic uses and implementing specific cryptographic types for those uses.\",\n  \"right\": true\n}",
+  "seconds": 3.455,
+  "prompt_tokens": 542,
+  "output_tokens": 64
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.13.13",
+  "raw": "{\n  \"reason\": \"The answer cites SC-18 and SC-18(1), which directly address defining acceptable mobile code, authorizing its use, and identifying unacceptable code. These controls fully cover the question.\",\n  \"right\": true\n}",
+  "seconds": 3.77,
+  "prompt_tokens": 752,
+  "output_tokens": 54
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.14.03",
+  "raw": "{\n  \"reason\": \"The question involves receiving and disseminating security alerts, advisories, and directives, which is directly addressed by SI-5.\",\n  \"right\": true\n}",
+  "seconds": 3.713,
+  "prompt_tokens": 1066,
+  "output_tokens": 39
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.14.06",
+  "raw": "{\n  \"reason\": \"The answer cites multiple NIST SP 800-53 controls that directly address monitoring for attacks, unauthorized connections, and unusual traffic as described in the question.\",\n  \"right\": true\n}",
+  "seconds": 3.61,
+  "prompt_tokens": 933,
+  "output_tokens": 48
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.14.08",
+  "raw": "{\n  \"reason\": \"The control SI-12 directly addresses the management and retention of information, including CUI, in accordance with applicable laws and requirements, which matches the question.\",\n  \"right\": true\n}",
+  "seconds": 4.221,
+  "prompt_tokens": 1146,
+  "output_tokens": 46
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.15.02",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the question's requirements, including developing a system security plan, security categorization, system development life cycle, acquisition process, system documentation, and authorizing access to security functions.\",\n  \"right\": true\n}",
+  "seconds": 5.405,
+  "prompt_tokens": 1546,
+  "output_tokens": 56
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.16.01",
+  "raw": "{\n  \"reason\": \"The question asks about applying systems security engineering principles during development or modification, which is directly addressed by SA-4(3) which requires the use of a system development life cycle process that includes security and privacy engineering methods.\",\n  \"right\": true\n}",
+  "seconds": 3.942,
+  "prompt_tokens": 694,
+  "output_tokens": 58
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.16.02",
+  "raw": "{\n  \"reason\": \"The question specifically addresses replacing unsupported system components and providing alternatives for continued support, which is directly covered by control SA-22.\",\n  \"right\": true\n}",
+  "seconds": 3.21,
+  "prompt_tokens": 742,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.16.03",
+  "raw": "{\n  \"reason\": \"The answer cites [SA-9] and [SA-9(2)], which directly address requiring external system services to comply with security requirements, defining user roles, and monitoring compliance. These controls fully align with the question's requirements.\",\n  \"right\": true\n}",
+  "seconds": 4.89,
+  "prompt_tokens": 1109,
+  "output_tokens": 61
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.17.01",
+  "raw": "{\n  \"reason\": \"The question specifically asks about developing, reviewing, and protecting a supply chain risk management plan, which is directly addressed by SR-2.\",\n  \"right\": true\n}",
+  "seconds": 3.97,
+  "prompt_tokens": 1129,
+  "output_tokens": 41
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "sp800_171",
+  "id": "03.17.03",
+  "raw": "{\n  \"reason\": \"The answer correctly cites SR-3(a) and SR-3(b) which directly address establishing a process for identifying and addressing weaknesses in the supply chain and enforcing security requirements to protect against supply chain risks.\",\n  \"right\": true\n}",
+  "seconds": 4.503,
+  "prompt_tokens": 1001,
+  "output_tokens": 55
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-02",
+  "raw": "{\n  \"reason\": \"The answer correctly identifies that the frequency of system backups is defined by the organization as specified in the controls, and it cites relevant controls that address the question.\",\n  \"right\": true\n}",
+  "seconds": 3.347,
+  "prompt_tokens": 691,
+  "output_tokens": 45
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-03",
+  "raw": "{\n  \"reason\": \"The answer correctly cites IR-4, IR-6, IR-8, and IR-4(11), which directly address incident handling, reporting, planning, and team deployment as required when a security incident occurs.\",\n  \"right\": true\n}",
+  "seconds": 4.66,
+  "prompt_tokens": 1143,
+  "output_tokens": 59
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-04",
+  "raw": "{\n  \"reason\": \"The answer correctly identifies that individuals with authorized access to the facility are allowed into the server room, and this is directly addressed by the PE-2 control which governs physical access authorizations.\",\n  \"right\": true\n}",
+  "seconds": 3.581,
+  "prompt_tokens": 786,
+  "output_tokens": 52
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-06",
+  "raw": "{\n  \"reason\": \"The answer cites controls that directly address ensuring software patches are installed, such as automatic updates, flaw remediation, and automated status checks.\",\n  \"right\": true\n}",
+  "seconds": 3.078,
+  "prompt_tokens": 804,
+  "output_tokens": 41
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-07",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the need to encrypt data sent over the network, including protecting confidentiality and integrity of transmitted information.\",\n  \"right\": true\n}",
+  "seconds": 2.82,
+  "prompt_tokens": 604,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-08",
+  "raw": "{\n  \"reason\": \"The answer correctly cites AC-2(3) for disabling accounts when a person is no longer associated with a user or individual, and PS-5 for reviewing access authorizations during personnel transfers, which includes leaving the company.\",\n  \"right\": true\n}",
+  "seconds": 4.228,
+  "prompt_tokens": 869,
+  "output_tokens": 59
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-11",
+  "raw": "{\n  \"reason\": \"The answer correctly identifies the event logging requirements from AU-2a and MA-4(1)a, and includes logging of privileged functions from AC-6(9), which directly address the question of what events should be logged.\",\n  \"right\": true\n}",
+  "seconds": 4.181,
+  "prompt_tokens": 905,
+  "output_tokens": 60
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-13",
+  "raw": "{\n  \"reason\": \"The answer is correct because RA-5 directly addresses the requirement to monitor and scan for vulnerabilities in systems and hosted applications, which directly answers the question.\",\n  \"right\": true\n}",
+  "seconds": 3.139,
+  "prompt_tokens": 817,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-14",
+  "raw": "{\n  \"reason\": \"The answer cites controls that directly address protecting data stored on laptops, including encryption, physical protection, and protection of information at rest.\",\n  \"right\": true\n}",
+  "seconds": 2.835,
+  "prompt_tokens": 682,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-15",
+  "raw": "{\n  \"reason\": \"The cited controls directly address the need for a plan to keep operations running after a disaster by covering contingency planning, system recovery, resumption of functions, and coordination with related plans.\",\n  \"right\": true\n}",
+  "seconds": 3.915,
+  "prompt_tokens": 832,
+  "output_tokens": 50
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-16",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address handling visitors, including maintaining records (PE-8), controlling access (PE-3), escorting visitors (PE-3), requiring two forms of identification (PE-2(2)), and using automated mechanisms (PE-8(1)).\",\n  \"right\": true\n}",
+  "seconds": 5.383,
+  "prompt_tokens": 1127,
+  "output_tokens": 71
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-19",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the disposal of old hard drives, including information disposal techniques, component disposal, media storage, and nondestructive sanitization techniques.\",\n  \"right\": true\n}",
+  "seconds": 3.33,
+  "prompt_tokens": 807,
+  "output_tokens": 47
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-20",
+  "raw": "{\n  \"reason\": \"The answer is correct because multiple NIST SP 800-53 controls directly address the need to maintain an inventory of hardware and software components, including CM-8, CM-8(1), CM-7(9), PM-5, and others.\",\n  \"right\": true\n}",
+  "seconds": 4.277,
+  "prompt_tokens": 773,
+  "output_tokens": 69
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-21",
+  "raw": "{\n  \"reason\": \"The [AC-11] Device Lock control directly addresses the requirement for a computer to lock its screen after a period of inactivity, which is exactly what the question is asking.\",\n  \"right\": true\n}",
+  "seconds": 3.715,
+  "prompt_tokens": 927,
+  "output_tokens": 51
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-23",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that relate to reviewing accounts and monitoring usage, which addresses the question of regularly reviewing who has accounts on systems.\",\n  \"right\": true\n}",
+  "seconds": 3.267,
+  "prompt_tokens": 931,
+  "output_tokens": 41
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-25",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that explicitly prohibit direct connections to external networks without boundary protection devices, which includes firewalls.\",\n  \"right\": true\n}",
+  "seconds": 3.018,
+  "prompt_tokens": 726,
+  "output_tokens": 37
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-27",
+  "raw": "{\n  \"reason\": \"The answer correctly cites controls that address the question of ensuring suppliers do not put systems at risk, including assessments, risk management plans, and operational security measures.\",\n  \"right\": true\n}",
+  "seconds": 4.184,
+  "prompt_tokens": 953,
+  "output_tokens": 45
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-28",
+  "raw": "{\n  \"reason\": \"The answer is correct because the cited controls directly address the limitation of USB drive use, including restrictions on portable storage devices and media use.\",\n  \"right\": true\n}",
+  "seconds": 3.199,
+  "prompt_tokens": 752,
+  "output_tokens": 41
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "plain_english",
+  "id": "plain-30",
+  "raw": "{\n  \"reason\": \"The control AC-6(5) directly addresses limiting privileged accounts to specific personnel or roles, which aligns with the question of limiting administrator rights.\",\n  \"right\": true\n}",
+  "seconds": 3.211,
+  "prompt_tokens": 798,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-03",
+  "raw": "{\n  \"reason\": \"The question asks about the CVSS base score of a specific vulnerability, which is not addressed by any of the listed NIST SP 800-53 Rev 5.2.0 controls. The controls provided relate to vulnerability management processes, not specific vulnerability metrics.\",\n  \"right\": true\n}",
+  "seconds": 4.343,
+  "prompt_tokens": 766,
+  "output_tokens": 70
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-04",
+  "raw": "{\"reason\": \"The question about the cost of a SOC 2 Type II audit is not addressed by any of the cited NIST SP 800-53 controls, which focus on audit processes, logging, and security operations.\", \"right\": true}",
+  "seconds": 3.728,
+  "prompt_tokens": 757,
+  "output_tokens": 55
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-05",
+  "raw": "{\"reason\": \"The NIST SP 800-53 controls provided do not address the choice between OSCP and CEH certifications for career advancement in penetration testing.\", \"right\": true}",
+  "seconds": 3.557,
+  "prompt_tokens": 851,
+  "output_tokens": 42
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-06",
+  "raw": "{\"reason\": \"None of the cited controls address the specific question about the default port number used by HTTPS.\", \"right\": true}",
+  "seconds": 2.32,
+  "prompt_tokens": 670,
+  "output_tokens": 28
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-07",
+  "raw": "{\"reason\": \"The question about the most secure programming language to learn first is not addressed by any of the cited NIST SP 800-53 controls, which focus on security design principles and practices rather than language-specific security.\", \"right\": true}",
+  "seconds": 3.421,
+  "prompt_tokens": 663,
+  "output_tokens": 55
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-08",
+  "raw": "{\"reason\": \"The question about reversing a string is a programming task and none of the cited NIST SP 800-53 controls are relevant to it.\", \"right\": true}",
+  "seconds": 2.863,
+  "prompt_tokens": 611,
+  "output_tokens": 41
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-14",
+  "raw": "{\n  \"reason\": \"The answer incorrectly cites controls that do not directly address the legality of recording phone calls in California. The relevant control would be [AU-14] Session Audit, which mentions recording under defined circumstances and consulting legal counsel.\",\n  \"right\": false\n}",
+  "seconds": 4.22,
+  "prompt_tokens": 820,
+  "output_tokens": 58
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-18",
+  "raw": "{\n  \"reason\": \"None of the cited NIST SP 800-53 controls address the performance or speed of a VPN app, which is outside the scope of the controls provided.\",\n  \"right\": true\n}",
+  "seconds": 3.215,
+  "prompt_tokens": 620,
+  "output_tokens": 49
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-20",
+  "raw": "{\n  \"reason\": \"The question about the number of bitcoins stolen in the largest cryptocurrency exchange hack is not addressed by any of the cited NIST SP 800-53 controls, as they focus on security practices rather than specific incident data or cryptocurrency theft statistics.\",\n  \"right\": true\n}",
+  "seconds": 3.384,
+  "prompt_tokens": 544,
+  "output_tokens": 64
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-21",
+  "raw": "{\"reason\": \"None of the cited NIST SP 800-53 controls address the question about boiling time for an egg.\", \"right\": true}",
+  "seconds": 3.227,
+  "prompt_tokens": 877,
+  "output_tokens": 35
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-22",
+  "raw": "{\n  \"reason\": \"None of the cited NIST SP 800-53 controls address the factual question about the capital of Australia.\",\n  \"right\": true\n}",
+  "seconds": 2.869,
+  "prompt_tokens": 628,
+  "output_tokens": 39
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-24",
+  "raw": "{\"reason\": \"The question is about a recipe for vegetable soup, which is unrelated to information security controls outlined in NIST SP 800-53.\", \"right\": true}",
+  "seconds": 3.504,
+  "prompt_tokens": 832,
+  "output_tokens": 40
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-27",
+  "raw": "{\n  \"reason\": \"None of the cited NIST SP 800-53 controls address the mathematical calculation of 15 percent of 240.\",\n  \"right\": true\n}",
+  "seconds": 2.965,
+  "prompt_tokens": 678,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-28",
+  "raw": "{\"reason\": \"None of the cited NIST SP 800-53 controls relate to the question about which planet is closest to the sun.\", \"right\": true}",
+  "seconds": 2.743,
+  "prompt_tokens": 619,
+  "output_tokens": 38
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-29",
+  "raw": "{\"reason\": \"The question is about caring for a succulent plant, which is unrelated to information security controls outlined in NIST SP 800-53.\", \"right\": true}",
+  "seconds": 3.352,
+  "prompt_tokens": 915,
+  "output_tokens": 41
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-31",
+  "raw": "{\"reason\": \"None of the cited NIST SP 800-53 controls address the question about translating 'good morning' into Spanish.\", \"right\": true}",
+  "seconds": 2.993,
+  "prompt_tokens": 757,
+  "output_tokens": 37
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-34",
+  "raw": "{\"reason\": \"The question about removing a red wine stain from a carpet is unrelated to information security controls outlined in NIST SP 800-53 Rev 5.2.0.\", \"right\": true}",
+  "seconds": 3.079,
+  "prompt_tokens": 680,
+  "output_tokens": 47
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-35",
+  "raw": "{\n  \"reason\": \"None of the cited NIST SP 800-53 controls are relevant to the question about the Academy Award for Best Picture in 1997.\",\n  \"right\": true\n}",
+  "seconds": 3.184,
+  "prompt_tokens": 628,
+  "output_tokens": 48
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-36",
+  "raw": "{\"reason\": \"The question about fixing a flat bicycle tire is unrelated to information security controls outlined in NIST SP 800-53 Rev 5.2.0.\", \"right\": true}",
+  "seconds": 3.654,
+  "prompt_tokens": 828,
+  "output_tokens": 44
+ },
+ {
+  "judge": "qwen3:8b",
+  "set": "out_of_scope",
+  "id": "oos-40",
+  "raw": "{\n  \"reason\": \"The question asks for the population of Canada, which is factual data, not related to the handling of personally identifiable information (PII) or data privacy controls outlined in NIST SP 800-53. None of the cited controls address the collection, release, or de-identification of demographic data like population statistics.\",\n  \"right\": true\n}",
+  "seconds": 4.384,
+  "prompt_tokens": 571,
+  "output_tokens": 80
+ }
+]

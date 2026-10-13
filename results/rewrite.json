@@ -1,0 +1,210 @@
+{
+  "model": "qwen3:8b",
+  "settings": [
+    {
+      "queries": 1,
+      "weight": 0.5,
+      "again": false
+    },
+    {
+      "queries": 1,
+      "weight": 0.5,
+      "again": true
+    },
+    {
+      "queries": 1,
+      "weight": 1.0,
+      "again": false
+    },
+    {
+      "queries": 1,
+      "weight": 1.0,
+      "again": true
+    },
+    {
+      "queries": 3,
+      "weight": 0.5,
+      "again": false
+    },
+    {
+      "queries": 3,
+      "weight": 0.5,
+      "again": true
+    },
+    {
+      "queries": 3,
+      "weight": 1.0,
+      "again": false
+    },
+    {
+      "queries": 3,
+      "weight": 1.0,
+      "again": true
+    }
+  ],
+  "first_round_for_search_again": {
+    "queries": 3,
+    "weight": 1.0,
+    "again": false
+  },
+  "dev_csf2": {
+    "hybrid, vector weight 3 (step 4)": {
+      "questions": 60,
+      "mrr": 0.47,
+      "recall@1": 0.059,
+      "hit@1": 0.283,
+      "recall@5": 0.28,
+      "hit@5": 0.683,
+      "recall@10": 0.406,
+      "hit@10": 0.833,
+      "precision@5": 0.237
+    },
+    "1 query, weight 0.5": {
+      "questions": 60,
+      "mrr": 0.565,
+      "recall@1": 0.123,
+      "hit@1": 0.417,
+      "recall@5": 0.303,
+      "hit@5": 0.75,
+      "recall@10": 0.408,
+      "hit@10": 0.817,
+      "precision@5": 0.253
+    },
+    "1 query, weight 0.5, search again": {
+      "questions": 60,
+      "mrr": 0.56,
+      "recall@1": 0.11,
+      "hit@1": 0.417,
+      "recall@5": 0.324,
+      "hit@5": 0.733,
+      "recall@10": 0.427,
+      "hit@10": 0.867,
+      "precision@5": 0.25
+    },
+    "1 query, weight 1": {
+      "questions": 60,
+      "mrr": 0.598,
+      "recall@1": 0.138,
+      "hit@1": 0.467,
+      "recall@5": 0.326,
+      "hit@5": 0.767,
+      "recall@10": 0.389,
+      "hit@10": 0.833,
+      "precision@5": 0.253
+    },
+    "1 query, weight 1, search again": {
+      "questions": 60,
+      "mrr": 0.518,
+      "recall@1": 0.104,
+      "hit@1": 0.35,
+      "recall@5": 0.326,
+      "hit@5": 0.733,
+      "recall@10": 0.424,
+      "hit@10": 0.85,
+      "precision@5": 0.257
+    },
+    "3 queries, weight 0.5": {
+      "questions": 60,
+      "mrr": 0.505,
+      "recall@1": 0.116,
+      "hit@1": 0.367,
+      "recall@5": 0.28,
+      "hit@5": 0.7,
+      "recall@10": 0.437,
+      "hit@10": 0.833,
+      "precision@5": 0.23
+    },
+    "3 queries, weight 0.5, search again": {
+      "questions": 60,
+      "mrr": 0.475,
+      "recall@1": 0.087,
+      "hit@1": 0.3,
+      "recall@5": 0.309,
+      "hit@5": 0.75,
+      "recall@10": 0.411,
+      "hit@10": 0.833,
+      "precision@5": 0.243
+    },
+    "3 queries, weight 1": {
+      "questions": 60,
+      "mrr": 0.486,
+      "recall@1": 0.112,
+      "hit@1": 0.35,
+      "recall@5": 0.273,
+      "hit@5": 0.683,
+      "recall@10": 0.441,
+      "hit@10": 0.833,
+      "precision@5": 0.223
+    },
+    "3 queries, weight 1, search again": {
+      "questions": 60,
+      "mrr": 0.474,
+      "recall@1": 0.092,
+      "hit@1": 0.317,
+      "recall@5": 0.292,
+      "hit@5": 0.733,
+      "recall@10": 0.408,
+      "hit@10": 0.833,
+      "precision@5": 0.227
+    }
+  },
+  "chosen": {
+    "queries": 1,
+    "weight": 1.0,
+    "again": false
+  },
+  "test": {
+    "csf2": {
+      "hybrid, vector weight 3 (step 4)": {
+        "questions": 46,
+        "mrr": 0.463,
+        "recall@1": 0.054,
+        "hit@1": 0.326,
+        "recall@5": 0.253,
+        "hit@5": 0.674,
+        "recall@10": 0.295,
+        "hit@10": 0.761,
+        "precision@5": 0.196
+      },
+      "with rewriting: 1 query, weight 1": {
+        "questions": 46,
+        "mrr": 0.483,
+        "recall@1": 0.109,
+        "hit@1": 0.348,
+        "recall@5": 0.283,
+        "hit@5": 0.696,
+        "recall@10": 0.344,
+        "hit@10": 0.739,
+        "precision@5": 0.2
+      }
+    },
+    "sp800_171": {
+      "hybrid, vector weight 3 (step 4)": {
+        "questions": 45,
+        "mrr": 0.906,
+        "recall@1": 0.722,
+        "hit@1": 0.844,
+        "recall@5": 0.963,
+        "hit@5": 0.978,
+        "recall@10": 0.97,
+        "hit@10": 0.978,
+        "precision@5": 0.249
+      },
+      "with rewriting: 1 query, weight 1": {
+        "questions": 45,
+        "mrr": 0.832,
+        "recall@1": 0.667,
+        "hit@1": 0.756,
+        "recall@5": 0.896,
+        "hit@5": 0.933,
+        "recall@10": 0.956,
+        "hit@10": 0.956,
+        "precision@5": 0.222
+      }
+    }
+  },
+  "replies": {
+    "count": 211,
+    "median_seconds": 1.29
+  }
+}
