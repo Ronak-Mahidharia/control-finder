@@ -68,7 +68,7 @@ Trying the site by hand found a second problem: the "Search by" choice seemed to
 - **Search a control's numbered parts** instead of the whole control, so a long control's main point doesn't get diluted.
 
 ## How it's checked
-- 127 Python tests run on every change, with the website's own tests, in GitHub Actions pinned to exact commits, with read-only permissions. The 12 database tests run against a pgvector container pinned by digest.
+- 132 Python tests run on every change, with the website's own tests, in GitHub Actions pinned to exact commits, with read-only permissions. The 12 database tests run against a pgvector container pinned by digest.
 - The embeddings, the vector lists, every reranker score, and every model answer are committed, so CI recomputes every published number without running a model.
 - Each step planted bugs on purpose to test the tests, 90 in all, and every one was caught; one was caught only after a test was added for it.
 - A full check on Oct 9 started from a fresh copy, in a folder with a space in its name. Every script reproduced its published results, apart from timings and the random index builds. Taking the database and Ollama away on purpose, and reading the code through, found problems that are now fixed. The page called a stopped database "ready", the database tests rebuilt the very table the site searches, and stale connections failed the first search after the database restarted.
