@@ -1,0 +1,578 @@
+{
+  "answers": 130,
+  "judged": "qwen3:8b, prompt v1, top 10",
+  "judges": {
+    "granite4:3b": {
+      "all": {
+        "answers": 130,
+        "invalid": 0,
+        "key_says_wrong": 22,
+        "judge_says_wrong": 2,
+        "agreement": 0.846,
+        "kappa": 0.142,
+        "wrong_answers_caught": 0.091,
+        "flags_that_are_wrong_answers": 1.0,
+        "right_answers_flagged": 0
+      },
+      "by_set": {
+        "csf2": {
+          "answers": 46,
+          "invalid": 0,
+          "key_says_wrong": 15,
+          "judge_says_wrong": 1,
+          "agreement": 0.696,
+          "kappa": 0.088,
+          "wrong_answers_caught": 0.067,
+          "flags_that_are_wrong_answers": 1.0,
+          "right_answers_flagged": 0
+        },
+        "sp800_171": {
+          "answers": 45,
+          "invalid": 0,
+          "key_says_wrong": 2,
+          "judge_says_wrong": 0,
+          "agreement": 0.956,
+          "kappa": 0.0,
+          "wrong_answers_caught": 0.0,
+          "flags_that_are_wrong_answers": null,
+          "right_answers_flagged": 0
+        },
+        "plain_english": {
+          "answers": 19,
+          "invalid": 0,
+          "key_says_wrong": 4,
+          "judge_says_wrong": 0,
+          "agreement": 0.789,
+          "kappa": 0.0,
+          "wrong_answers_caught": 0.0,
+          "flags_that_are_wrong_answers": null,
+          "right_answers_flagged": 0
+        },
+        "out_of_scope": {
+          "answers": 20,
+          "invalid": 0,
+          "key_says_wrong": 1,
+          "judge_says_wrong": 1,
+          "agreement": 1.0,
+          "kappa": 1.0,
+          "wrong_answers_caught": 1.0,
+          "flags_that_are_wrong_answers": 1.0,
+          "right_answers_flagged": 0
+        }
+      },
+      "median_seconds": 1.52,
+      "disagreements": [
+        {
+          "set": "csf2",
+          "id": "ID.AM-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SC-7(4)",
+            "SC-7(25)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "ID.AM-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "CM-8(1)",
+            "CM-8(2)",
+            "CM-8(7)",
+            "CM-8"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.DS-11",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "CP-9(1)",
+            "CP-9(2)",
+            "CP-9(3)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.IR-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SA-24"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.IR-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SC-6",
+            "SC-5(2)",
+            "CP-2(2)",
+            "SR-5(1)",
+            "SA-8(32)",
+            "SC-12(1)",
+            "AU-5(1)",
+            "SA-8(5)",
+            "AU-4",
+            "SC-5(3)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.CM-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "AC-2(12)",
+            "PE-6",
+            "SI-7(7)",
+            "PE-14(2)",
+            "SI-4(5)",
+            "SI-4(12)",
+            "SI-4(7)",
+            "AU-6",
+            "SI-4"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-02",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IR-4(13)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "RA-3"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-08",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IR-1"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RS.AN-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SI-2(7)",
+            "IR-4(12)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RS.AN-06",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SR-4",
+            "AU-11",
+            "SI-7(8)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RS.AN-07",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "AC-4(19)",
+            "SC-20(2)",
+            "SR-4",
+            "AC-4(6)",
+            "SI-7"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RC.RP-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IR-4(3)",
+            "IR-4(14)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RC.RP-05",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "CP-9(1)",
+            "SA-10(5)",
+            "SI-7(1)"
+          ]
+        },
+        {
+          "set": "sp800_171",
+          "id": "03.12.01",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SA-15(7)",
+            "AC-6(7)",
+            "RA-3(3)",
+            "SI-7(1)",
+            "SA-4"
+          ]
+        },
+        {
+          "set": "sp800_171",
+          "id": "03.16.01",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SA-4(3)"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-08",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "AC-2(3)",
+            "PS-5"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-19",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SR-12",
+            "SI-12(3)",
+            "MP-4",
+            "MP-6(3)"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-23",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IA-5(8)",
+            "AC-2(12)",
+            "AU-6"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-25",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SC-7(27)",
+            "SC-7(25)",
+            "SC-7(26)",
+            "SC-7(28)"
+          ]
+        }
+      ]
+    },
+    "qwen3:8b": {
+      "all": {
+        "answers": 130,
+        "invalid": 0,
+        "key_says_wrong": 22,
+        "judge_says_wrong": 7,
+        "agreement": 0.854,
+        "kappa": 0.287,
+        "wrong_answers_caught": 0.227,
+        "flags_that_are_wrong_answers": 0.714,
+        "right_answers_flagged": 2
+      },
+      "by_set": {
+        "csf2": {
+          "answers": 46,
+          "invalid": 0,
+          "key_says_wrong": 15,
+          "judge_says_wrong": 5,
+          "agreement": 0.696,
+          "kappa": 0.164,
+          "wrong_answers_caught": 0.2,
+          "flags_that_are_wrong_answers": 0.6,
+          "right_answers_flagged": 2
+        },
+        "sp800_171": {
+          "answers": 45,
+          "invalid": 0,
+          "key_says_wrong": 2,
+          "judge_says_wrong": 1,
+          "agreement": 0.978,
+          "kappa": 0.656,
+          "wrong_answers_caught": 0.5,
+          "flags_that_are_wrong_answers": 1.0,
+          "right_answers_flagged": 0
+        },
+        "plain_english": {
+          "answers": 19,
+          "invalid": 0,
+          "key_says_wrong": 4,
+          "judge_says_wrong": 0,
+          "agreement": 0.789,
+          "kappa": 0.0,
+          "wrong_answers_caught": 0.0,
+          "flags_that_are_wrong_answers": null,
+          "right_answers_flagged": 0
+        },
+        "out_of_scope": {
+          "answers": 20,
+          "invalid": 0,
+          "key_says_wrong": 1,
+          "judge_says_wrong": 1,
+          "agreement": 1.0,
+          "kappa": 1.0,
+          "wrong_answers_caught": 1.0,
+          "flags_that_are_wrong_answers": 1.0,
+          "right_answers_flagged": 0
+        }
+      },
+      "median_seconds": 3.73,
+      "disagreements": [
+        {
+          "set": "csf2",
+          "id": "ID.AM-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "CM-8(1)",
+            "CM-8(2)",
+            "CM-8(7)",
+            "CM-8"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.DS-01",
+          "key_says_right": true,
+          "covered": true,
+          "cited": [
+            "SC-28",
+            "AC-17(2)",
+            "AC-19(5)",
+            "MA-4(6)",
+            "SC-16(1)",
+            "SC-8(1)",
+            "SC-8(2)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.DS-10",
+          "key_says_right": true,
+          "covered": true,
+          "cited": [
+            "SC-8",
+            "SC-28",
+            "AC-17(2)",
+            "SC-8(1)",
+            "SC-8(2)",
+            "IA-13(2)",
+            "SI-7",
+            "SA-8(20)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.IR-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SA-24"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "PR.IR-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SC-6",
+            "SC-5(2)",
+            "CP-2(2)",
+            "SR-5(1)",
+            "SA-8(32)",
+            "SC-12(1)",
+            "AU-5(1)",
+            "SA-8(5)",
+            "AU-4",
+            "SC-5(3)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.CM-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "AC-2(12)",
+            "PE-6",
+            "SI-7(7)",
+            "PE-14(2)",
+            "SI-4(5)",
+            "SI-4(12)",
+            "SI-4(7)",
+            "AU-6",
+            "SI-4"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-02",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IR-4(13)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "RA-3"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-06",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SI-7(2)",
+            "SI-7"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "DE.AE-08",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IR-1"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RS.AN-03",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SI-2(7)",
+            "IR-4(12)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RS.AN-06",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SR-4",
+            "AU-11",
+            "SI-7(8)"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RS.AN-07",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "AC-4(19)",
+            "SC-20(2)",
+            "SR-4",
+            "AC-4(6)",
+            "SI-7"
+          ]
+        },
+        {
+          "set": "csf2",
+          "id": "RC.RP-04",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IR-4(3)",
+            "IR-4(14)"
+          ]
+        },
+        {
+          "set": "sp800_171",
+          "id": "03.16.01",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SA-4(3)"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-08",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "AC-2(3)",
+            "PS-5"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-19",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SR-12",
+            "SI-12(3)",
+            "MP-4",
+            "MP-6(3)"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-23",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "IA-5(8)",
+            "AC-2(12)",
+            "AU-6"
+          ]
+        },
+        {
+          "set": "plain_english",
+          "id": "plain-25",
+          "key_says_right": false,
+          "covered": true,
+          "cited": [
+            "SC-7(27)",
+            "SC-7(25)",
+            "SC-7(26)",
+            "SC-7(28)"
+          ]
+        }
+      ]
+    }
+  }
+}

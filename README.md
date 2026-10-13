@@ -71,15 +71,18 @@ Three ways to search the 1,014 active controls and enhancements, scored on the t
 | CSF 2.0 | Hybrid (RRF) | 46 | 0.411 | 26.1% | 78.3% |
 | CSF 2.0 | Hybrid, vector weight 3 | 46 | 0.463 | 32.6% | 76.1% |
 | CSF 2.0 | Hybrid + reranker (mxbai-rerank-xsmall-v1) | 46 | 0.491 | 32.6% | 80.4% |
+| CSF 2.0 | Hybrid, with the question rewritten in NIST's words (qwen3:8b) | 46 | 0.483 | 34.8% | 73.9% |
 | SP 800-171 | Keyword (BM25) | 45 | 0.983 | 97.8% | 100.0% |
 | SP 800-171 | Vector (nomic-embed-text) | 45 | 0.902 | 84.4% | 97.8% |
 | SP 800-171 | Hybrid (RRF) | 45 | 0.967 | 95.6% | 97.8% |
 | SP 800-171 | Hybrid, vector weight 3 | 45 | 0.906 | 84.4% | 97.8% |
 | SP 800-171 | Hybrid + reranker (mxbai-rerank-xsmall-v1) | 45 | 0.924 | 88.9% | 97.8% |
+| SP 800-171 | Hybrid, with the question rewritten in NIST's words (qwen3:8b) | 45 | 0.832 | 75.6% | 95.6% |
 
 - **CSF 2.0 is the real test.** Its outcomes are worded unlike the controls ("Vulnerabilities in assets are identified, validated, and recorded"). Searching by meaning nearly doubles keyword search's MRR there.
 - **Hybrid search isn't automatically better.** On CSF 2.0 it found the most right controls (recall@10 0.334, against 0.303 for vectors alone) but put a right one first less often. Across both keys it's the most balanced: on SP 800-171, which keyword search nearly aces because NIST adapted each requirement's wording from its source controls, it keeps most of keyword search's lead.
 - **Reranking helps most on the hard key.** Weighting the vector list 3 times (chosen on dev) and reranking its top 30 with mxbai-rerank-xsmall-v1 gives CSF 2.0's best MRR, 0.491. A bigger reranker isn't automatically better: bge-reranker-base did worse on dev than no reranking (0.405 against 0.470). And there's a trade-off: tuned for CSF 2.0, the weighted search loses ground on SP 800-171. Reranking can only reorder the top 30, which hold 53.2% of CSF 2.0's right controls on test.
+- **Rewriting the question helped on dev, hardly on test** ([details](docs/results-rewrite.md)). qwen3:8b rewrote each question as 3 short search queries in SP 800-53's words, and each was searched and fused with the question's own lists. On CSF 2.0 dev, one rewritten query (chosen from 8 settings) raised MRR from 0.470 to 0.598, but on test only from 0.463 to 0.483, and on SP 800-171, whose wording is already NIST's, it fell from 0.906 to 0.832. Searching again, after reading the titles of the top 5 results, didn't help in any dev setting. So the API doesn't rewrite questions.
 - **Everything runs locally and free:** the embedding model is nomic-embed-text through Ollama. The embeddings, every question's top 100 vector results, and every reranker score are committed, so CI checks these numbers without the models.
 - **Stated openly:** a first exploratory run, while the CSF 2.0 key was being built, also printed its keyword test numbers. Nothing was tuned on them.
 
@@ -104,6 +107,19 @@ The controls are also loaded into PostgreSQL with pgvector, from the committed e
 - **Plain-English questions** (hand-made, 19 on test): it cited an anchor control for 78.9%. All 4 misses cited an enhancement of an anchor instead.
 - **Two models compared on dev:** granite4:3b answered about twice as fast but said "not covered" to only 45% to 60% of the out-of-scope questions, against 100% for qwen3:8b. With qwen3:8b, an answer took 4.33 s (median, test) on one Apple-silicon Mac.
 
+## Checking the answers with an AI judge
+Could a local model stand in for an answer key? Each of the 130 cited answers people saw on test was judged by a model, with one prompt written before any judge ran, and the verdicts were checked against the keys: an answer is right when it cites a control NIST links to the question (an anchor, for a plain-English one), or says "not covered" to a question SP 800-53 doesn't answer. Details: [the AI judge](docs/results-judge.md).
+
+| Judge | Agrees with the keys | Cohen's kappa | Wrong answers it caught | Its "wrong" verdicts that are right |
+|---|---|---|---|---|
+| granite4:3b | 84.6% | 0.142 | 2 of 22 | 2 of 2 |
+| qwen3:8b | 85.4% | 0.287 | 5 of 22 | 5 of 7 |
+
+- **85% agreement sounds high, but it isn't.** The keys call 108 of the 130 answers right, so a judge that always said "right" would agree 83.1% of the time. Kappa, the agreement beyond chance, is 0.142 and 0.287 (0 is chance, 1 is complete agreement).
+- **Both judges missed most wrong answers:** 20 and 17 of the 22. Most of the misses are CSF 2.0 answers that cite related controls instead of the ones NIST mapped.
+- **When a judge called an answer wrong, it was usually right** (2 of 2, and 5 of 7). So a judge like this could point a person to answers worth checking, but not replace the key.
+- **qwen3:8b wrote these answers,** and it wasn't easier on its own work: it caught more wrong answers than granite4:3b.
+
 ## The MCP server
 AI assistants such as Claude Desktop and Claude Code can use Control Finder as three read-only tools: `search_controls`, `get_control`, and `answer_question`. Setup: [docs/mcp.md](docs/mcp.md). Results: [the MCP server](docs/results-mcp.md).
 - **The published rankings, with no database.** It searches in memory, which gives the same rankings as the database. Run over stdio, with the model embedding each question live, it gave the published top 20 for 203 of 203 questions.
@@ -126,11 +142,13 @@ docker compose up -d --wait                       # the database: PostgreSQL wit
 .venv/bin/python -m uvicorn controlfinder.api:app --app-dir src --host 127.0.0.1 --port 8000  # the API (needs Ollama); docs at /docs
 .venv/bin/python scripts/run_api_check.py         # runs the API and checks it against the published rankings (about 15 s)
 .venv/bin/python scripts/run_answer_eval.py       # cited answers: needs qwen3:8b and granite4:3b in Ollama (about 55 min; answers are cached)
+.venv/bin/python scripts/run_judge.py             # the AI judge: granite4:3b and qwen3:8b (about 12 min; every reply is kept)
+.venv/bin/python scripts/run_rewrite.py           # rewriting the question: qwen3:8b and nomic-embed-text (about 5 min; kept)
 .venv/bin/pip install -e . --no-deps              # lets an AI assistant start the MCP server from any folder (docs/mcp.md)
 .venv/bin/python scripts/run_mcp_check.py         # runs the MCP server over stdio and checks it (about 20 s)
 (cd web && npm ci && npm test && npm run build)   # the website: its tests, then the build the API serves
 node scripts/check_website.mjs                    # with scripts/start_local.sh running: the browser check, and the screenshots
-.venv/bin/python -m pytest -q                    # 117 tests, including that the published numbers reproduce
+.venv/bin/python -m pytest -q                    # 127 tests, including that the published numbers reproduce
 CONTROLFINDER_DB_URL=postgresql://controlfinder:controlfinder-local@127.0.0.1:55432/controlfinder \
   .venv/bin/python -m pytest -q tests/test_database.py tests/test_api_database.py  # the 12 tests that need that database
 ```
